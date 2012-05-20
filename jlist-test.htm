@@ -1,0 +1,321 @@
+<html>
+    <head>
+    </head>
+    <body>
+
+    <script src="evolvr.jlist-min.js"></script>
+
+    <script>
+
+        var response = '';
+
+        document.write('<br><h1>jList</h1> v1.1.0');
+        document.write('<br>');
+
+        document.write('<br><br><h1>listAppend</h1>');
+
+        response = jList.listAppend('elem1,elem2', 'rabbit');
+        document.write("jList.listAppend('elem1,elem2', 'rabbit' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listAppend('','elem1,elem2');
+        document.write("jList.listAppend('','elem1,elem2') returns '" + response + "'" + '<br>');
+
+        response = jList.listAppend('cat-dog-mouse','hamster','-');
+        document.write("jList.listAppend('cat-dog-mouse','hamster','-') returns '" + response + "'" + '<br>');
+
+
+       document.write('<br><br><h1>listDeleteAt</h1>');
+
+        response = jList.listDeleteAt('elem1,elem2,elem3',2);
+        document.write("jList.listDeleteAt('elem1,elem2,elem3',2) returns '" + response + "'" + '<br>');
+
+        response = jList.listDeleteAt('elem1,elem2',4);
+        document.write("jList.listDeleteAt('elem1,elem2',4) returns '" + response + "'" + '<br>');
+
+        response = jList.listDeleteAt('cat-dog-mouse',3,'-');
+        document.write("jList.listDeleteAt('cat-dog-mouse',3,'-') returns '" + response + "'" + '<br>');
+
+
+        document.write('<br><br><h1>listFind</h1>');
+
+        response = jList.listFind('elem1,elem2,elem3','Elem3');
+        document.write("jList.listFind('elem1,elem2,elem3','Elem3') returns " + response + '<br>');
+
+        response = jList.listFind('elem1,elem2','cat');
+        document.write("jList.listFind('elem1,elem2','cat') returns " + response + '<br>');
+
+        response = jList.listFind('cat-dog--mouse','dog','-');
+        document.write("jList.listFind('cat-dog--mouse','dog','-') returns " + response + '<br>');
+
+        response = jList.listFind('5-4-3-2-1','4','-');
+        document.write("jList.listFind('5-4-3-2-1','4','-') returns " + response + '<br>');
+
+        response = jList.listFind('5-4-3-2-1',4,'-');
+        document.write("jList.listFind('5-4-3-2-1',4,'-') returns " + response + '<br>');
+
+
+        document.write('<br><br><h1>listFindNoCase</h1>');
+
+        response = jList.listFindNoCase('elem1,elem2,elem3','elem3');
+        document.write("jList.listFindNoCase('elem1,elem2,elem3','elem3') returns " + response + '<br>');
+
+        response = jList.listFindNoCase('elem1,elem2,elem3','Elem3');
+        document.write("jList.listFindNoCase('elem1,elem2,elem3','Elem3') returns " + response + '<br>');
+
+        response = jList.listFindNoCase('cat,dog','CAT');
+        document.write("jList.listFindNoCase('cat,dog','DOG') returns " + response + '<br>');
+
+        response = jList.listFindNoCase('Cat-Dog--Mouse','dog','-');
+        document.write("jList.listFindNoCase('Cat-Dog--Mouse','dog','-') returns " + response + '<br>');
+
+        response = jList.listFindNoCase('Cat-Dog--Mouse','mouse','-');
+        document.write("jList.listFindNoCase('Cat-Dog--Mouse','mouse','-') returns " + response + '<br>');
+
+        response = jList.listFindNoCase('5-4-3-2-1',4,'-');
+        document.write("jList.listFindNoCase('5-4-3-2-1',4,'-') returns " + response + '<br>');
+
+
+        document.write('<br><br><h1>listFirst</h1>');
+
+        response = jList.listFirst('elem1,elem2,elem3');
+        document.write("jList.listFirst('elem1,elem2,elem3') returns '" + response + "'<br>");
+
+        response = jList.listFirst('cat,dog','~');
+        document.write("jList.listFirst('cat,dog','~') returns '" + response + "'<br>");
+
+        response = jList.listFirst('Cat-Dog--Mouse','-');
+        document.write("jList.listFirst('Cat-Dog--Mouse','-') returns '" + response + "'<br>");
+
+        response = jList.listFirst('5-4-3-2-1','-');
+        document.write("jList.listFirst('5-4-3-2-1','-') returns '" + response + "'<br>");
+
+        response = jList.listFirst('');
+        document.write("jList.listFirst('') returns '" + response + "'<br>");
+
+
+        document.write('<br><br><h1>listGetAt</h1>');
+
+        response = jList.listGetAt('elem1,elem2,elem3',1);
+        document.write("jList.listGetAt('elem1,elem2,elem3',1) returns '" + response + "'<br>");
+
+        response = jList.listGetAt('cat,dog',1,'~');
+        document.write("jList.listGetAt('cat,dog',1,'~') returns '" + response + "'<br>");
+
+        response = jList.listGetAt('Cat-Dog--Mouse',3,'-');
+        document.write("jList.listGetAt('Cat-Dog--Mouse',3,'-') returns '" + response + "'<br>");
+
+        response = jList.listGetAt('5-4-3-2-1',5,'-');
+        document.write("jList.listGetAt('5-4-3-2-1',5,'-') returns '" + response + "'<br>");
+
+        response = jList.listGetAt('',4);
+        document.write("jList.listGetAt('',4) returns '" + response + "'<br>");
+     
+
+
+        document.write('<br><br><h1>listInsertAt</h1>');
+
+        response = jList.listInsertAt('elem1,elem2,elem3',1,'hello');
+        document.write("jList.listInsertAt('elem1,elem2,elem3',1,'hello') returns '" + response + "'<br>");
+
+        response = jList.listInsertAt('cat,dog',1,'monkey','~');
+        document.write("jList.listInsertAt('cat,dog',1,'monkey','~') returns '" + response + "'<br>");
+
+        response = jList.listInsertAt('Cat-Dog--Mouse',3,'Elephant','-');
+        document.write("jList.listInsertAt('Cat-Dog--Mouse','Elephant',3,'-') returns '" + response + "'<br>");
+
+        response = jList.listInsertAt('5-4-3-2-1',5,999,'-');
+        document.write("jList.listInsertAt('5-4-3-2-1',999,5,'-') returns '" + response + "'<br>");
+
+        response = jList.listInsertAt('',4,'abcdef');
+        document.write("jList.listInsertAt('','abcdef',4) returns '" + response + "'<br>");  
+
+        response = jList.listInsertAt('',1,'abcdef');
+        document.write("jList.listInsertAt('','abcdef',1) returns '" + response + "'<br>");  
+
+
+
+        document.write('<br><br><h1>listLast</h1>');
+
+        response = jList.listLast('elem1,elem2,elem3');
+        document.write("jList.listLast('elem1,elem2,elem3') returns '" + response + "'<br>");
+
+        response = jList.listLast('cat,dog','~');
+        document.write("jList.listLast('cat,dog','~') returns '" + response + "'<br>");
+
+        response = jList.listLast('Cat-Dog--Mouse','-');
+        document.write("jList.listLast('Cat-Dog--Mouse','-') returns '" + response + "'<br>");
+
+        response = jList.listLast('','-');
+        document.write("jList.listLast('','-') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listLen</h1>');
+
+        response = jList.listLen('elem1,elem2,elem3');
+        document.write("jList.listLen('elem1,elem2,elem3') returns " + response + "<br>");
+
+        response = jList.listLen('cat,dog','~');
+        document.write("jList.listLen('cat,dog','~') returns " + response + "<br>");
+
+        response = jList.listLen('Cat-Dog--Mouse','-');
+        document.write("jList.listLen('Cat-Dog--Mouse','-') returns " + response + "<br>");
+
+        response = jList.listLen('','-');
+        document.write("jList.listLen('','-') returns " + response + "<br>");
+
+
+
+        document.write('<br><br><h1>listPrepend</h1>');
+
+        response = jList.listPrepend('elem1,elem2,elem3','elem99');
+        document.write("jList.listPrepend('elem1,elem2,elem3','elem99') returns " + response + "<br>");
+
+        response = jList.listPrepend('cat,dog','mouse','~');
+        document.write("jList.listPrepend('cat,dog','mouse','~') returns " + response + "<br>");
+
+        response = jList.listPrepend('Cat-Dog--Mouse','Rabbit','-');
+        document.write("jList.listPrepend('Cat-Dog--Mouse','Rabbit','-') returns " + response + "<br>");
+
+        response = jList.listPrepend('','Rabbit','-');
+        document.write("jList.listPrepend('','Rabbit','-') returns " + response + "<br>");
+
+
+
+        document.write('<br><br><h1>listQualify</h1>');
+
+        response = jList.listQualify('elem1,elem2,elem3','~');
+        document.write("jList.listQualify('elem1,elem2,elem3','~') returns '" + response + "'<br>");
+
+        response = jList.listQualify('cat,dog','@','~');
+        document.write("jList.listQualify('cat,dog','@','~') returns '" + response + "'<br>");
+
+        response = jList.listQualify('Cat-Dog--Mouse','$','-');
+        document.write("jList.listQualify('Cat-Dog--Mouse','$','-') returns '" + response + "'<br>");
+
+        response = jList.listQualify('','*','-');
+        document.write("jList.listQualify('','*','-') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listRemoveDuplicates</h1>');
+
+        response = jList.listRemoveDuplicates('a,e,c,e,a,b,d');
+        document.write("jList.listRemoveDuplicates('a,e,c,e,a,b,d') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicates('a,f,c,d,A,f,C,d');
+        document.write("jList.listRemoveDuplicates('a,f,c,d,A,f,C,d') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicates('a~12~1~Z~C~12','~');
+        document.write("jList.listRemoveDuplicates('a~12~1~Z~C~12','~') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicates('1.1.1.1.1.1','.');
+        document.write("jList.listRemoveDuplicates('1.1.1.1.1.1','.') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicates('12,3,4,1,12,4,6');
+        document.write("jList.listRemoveDuplicates('12,3,4,1,12,4,6') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listRemoveDuplicatesNoCase</h1>');
+
+        response = jList.listRemoveDuplicatesNoCase('a,e,c,e,a,b,d');
+        document.write("jList.listRemoveDuplicatesNoCase('a,e,c,e,a,b,d') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicatesNoCase('a,f,c,d,A,f,C,d');
+        document.write("jList.listRemoveDuplicatesNoCase('a,f,c,d,A,f,C,d') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicatesNoCase('a~12~1~Z~C~A~A~a~12','~');
+        document.write("jList.listRemoveDuplicatesNoCase('a~12~1~Z~C~A~A~a~12','~') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicatesNoCase('1.1.1.1.1.1','.');
+        document.write("jList.listRemoveDuplicatesNoCase('1.1.1.1.1.1','.') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicatesNoCase('12,3,4,1,12,4,6');
+        document.write("jList.listRemoveDuplicatesNoCase('12,3,4,1,12,4,6') returns '" + response + "'<br>");
+
+        response = jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit');
+        document.write("jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit') returns '" + response + "'<br>");
+
+
+        document.write('<br><br><h1>listRest</h1>');
+
+        response = jList.listRest('elem1,elem2,elem3');
+        document.write("jList.listRest('elem1,elem2,elem3') returns '" + response + "'<br>");
+
+        response = jList.listRest('cat,dog','~');
+        document.write("jList.listRest('cat,dog','~') returns '" + response + "'<br>");
+
+        response = jList.listRest('Cat-Dog--Mouse','-');
+        document.write("jList.listRest('Cat-Dog--Mouse','-') returns '" + response + "'<br>");
+
+        response = jList.listRest('','-');
+        document.write("jList.listRest('','-') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listReverse</h1>');
+
+        response = jList.listReverse('elem1,elem2,elem3');
+        document.write("jList.listReverse('elem1,elem2,elem3') returns '" + response + "'<br>");
+
+        response = jList.listReverse('cat,dog','~');
+        document.write("jList.listReverse('cat,dog','~') returns '" + response + "'<br>");
+
+        response = jList.listReverse('Cat-Dog--Mouse','-');
+        document.write("jList.listReverse('Cat-Dog--Mouse','-') returns '" + response + "'<br>");
+
+        response = jList.listReverse('','-');
+        document.write("jList.listReverse('','-') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listSetAt</h1>');
+
+        response = jList.listSetAt('elem1,elem2,elem3',1,'elem99');
+        document.write("jList.listSetAt('elem1,elem2,elem3',1,'elem99') returns '" + response + "'<br>");
+
+        response = jList.listSetAt('cat,dog',2,'hamster','~');
+        document.write("jList.listSetAt('cat,dog',2,'hamster','~') returns '" + response + "'<br>");
+
+        response = jList.listSetAt('Cat-Dog--Mouse',3,'Hamster','-');
+        document.write("jList.listSetAt('Cat-Dog--Mouse',3,'Hamster','-') returns '" + response + "'<br>");
+
+        response = jList.listSetAt('',3,'a new one','-');
+        document.write("jList.listSetAt('',3,'a new one','-') returns '" + response + "'<br>");
+
+        response = jList.listSetAt('',1,'a new one','-');
+        document.write("jList.listSetAt('',1,'a new one','-') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listSort</h1>');
+
+        response = jList.listSort('a,e,c,b,d');
+        document.write("jList.listSort('a,e,c,b,d') returns '" + response + "'<br>");
+
+        response = jList.listSort('a,f,c,d,A,C');
+        document.write("jList.listSort('a,f,c,d,A,C') returns '" + response + "'<br>");
+
+        response = jList.listSort('a~12~1~Z~C','alpha','asc','~');
+        document.write("jList.listSetAt('a~12~1~Z~C','alpha','asc','~') returns '" + response + "'<br>");
+
+        response = jList.listSort('a~12~1~Z~C','alpha','desc','~');
+        document.write("jList.listSort('a~12~1~Z~C','alpha','desc','~') returns '" + response + "'<br>");
+
+        response = jList.listSort('12,3,4,1,55,5,6','alpha','asc');
+        document.write("jList.listSort('12,3,4,1,55,5,6','alpha','asc') returns '" + response + "'<br>");
+
+        response = jList.listSort('12,3,4,1,55,5,6','numeric','asc');
+        document.write("jList.listSort('12,3,4,1,55,5,6','numeric','asc') returns '" + response + "'<br>");
+
+
+        document.write('<br><br><br>');
+
+    </script>
+
+
+
+</body>
+
+</html>
