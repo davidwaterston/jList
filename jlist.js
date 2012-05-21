@@ -1,7 +1,7 @@
 /*
     Title: jlist.js
-    Version: 1.1.0 (Semantic versioning: http://semver.org)
-    Last update: 18th May, 2012
+    Version: 1.2.0 (Semantic versioning: http://semver.org)
+    Last update: 21st May, 2012
     Written by: David Waterston (david@davidwaterston.com)
     Github repository and documentation: http://davidwaterston.github.com/jlist
 
@@ -238,34 +238,42 @@ var jList = (function () {
 
             var arr = list.split(delimiter),
                 i,
+                id,
                 len = arr.length,
                 out = [],
                 obj = {};
 
             for (i = 0; i < len; i += 1) {
-                if (!obj[arr[i]]) {
-                    obj[arr[i]] = {};
-                    out.push(arr[i]);
+                id = arr[i];
+                if (!obj[id]) {
+                    obj[id] = {};
+                    out.push(id);
                 }
             }
             return out.join(delimiter);
         },
+
 
         listRemoveDuplicatesNoCase : function (list, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
             var arr = list.split(delimiter),
                 i,
+                id,
                 len = arr.length,
+                idUpper,
                 out = [],
                 obj = {};
 
             for (i = 0; i < len; i += 1) {
-                if (!obj[arr[i].toUpperCase()]) {
-                    obj[arr[i].toUpperCase()] = {};
-                    out.push(arr[i]);
+                id = arr[i];
+                idUpper = id.toUpperCase();
+                if (!obj[idUpper]) {
+                    obj[idUpper] = {};
+                    out.push(id);
                 }
             }
+
             return out.join(delimiter);
         }
 

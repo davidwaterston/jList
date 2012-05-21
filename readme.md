@@ -1,5 +1,5 @@
 # **jList** 
-v1.1.0
+v1.2.0
 
 ##What does it do?
 *jList* is a collection of functions that bring *ColdFusion*-style list handling to Javascript.  
@@ -22,7 +22,7 @@ The Javascript source code of the library.
 - **jlist-min.js**    
 The Javascript source code minified using UglifyJS.  
 
-For release [1.1.0](http://semver.org) there are 15 functions included. They are, in alphabetical order:
+For release [1.2.0](http://semver.org) there are 15 functions included. They are, in alphabetical order:
 
 - **listAppend**  
 Concatenates an element to a list.  
@@ -675,6 +675,7 @@ The following table shows examples of *listSort* processing:
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
+| 1.2.0 | 21st May, 2012 | Minor changes to *listRemoveDuplicates* and *listRemoveDuplicatesNoCase* to improve performance with larger lists (100,000+ elements). |
 | 1.1.0 | 18th May, 2012 | Added two new functions - *listRemoveDuplicates* and *listRemoveDuplicatesNoCase*.|
 | &nbsp; | &nbsp; | Updated sample code and documentation. |  
 | &nbsp; | &nbsp; | Added this version history. |     
