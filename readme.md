@@ -22,7 +22,7 @@ The Javascript source code of the library.
 - **jlist-min.js**    
 The Javascript source code minified using UglifyJS.  
 
-For release [1.2.0](http://semver.org) there are 15 functions included. They are, in alphabetical order:
+For release [1.2.0](http://semver.org) there are 17 functions included. They are, in alphabetical order:
 
 - **listAppend**  
 Concatenates an element to a list.  
@@ -670,6 +670,30 @@ The following table shows examples of *listSort* processing:
 | jList.listSort('12,3,4,1,55,5,6','numeric','asc') | '1,3,4,5,6,12,55' |   
 
 ---
+
+
+#jsFiddle
+In addition to the examples included in the file *jlist-test.htm*, all functions are available in *jsFiddle* for ad-hoc testing:  
+  
+[Full list of *fiddles*](http://jsfiddle.net/user/davidwaterston/fiddles)  
+  
+[listAppend](http://jsfiddle.net/davidwaterston/KDNUf)  
+[listDeleteAt](http://jsfiddle.net/davidwaterston/j6pEP)  
+[listFind](http://jsfiddle.net/davidwaterston/LAfBn)  
+[listFindNoCase](http://jsfiddle.net/davidwaterston/TXt2T)  
+[listFirst](http://jsfiddle.net/davidwaterston/FEQWc)  
+[listGetAt](http://jsfiddle.net/davidwaterston/7khW6)  
+[listInsertAt](http://jsfiddle.net/davidwaterston/9D26p)  
+[listLast](http://jsfiddle.net/davidwaterston/BbLD8)  
+[listLen](http://jsfiddle.net/davidwaterston/Uz4P2)  
+[listPrepend](http://jsfiddle.net/davidwaterston/n8AXz)  
+[listQualify](http://jsfiddle.net/davidwaterston/ArLh9)  
+[listRemoveDuplicates](http://jsfiddle.net/davidwaterston/qHvHg)  
+[listRemoveDuplicatesNoCase](http://jsfiddle.net/davidwaterston/8NpEY)  
+[listRest](http://jsfiddle.net/davidwaterston/Q6Hh4)  
+[listReverse](http://jsfiddle.net/davidwaterston/vsmXu)  
+[listSetAt](http://jsfiddle.net/davidwaterston/CTN2w)  
+[listSort](http://jsfiddle.net/davidwaterston/ff2zy)  
 
 #Version History
 
