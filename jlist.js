@@ -1,7 +1,7 @@
 /*
     Title: jlist.js
-    Version: 1.2.0 (Semantic versioning: http://semver.org)
-    Last update: 21st May, 2012
+    Version: 1.3.0 (Semantic versioning: http://semver.org)
+    Last update: 16th June, 2012
     Written by: David Waterston (david@davidwaterston.com)
     Github repository and documentation: http://davidwaterston.github.com/jlist
 
@@ -45,6 +45,10 @@ var jList = (function () {
         return b - a;
     }
 
+    function quoteString(str) {
+        return str.replace(/([.?*+\^$\[\]\\(){}\-])/g, "\\$1");
+    }
+
 
 
     return {
@@ -57,6 +61,7 @@ var jList = (function () {
             }
             return list.split(delimiter).length;
         },
+
 
         listFind : function (list, value, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -77,6 +82,7 @@ var jList = (function () {
             return 0;
         },
 
+
         listFindNoCase : function (list, value, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
@@ -85,6 +91,7 @@ var jList = (function () {
 
             return this.listFind(list, value, delimiter);
         },
+
 
         listGetAt : function (list, position, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -96,17 +103,20 @@ var jList = (function () {
             return "";
         },
 
+
         listFirst : function (list, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
             return this.listGetAt(list, 1, delimiter);
         },
 
+
         listLast : function (list, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
             return this.listGetAt(list, this.listLen(list, delimiter), delimiter);
         },
+
 
         listRest : function (list, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -116,6 +126,7 @@ var jList = (function () {
             arr.splice(0, 1);
             return arr.join(delimiter);
         },
+
 
         listSetAt : function (list, position, value, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -136,6 +147,7 @@ var jList = (function () {
             return list;
         },
 
+
         listDeleteAt : function (list, position, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
@@ -148,17 +160,20 @@ var jList = (function () {
             return list;
         },
 
+
         listPrepend : function (list, value, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
             return value + (list !== "" ? (delimiter + list) : "");
         },
 
+
         listAppend : function (list, value, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
             return (list !== "" ? (list + delimiter) : "") + value;
         },
+
 
         listInsertAt : function (list, position, value, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -178,6 +193,7 @@ var jList = (function () {
 
             return list;
         },
+
 
         listSort : function (list, sort_type, sort_order, delimiter) {
             sort_type = (typeof sort_type === "undefined") ? "alpha" : sort_type.toLowerCase();
@@ -205,6 +221,7 @@ var jList = (function () {
             return arr.join(delimiter);
         },
 
+
         listQualify : function (list, qualifier, delimiter) {
             qualifier = (typeof qualifier === "'") ? "," : qualifier;
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -224,6 +241,7 @@ var jList = (function () {
             return arr.join(delimiter);
         },
 
+
         listReverse : function (list, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
 
@@ -232,6 +250,7 @@ var jList = (function () {
             arr.reverse();
             return arr.join(delimiter);
         },
+
 
         listRemoveDuplicates : function (list, delimiter) {
             delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
@@ -275,7 +294,46 @@ var jList = (function () {
             }
 
             return out.join(delimiter);
+        },
+
+
+        listChangeDelims : function (list, new_delimiter, delimiter) {
+            delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
+            var re = new RegExp(quoteString(delimiter), "g");
+
+            return list.replace(re, new_delimiter);
+        },
+
+
+        listValueCount : function (list, value, delimiter) {
+            delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
+
+            value = String(value);
+
+            var arr = list.split(delimiter),
+                i = arr.length,
+                matchCount = 0;
+
+            while (i) {
+                i -= 1;
+                if (arr[i] === value) {
+                    matchCount += 1;
+                }
+            }
+
+            return matchCount;
+        },
+
+
+        listValueCountNoCase : function (list, value, delimiter) {
+            delimiter = (typeof delimiter === "undefined") ? "," : delimiter;
+
+            list = list.toUpperCase();
+            value = String(value).toUpperCase();
+
+            return this.listValueCount(list, value, delimiter);
         }
+
 
     };
 

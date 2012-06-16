@@ -9,7 +9,7 @@
 
         var response = '';
 
-        document.write('<br><h1>jList</h1> v1.1.0');
+        document.write('<br><h1>jList</h1> v1.3.0');
         document.write('<br>');
 
         document.write('<br><br><h1>listAppend</h1>');
@@ -24,7 +24,22 @@
         document.write("jList.listAppend('cat-dog-mouse','hamster','-') returns '" + response + "'" + '<br>');
 
 
-       document.write('<br><br><h1>listDeleteAt</h1>');
+        document.write('<br><br><h1>listChangeDelims</h1>');
+
+        response = jList.listChangeDelims('a,e,c,b,d','=');
+        document.write("jList.listChangeDelims('a,e,c,b,d', '=') returns '" + response + "'<br>");
+
+        response = jList.listChangeDelims('a.e.c.b.d',',','.');
+        document.write("jList.listChangeDelims('a.e.c.b.d',',','.') returns '" + response + "'<br>");
+
+        response = jList.listChangeDelims('a,e,c,b,d','-','!');
+        document.write("jList.listChangeDelims('a,e,c,b,d','-','!') returns '" + response + "'<br>");
+
+        response = jList.listChangeDelims('a,e,c,b,d','-',',');
+        document.write("jList.listChangeDelims('a,e,c,b,d','-',',') returns '" + response + "'<br>");
+
+
+        document.write('<br><br><h1>listDeleteAt</h1>');
 
         response = jList.listDeleteAt('elem1,elem2,elem3',2);
         document.write("jList.listDeleteAt('elem1,elem2,elem3',2) returns '" + response + "'" + '<br>');
@@ -308,6 +323,62 @@
 
         response = jList.listSort('12,3,4,1,55,5,6','numeric','asc');
         document.write("jList.listSort('12,3,4,1,55,5,6','numeric','asc') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listValueCount</h1>');
+
+        response = jList.listValueCount('a,e,a,c,a,b,a,d','a');
+        document.write("jList.listValueCount('a,e,a,c,a,b,a,d','a') returns '" + response + "'<br>");
+
+        response = jList.listValueCount('a,e,a,c,a,b,a,d','A');
+        document.write("jList.listValueCount('a,e,a,c,a,b,a,d','A') returns '" + response + "'<br>");
+
+        response = jList.listValueCount('a,e,A,c,a,b,A,d','A');
+        document.write("jList.listValueCount('a,e,A,c,a,b,A,d','A') returns '" + response + "'<br>");
+
+        response = jList.listValueCount('a;e;A;c;a;b;A;d','A');
+        document.write("jList.listValueCount('a;e;A;c;a;b;A;d','A') returns '" + response + "'<br>");
+
+        response = jList.listValueCount('a;e;A;c;a;b;A;d','A',';');
+        document.write("jList.listValueCount('a;e;A;c;a;b;A;d','A',';') returns '" + response + "'<br>");
+
+        response = jList.listValueCount('John,Mark,Steve,Alan,John,john','john');
+        document.write("jList.listValueCount('John,Mark,Steve,Alan,John,john','john') returns '" + response + "'<br>");
+
+        response = jList.listValueCount('1,2,3,1,2,3',3);
+        document.write("jList.listValueCount('1,2,3,1,2,3',3) returns '" + response + "'<br>");
+
+        response = jList.listValueCount('1,2,3,1,2,3','3');
+        document.write("jList.listValueCount('1,2,3,1,2,3','3') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listValueCountNoCase</h1>');
+
+        response = jList.listValueCountNoCase('a,e,a,c,a,b,a,d','a');
+        document.write("jList.listValueCountNoCase('a,e,a,c,a,b,a,d','a') returns '" + response + "'<br>");
+
+        response = jList.listValueCountNoCase('a,e,a,c,a,b,a,d','A');
+        document.write("jList.listValueCountNoCase('a,e,a,c,a,b,a,d','A') returns '" + response + "'<br>");
+
+        response = jList.listValueCountNoCase('a,e,A,c,a,b,A,d','A');
+        document.write("jList.listValueCountNoCase('a,e,A,c,a,b,A,d','A') returns '" + response + "'<br>");
+
+        response = jList.listValueCountNoCase('a;e;A;c;a;b;A;d','A');
+        document.write("jList.listValueCountNoCase('a;e;A;c;a;b;A;d','A') returns '" + response + "'<br>");
+
+        response = jList.listValueCountNoCase('a;e;A;c;a;b;A;d','A',';');
+        document.write("jList.listValueCountNoCase('a;e;A;c;a;b;A;d','A',';') returns '" + response + "'<br>");
+
+        response = jList.listValueCountNoCase('John,Mark,Steve,Alan,John,john','john');
+        document.write("jList.listValueCountNoCase('John,Mark,Steve,Alan,John,john','john') returns '" + response + "'<br>");
+        
+        response = jList.listValueCountNoCase('1,2,3,1,2,3',3);
+        document.write("jList.listValueCountNoCase('1,2,3,1,2,3',3) returns '" + response + "'<br>");
+
+        response = jList.listValueCountNoCase('1,2,3,1,2,3','3');
+        document.write("jList.listValueCountNoCase('1,2,3,1,2,3','3') returns '" + response + "'<br>");
 
 
         document.write('<br><br><br>');

@@ -1,5 +1,5 @@
 # **jList** 
-v1.2.0
+v1.3.0
 
 ##What does it do?
 *jList* is a collection of functions that bring *ColdFusion*-style list handling to Javascript.  
@@ -22,42 +22,48 @@ The Javascript source code of the library.
 - **jlist-min.js**    
 The Javascript source code minified using UglifyJS.  
 
-For release [1.2.0](http://semver.org) there are 17 functions included. They are, in alphabetical order:
+For release [1.3.0](http://semver.org) there are 20 functions included. They are, in alphabetical order:
 
-- **listAppend**  
+- **[listAppend][]**  
 Concatenates an element to a list.  
-- **listDeleteAt**  
+- **[listChangeDelims][]**   
+Changes a list delimiter.
+- **[listDeleteAt][]**  
 Deletes an element from a list.  
-- **listFind**  
+- **[listFind][]**  
 Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.  
-- **listFindNoCase**  
+- **[listFindNoCase][]**  
 Determines the index of the first list element in which a specified value occurs. The search is case-insensitive.
-- **listFirst**  
+- **[listFirst][]**  
 Gets the first element of a list.
-- **listGetAt**  
+- **[listGetAt][]**  
 Gets a list element at a specified position.
-- **listInsertAt**  
+- **[listInsertAt][]**  
 Inserts an element into a list.
-- **listLast**  
+- **[listLast][]**  
 Gets the last element of a list.
-- **listLen**  
+- **[listLen][]**  
 Determines the number of elements in a list.
-- **listPrepend**  
+- **[listPrepend][]**  
 Inserts an element at the beginning of a list.
-- **listQualify**  
+- **[listQualify][]**  
 Inserts a string at the beginning and end of list elements.
-- **listRemoveDuplicates**  
+- **[listRemoveDuplicates][]**  
 Removes duplicate elements from a list. Matching is case-sensitive.
-- **listRemoveDuplicatesNoCase**  
+- **[listRemoveDuplicatesNoCase][]**  
 Removes duplicate elements from a list. Matching is not case-sensitive.
-- **listRest**  
+- **[listRest][]**  
 Gets a list, without its first element.
-- **listReverse**  
+- **[listReverse][]**  
 Reverses the order of elements in a list.
-- **listSetAt**  
+- **[listSetAt][]**  
 Replaces the contents of a list element.
-- **listSort**  
+- **[listSort][]**  
 Sorts list elements according to a sort type and sort order.
+- **[listValueCount][]**   
+Counts the instances of a specified value in a list. The search is case-sensitive.    
+- **[listValueCountNoCase][]**    
+Counts the instances of a specified value in a list. The search is not case-sensitive.   
 
 More detailed documentation for each of these functions can be found later in this document.  
     
@@ -117,7 +123,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - *jList* is minified using [UglifyJS](http://marijnhaverbeke.nl/uglifyjs).
 - Version numbers follow the [Semantic Versioning](http://semver.org) standard.
 - The unminified version of the source validates clean in both [jsLint](http://jslint.com) and [jsHint](http://www.jshint.com).
-- Written by David Waterston (<david@davidwaterston.com>)
+- Written by [David Waterston] (http://dvolvr.davidwaterston.com)
 - Github repository: [http://davidwaterston.github.com/jlist](http://davidwaterston.github.com/jlist)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
 - Documentation written in [Markdown](http://daringfireball.net/projects/markdown/) using [Byword](http://bywordapp.com/).
@@ -131,7 +137,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ##listAppend  
 
 **Description**  
-Concatenates an element to a list.
+Concatenates an element to a list.  
+
+**Availability**  
+v1.0
 
 **Function syntax**  
 listAppend(list, value [, delimiter ])
@@ -160,10 +169,50 @@ The following table shows examples of *listAppend* processing:
 
 ---
 
+##listChangeDelims  
+
+**Description**  
+Changes a list delimiter.
+
+**Availability**    
+v1.3  
+
+**Function syntax**  
+listChangeDelims(list, new_delimiter [, delimiter ])
+
+**Returns**  
+A copy of the list, with the *delimiter* character replaced by *new_delimiter*.  
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |   
+| new_delimiter | Delimiter string or a variable that contains one. |  
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**  
+ 
+The following table shows examples of *listChangeDelims* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listChangeDelims('a,e,c,b,d', '=') | a=e=c=b=d |    
+| jList.listChangeDelims('a.e.c.b.d', ',', '.') | a,e,c,b,d |      
+| jList.listChangeDelims('a,e,c,b,d','-','!') | a,e,c,b,d |  
+| jList.listChangeDelims('a,e,c,b,d','-',',') | a-e-c-b-d |  
+
+
+---
+
+
 ##listDeleteAt  
 
 **Description**  
 Deletes an element from a list.
+
+**Availability**  
+v1.0  
 
 **Function syntax**  
 listDeleteAt(list, position [, delimiter ])
@@ -196,6 +245,9 @@ The following table shows examples of *listDeleteAt* processing:
 
 **Description**  
 Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.
+
+**Availability**  
+v1.0  
 
 **Function syntax**  
 listFind(list, value [, delimiter ])
@@ -230,6 +282,9 @@ The following table shows examples of *listFind* processing:
 **Description**  
 Determines the index of the first list element in which a specified value occurs. The search is case-insensitive.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listFindNoCase(list, value [, delimiter ])
 
@@ -263,6 +318,9 @@ The following table shows examples of *listFindNoCase* processing:
 **Description**  
 Gets the first element of a list.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listFirst(list, [, delimiter ])
 
@@ -295,6 +353,9 @@ The following table shows examples of *listFirst* processing:
 **Description**  
 Gets a list element at a specified position.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listGetAt(list, position, [, delimiter ])
 
@@ -322,10 +383,13 @@ The following table shows examples of *listGetAt* processing:
 
 ---
 
-##listInsertAt   
+##listInsertAt    
 
 **Description**  
 Inserts an element into a list.
+
+**Availability**  
+v1.0  
 
 **Function syntax**  
 listInsertAt(list, position, value, [, delimiter ])
@@ -360,6 +424,9 @@ The following table shows examples of *listInsertAt* processing:
 **Description**  
 Gets the last element of a list.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listLast(list [, delimiter ])
 
@@ -390,6 +457,9 @@ The following table shows examples of *listLast* processing:
 **Description**  
 Determines the number of elements in a list.  
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listLen(list [, delimiter ])
 
@@ -419,6 +489,9 @@ The following table shows examples of *listLen* processing:
 
 **Description**  
 Inserts an element at the beginning of a list.
+
+**Availability**  
+v1.0  
 
 **Function syntax**  
 listPrepend(list, value [, delimiter ])
@@ -452,6 +525,9 @@ The following table shows examples of *listPrepend* processing:
 **Description**  
 Inserts a string at the beginning and end of all list elements.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listQualify(list, qualifier [, delimiter ])
 
@@ -482,6 +558,9 @@ The following table shows examples of *listQualify* processing:
 
 **Description**  
 Removes all duplicate elements from a list. Where an element matches one which appears earlier in the list it is removed. Matching is case-sensitive.
+
+**Availability**  
+v1.1  
 
 **Function syntax**  
 listRemoveDuplicates(list, [, delimiter ])
@@ -514,6 +593,9 @@ The following table shows examples of *listRemoveDuplicates* processing:
 
 **Description**  
 Removes all duplicate elements from a list. Where an element matches one which appears earlier in the list it is removed. Matching is not case-sensitive.
+
+**Availability**  
+v1.1  
 
 **Function syntax**  
 listRemoveDuplicatesNoCase(list, [, delimiter ])
@@ -548,6 +630,9 @@ The following table shows examples of *listRemoveDuplicatesNoCase* processing:
 **Description**  
 Gets a list, without its first element.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listRest(list [, delimiter ])
 
@@ -578,6 +663,9 @@ The following table shows examples of *listRest* processing:
 **Description**  
 Reverses the order of elements in a list.
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 listReverse(list [, delimiter ])
 
@@ -607,6 +695,9 @@ The following table shows examples of *listReverse* processing:
 
 **Description**  
 Replaces the contents of a list element.
+
+**Availability**  
+v1.0  
 
 **Function syntax**  
 listSetAt(list, position, value [, delimiter ])
@@ -640,6 +731,9 @@ The following table shows examples of *listSetAt* processing:
 **Description**  
 Sorts list elements according to a sort type and sort order.  
 
+**Availability**  
+v1.0  
+
 **Function syntax**  
 ListSort(list, sort_type [, sort_order, delimiter ])
 
@@ -672,6 +766,86 @@ The following table shows examples of *listSort* processing:
 ---
 
 
+##listValueCount   
+
+**Description**  
+Counts instances of a specified value in a list. The search is case-sensitive.    
+
+**Availability**  
+v1.3  
+
+**Function syntax**  
+listValueCount(list, value [, delimiter ])  
+
+**Returns**  
+The number of instances of *value* in the list.
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |  
+| value | Item for which to search. Can be a string or number, or a variable that contains one. The search is case-sensitive. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |   
+
+**Usage**
+ 
+The following table shows examples of *listValueCount* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listValueCount('a,e,a,c,a,b,a,d', 'a') | 4 |   
+| jList.listValueCount('a,e,a,c,a,b,a,d', 'A') | 0 |   
+| jList.listValueCount('a,e,A,c,a,b,A,d', 'A') | 2 |   
+| jList.listValueCount('a;e;A;c;a;b;A;d', 'A') | 0 |   
+| jList.listValueCount('a;e;A;c;a;b;A;d', 'A', ';') | 2 |   
+| jList.listValueCount('John,Mark,Steve,Alan,John,john', 'john') | 1 |   
+| jList.listValueCount('1,2,3,1,2,3', 3) | 2 |   
+| jList.listValueCount('1,2,3,1,2,3', '3') | 2 |    
+
+---
+
+
+##listValueCountNoCase   
+
+**Description**  
+Counts instances of a specified value in a list. The search is not case-sensitive.    
+
+**Availability**  
+v1.3  
+
+**Function syntax**  
+listValueCountNoCase(list, value [, delimiter ])  
+
+**Returns**  
+The number of instances of *value* in the list.
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |  
+| value | Item for which to search. Can be a string or number, or a variable that contains one. The search is not case-sensitive. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |   
+
+**Usage**
+ 
+The following table shows examples of *listValueCountNoCase* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listValueCountNoCase('a,e,a,c,a,b,a,d', 'a') | 4 |   
+| jList.listValueCountNoCase('a,e,a,c,a,b,a,d', 'A') | 4 |   
+| jList.listValueCountNoCase('a,e,A,c,a,b,A,d', 'A') | 4 |   
+| jList.listValueCountNoCase('a;e;A;c;a;b;A;d', 'A') | 0 |   
+| jList.listValueCountNoCase('a;e;A;c;a;b;A;d', 'A', ';') | 4 |   
+| jList.listValueCountNoCase('John,Mark,Steve,Alan,John,john', 'john') | 3 |   
+| jList.listValueCountNoCase('1,2,3,1,2,3', 3) | 2 |   
+| jList.listValueCountNoCase('1,2,3,1,2,3', '3') | 2 |    
+
+---
+
+
 #jsFiddle
 In addition to the examples included in the file *jlist-test.htm*, all functions are available in *jsFiddle* for ad-hoc testing:  
   
@@ -699,12 +873,12 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
-| 1.2.0 | 21st May, 2012 | Minor changes to *listRemoveDuplicates* and *listRemoveDuplicatesNoCase* to improve performance with larger lists (100,000+ elements). |
-| 1.1.0 | 18th May, 2012 | Added two new functions - *listRemoveDuplicates* and *listRemoveDuplicatesNoCase*.|
+| 1.3.0 | 16th June, 2012 | Added three new functions - *[listChangeDelims][]*, *[listValueCount][]* and *[listValueCountNoCase][]*. |
+| 1.2.0 | 21st May, 2012 | Minor changes to *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]* to improve performance with larger lists (100,000+ elements). |
+| 1.1.0 | 18th May, 2012 | Added two new functions - *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]*.|
 | &nbsp; | &nbsp; | Updated sample code and documentation. |  
 | &nbsp; | &nbsp; | Added this version history. |     
-| 1.0.0 | 15th May, 2012 | Initial release. |    
-
+| 1.0.0 | 15th May, 2012 | Initial release. |  
 
 
       
