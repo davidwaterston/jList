@@ -124,7 +124,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - Version numbers follow the [Semantic Versioning](http://semver.org) standard.
 - The unminified version of the source validates clean in both [jsLint](http://jslint.com) and [jsHint](http://www.jshint.com).
 - Written by [David Waterston] (http://dvolvr.davidwaterston.com)
-- Github repository: [http://davidwaterston.github.com/jlist](http://davidwaterston.github.com/jlist)
+- Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
 - Documentation written in [Markdown](http://daringfireball.net/projects/markdown/) using [Byword](http://bywordapp.com/).
 - Pushed to [GitHub](http://davidwaterston.github.com/jlist) using [Tower](http://www.git-tower.com). 
@@ -852,6 +852,7 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 [Full list of *fiddles*](http://jsfiddle.net/user/davidwaterston/fiddles)  
   
 [listAppend](http://jsfiddle.net/davidwaterston/KDNUf)  
+[listChangeDelims](http://jsfiddle.net/davidwaterston/uvvHF)  
 [listDeleteAt](http://jsfiddle.net/davidwaterston/j6pEP)  
 [listFind](http://jsfiddle.net/davidwaterston/LAfBn)  
 [listFindNoCase](http://jsfiddle.net/davidwaterston/TXt2T)  
@@ -868,6 +869,8 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 [listReverse](http://jsfiddle.net/davidwaterston/vsmXu)  
 [listSetAt](http://jsfiddle.net/davidwaterston/CTN2w)  
 [listSort](http://jsfiddle.net/davidwaterston/ff2zy)  
+[listValueCount](http://jsfiddle.net/davidwaterston/WPyED)  
+[listValueCountNoCase](http://jsfiddle.net/davidwaterston/4gVnX)  
 
 #Version History
 
