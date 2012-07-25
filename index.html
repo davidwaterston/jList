@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="jList : ColdFusion-style list handling in Javascript." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>jList</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/davidwaterston/jList">View on GitHub</a>
+
+          <h1 id="project_title">jList</h1>
+          <h2 id="project_tagline">ColdFusion-style list handling in Javascript.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/davidwaterston/jList/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/davidwaterston/jList/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1><strong>jList</strong></h1>
+
+<p>v1.3.0</p>
+
+<h2>What does it do?</h2>
+
+<p><em>jList</em> is a collection of functions that bring <em>ColdFusion</em>-style list handling to Javascript.<br>
+A list is simply a string. What makes this string different (from any other string) is that it contains "delimiters". Delimiters (sometimes referred to as "separators") are used to separate each item in the list.<br>
+For instance, the string "carrots,peas,lettuce,tomato" could be described as a "comma delimited" or "comma separated" list. Although commas are the most common delimiter for lists, any character can be used - "Monkey:Rabbit:Mouse:Elephant" is no less a list than the comma delimited list.
+Once you start to use jList you will quickly realise that there are many situations where treating a string as a list is a simpler and more intuitive way to manipulate data than the built-in alternatives offered by Javascript. </p>
+
+<h2>What's included?</h2>
+
+<p>There are 4 files included with this package:   </p>
+
+<ul>
+<li><p><strong>readme.md</strong><br>
+This file.</p></li>
+<li><p><strong>jlist-test.htm</strong><br>
+A rough and ready test page showing all of the functions in action.</p></li>
+<li><p><strong>jlist.js</strong><br>
+The Javascript source code of the library.</p></li>
+<li><p><strong>jlist-min.js</strong><br>
+The Javascript source code minified using UglifyJS.  </p></li>
+</ul><p>For release <a href="http://semver.org">1.3.0</a> there are 20 functions included. They are, in alphabetical order:</p>
+
+<ul>
+<li>
+<a href="#listappend"><strong>listAppend</strong></a><br>
+Concatenates an element to a list.<br>
+</li>
+<li>
+<a href="#listchangedelims"><strong>listChangeDelims</strong></a><br>
+Changes a list delimiter.</li>
+<li>
+<a href="#listdeleteat"><strong>listDeleteAt</strong></a><br>
+Deletes an element from a list.<br>
+</li>
+<li>
+<a href="#listfind"><strong>listFind</strong></a><br>
+Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.<br>
+</li>
+<li>
+<a href="#listfindnocase"><strong>listFindNoCase</strong></a><br>
+Determines the index of the first list element in which a specified value occurs. The search is case-insensitive.</li>
+<li>
+<a href="#listfirst"><strong>listFirst</strong></a><br>
+Gets the first element of a list.</li>
+<li>
+<a href="#listgetat"><strong>listGetAt</strong></a><br>
+Gets a list element at a specified position.</li>
+<li>
+<a href="#listinsertat"><strong>listInsertAt</strong></a><br>
+Inserts an element into a list.</li>
+<li>
+<a href="#listlast"><strong>listLast</strong></a><br>
+Gets the last element of a list.</li>
+<li>
+<a href="#listlen"><strong>listLen</strong></a><br>
+Determines the number of elements in a list.</li>
+<li>
+<a href="#listprepend"><strong>listPrepend</strong></a><br>
+Inserts an element at the beginning of a list.</li>
+<li>
+<a href="#listqualify"><strong>listQualify</strong></a><br>
+Inserts a string at the beginning and end of list elements.</li>
+<li>
+<a href="#listremoveduplicates"><strong>listRemoveDuplicates</strong></a><br>
+Removes duplicate elements from a list. Matching is case-sensitive.</li>
+<li>
+<a href="#listremoveduplicatesnocase"><strong>listRemoveDuplicatesNoCase</strong></a><br>
+Removes duplicate elements from a list. Matching is not case-sensitive.</li>
+<li>
+<a href="#listrest"><strong>listRest</strong></a><br>
+Gets a list, without its first element.</li>
+<li>
+<a href="#listreverse"><strong>listReverse</strong></a><br>
+Reverses the order of elements in a list.</li>
+<li>
+<a href="#listsetat"><strong>listSetAt</strong></a><br>
+Replaces the contents of a list element.</li>
+<li>
+<a href="#listsort"><strong>listSort</strong></a><br>
+Sorts list elements according to a sort type and sort order.</li>
+<li>
+<a href="#listvaluecount"><strong>listValueCount</strong></a><br>
+Counts the instances of a specified value in a list. The search is case-sensitive.<br>
+</li>
+<li>
+<a href="#listvaluecountnocase"><strong>listValueCountNoCase</strong></a><br>
+Counts the instances of a specified value in a list. The search is not case-sensitive.<br>
+</li>
+</ul><p>More detailed documentation for each of these functions can be found later in this document.  </p>
+
+<h2>Quick start</h2>
+
+<p>jList requires only that you include the <em>jlist.js</em> or <em>jlist-min.js</em> file in your source:</p>
+
+<pre><code>&lt;script src="jlist-min.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>Alternatively you may use a script loader such as LABjs or RequireJS or concatenate the file with one or more other Javascript files to improve loading times.
+It's recommended that you use the minified version (<em>jlist-min.js</em>) in production to reduce the loading time. The original commented, pre-minification source is also included and you may find this more useful when debugging, making your own changes or just for learning.<br>
+Once the script is loaded then invoking the function you want is simply a matter of prefixing the function with "jList.". The following example, which uses the listAppend and listSort functions, shows how:</p>
+
+<pre><code>&lt;script src="jlist-min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    var l, l2;
+    l = "Susan,Janet,Steve,Bree,Michele,Jim,Mark,Elizabeth";
+    l = jList.listAppend(l, "David");
+    l2 = jList.listSort(l);
+    alert(l2);
+&lt;/script&gt;
+</code></pre>
+
+<p>This will show an alert with the text "Bree,David,Elizabeth,Janet,Jim,Mark,Michele,Steve,Susan".</p>
+
+<p>List processing is convenient for handling many strings that don't at first appear to be lists.<br>
+For example, the URL "<a href="http://www.mysite.net/main.htm?id=1234">http://www.mysite.net/main.htm?id=1234</a>" can be considered to be a list or, more usefully, a series of lists. To extract the top-level domain (tld) part (in this case the "net") we could think of the URL as a "dot delimited" list, within a "forward-slash delimited" list.  </p>
+
+<pre><code>1.  var url = "http://www.mysite.net/main.htm?id=1234";
+2.  var url_part = jList.listGetAt(url,3,"/");  // returns 'www.mysite.net'
+3.  var tld = jList.listLast(url_part,".");  // returns 'net' 
+</code></pre>
+
+<p>In line 2 we grab the 3rd item in the list, using a delimiter of "/". In this case this is "<a href="http://www.mysite.net">www.mysite.net</a>" because the first item is "http:" and the second item is empty. This is an important difference between this library and <em>ColdFusion</em> list processing - empty elements are not ignored in these functions. Notice also that we start counting the items from 1, not from zero.<br>
+Once we have the third item stored in <em>url_part</em> (line 2) we can then treat this as a "dot delimited" list. Using the listLast function (line 3) to retrieve the rightmost item in the list but this time specifying "." as the delimiter will return "net" into the <em>tld</em> variable. </p>
+
+<h2>Browser compatibility</h2>
+
+<p>jList has been tested in the latest versions of:   </p>
+
+<ul>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Safari</li>
+<li>Opera</li>
+<li>Internet Explorer</li>
+</ul><h2>Licence</h2>
+
+<p>Copyright (c) 2012 David Waterston.</p>
+
+<p>You may use this library under the terms of the MIT License, detailed below.
+More information can be found at <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a>.</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<h2>More</h2>
+
+<ul>
+<li>
+<em>jList</em> is minified using <a href="http://marijnhaverbeke.nl/uglifyjs">UglifyJS</a>.</li>
+<li>Version numbers follow the <a href="http://semver.org">Semantic Versioning</a> standard.</li>
+<li>The unminified version of the source validates clean in both <a href="http://jslint.com">jsLint</a> and <a href="http://www.jshint.com">jsHint</a>.</li>
+<li>Written by <a href="http://dvolvr.davidwaterston.com">David Waterston</a>
+</li>
+<li>Github repository: <a href="http://davidwaterston.github.com/jList">http://davidwaterston.github.com/jList</a>
+</li>
+<li>Developed using <a href="http://www.sublimetext.com/2">Sublime Text 2</a>, <a href="http://www.shpakovski.com/codebox">CodeBox</a> and <a href="http://incident57.com/codekit/">CodeKit</a>.</li>
+<li>Documentation written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> using <a href="http://bywordapp.com/">Byword</a>.</li>
+<li>Pushed to <a href="http://davidwaterston.github.com/jlist">GitHub</a> using <a href="http://www.git-tower.com">Tower</a>. </li>
+<li>Made in Scotland.</li>
+</ul><hr><h1>Usage details</h1>
+
+<p><a name="listappend"></a></p>
+
+<h2>listAppend</h2>
+
+<p><strong>Description</strong><br>
+Concatenates an element to a list.  </p>
+
+<p><strong>Availability</strong><br>
+v1.0</p>
+
+<p><strong>Function syntax</strong><br>
+listAppend(list, value [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the list, with <em>value</em> appended.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">An element to be appended to <em>list</em>
+</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>jList inserts a delimiter character before <em>value</em>.<br>
+The following table shows examples of <em>listAppend</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listAppend('elem1,elem2', 'rabbit' )</td>
+<td align="left">elem1,elem2,rabbit</td>
+</tr>
+<tr>
+<td align="left">jList.listAppend('','elem1,elem2')</td>
+<td align="left">elem1,elem2</td>
+</tr>
+<tr>
+<td align="left">jList.listAppend('cat-dog-mouse','hamster','-')</td>
+<td align="left">cat-dog-mouse-hamster</td>
+</tr>
+</table><hr><p><a name="listchangedelims"></a></p>
+
+<h2>listChangeDelims</h2>
+
+<p><strong>Description</strong><br>
+Changes a list delimiter.</p>
+
+<p><strong>Availability</strong><br>
+v1.3  </p>
+
+<p><strong>Function syntax</strong><br>
+listChangeDelims(list, new_delimiter [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the list, with the <em>delimiter</em> character replaced by <em>new_delimiter</em>.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">new_delimiter</td>
+<td align="left">Delimiter string or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong>  </p>
+
+<p>The following table shows examples of <em>listChangeDelims</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listChangeDelims('a,e,c,b,d', '=')</td>
+<td align="left">a=e=c=b=d</td>
+</tr>
+<tr>
+<td align="left">jList.listChangeDelims('a.e.c.b.d', ',', '.')</td>
+<td align="left">a,e,c,b,d</td>
+</tr>
+<tr>
+<td align="left">jList.listChangeDelims('a,e,c,b,d','-','!')</td>
+<td align="left">a,e,c,b,d</td>
+</tr>
+<tr>
+<td align="left">jList.listChangeDelims('a,e,c,b,d','-',',')</td>
+<td align="left">a-e-c-b-d</td>
+</tr>
+</table><hr><p><a name="listdeleteat"></a></p>
+
+<h2>listDeleteAt</h2>
+
+<p><strong>Description</strong><br>
+Deletes an element from a list.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listDeleteAt(list, position [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the list, without the specified element.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">A positive integer or a variable that contains one. Position at which to delete element. The first list position is 1.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>jList inserts a delimiter character before <em>value</em>.<br>
+The following table shows examples of <em>listDeleteAt</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listDeleteAt('elem1,elem2,elem3',2)</td>
+<td align="left">elem1,elem3</td>
+</tr>
+<tr>
+<td align="left">jList.listDeleteAt('elem1,elem2',4)</td>
+<td align="left">elem1,elem2</td>
+</tr>
+<tr>
+<td align="left">jList.listDeleteAt('cat-dog-mouse',3,'-')</td>
+<td align="left">cat-dog</td>
+</tr>
+</table><hr><p><a name="listfind"></a></p>
+
+<h2>listFind</h2>
+
+<p><strong>Description</strong><br>
+Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listFind(list, value [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+The index of the first list element that contains <em>value</em>, with matching case. If not found, returns zero. The search is case-sensitive. </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">A string, a number, or a variable that contains one. Item for which to search.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listFind</em> processing:  </p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listFind('elem1,elem2,elem3','elem3')</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">jList.listFind('elem1,elem2,elem3','Elem3')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listFind('elem1,elem2','cat')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listFind('cat-dog--mouse','dog','-')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listFind('5-4-3-2-1',4,'-')</td>
+<td align="left">2</td>
+</tr>
+</table><hr><p><a name="listfindnocase"></a></p>
+
+<h2>listFindNoCase</h2>
+
+<p><strong>Description</strong><br>
+Determines the index of the first list element in which a specified value occurs. The search is case-insensitive.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listFindNoCase(list, value [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+The index of the first list element that contains <em>value</em>, with matching case. If not found, returns zero. The search is case-insensitive. </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">A string, a number, or a variable that contains one. Item for which to search.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listFindNoCase</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listFindNoCase('elem1,elem2,elem3','elem3')</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">jList.listFindNoCase('elem1,elem2,elem3','Elem3')</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">jList.listFindNoCase('cat,dog','CAT')</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">jList.listFindNoCase('Cat-Dog--Mouse','dog','-')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listFindNoCase('5-4-3-2-1',4,'-')</td>
+<td align="left">2</td>
+</tr>
+</table><hr><p><a name="listfirst"></a></p>
+
+<h2>listFirst</h2>
+
+<p><strong>Description</strong><br>
+Gets the first element of a list.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listFirst(list, [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+The first element of a list. If the list is empty, returns an empty string.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">A string, a number, or a variable that contains one. Item for which to search.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listFirst</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listFirst('elem1,elem2,elem3')</td>
+<td align="left">'elem1'</td>
+</tr>
+<tr>
+<td align="left">jList.listFirst('cat,dog','~')</td>
+<td align="left">'cat,dog'</td>
+</tr>
+<tr>
+<td align="left">jList.listFirst('Cat-Dog--Mouse','-')</td>
+<td align="left">'Cat'</td>
+</tr>
+<tr>
+<td align="left">jList.listFirst('5-4-3-2-1','-')</td>
+<td align="left">5</td>
+</tr>
+</table><hr><p><a name="listgetat"></a></p>
+
+<h2>listGetAt</h2>
+
+<p><strong>Description</strong><br>
+Gets a list element at a specified position.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listGetAt(list, position, [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+Value of the list element at position <em>position</em>. </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">A positive integer or a variable that contains one. Position at which to get element. The first list position is 1.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listGetAt</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listGetAt('elem1,elem2,elem3',1)</td>
+<td align="left">'elem1'</td>
+</tr>
+<tr>
+<td align="left">jList.listGetAt('cat,dog',1,'~')</td>
+<td align="left">'cat,dog'</td>
+</tr>
+<tr>
+<td align="left">jList.listGetAt('Cat-Dog--Mouse',3,'-')</td>
+<td align="left">''</td>
+</tr>
+<tr>
+<td align="left">jList.listGetAt('5-4-3-2-1',5,'-')</td>
+<td align="left">1</td>
+</tr>
+</table><hr><p><a name="listinsertat"></a></p>
+
+<h2>listInsertAt</h2>
+
+<p><strong>Description</strong><br>
+Inserts an element into a list.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listInsertAt(list, position, value, [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the <em>list</em>, with <em>value</em> inserted at the specified <em>position</em>.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">A positive integer or a variable that contains one. Position at which to insert <em>value</em>. The first list position is 1.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">An element to be inserted</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listInsertAt</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listInsertAt('elem1,elem2,elem3',1,'hello')</td>
+<td align="left">'hello,elem1,elem2,elem3'</td>
+</tr>
+<tr>
+<td align="left">jList.listInsertAt('cat,dog',1,'monkey','~')</td>
+<td align="left">'monkey~cat,dog'</td>
+</tr>
+<tr>
+<td align="left">jList.listInsertAt('Cat-Dog--Mouse',3,'Elephant','-')</td>
+<td align="left">'Cat-Dog-Elephant-Mouse'</td>
+</tr>
+<tr>
+<td align="left">jList.listInsertAt('5-4-3-2-1',5,'999','-')</td>
+<td align="left">'5-4-3-2-999-1'</td>
+</tr>
+</table><hr><p><a name="listlast"></a></p>
+
+<h2>listLast</h2>
+
+<p><strong>Description</strong><br>
+Gets the last element of a list.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listLast(list [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+The last element of the <em>list</em>.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listLast</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listLast('elem1,elem2,elem3')</td>
+<td align="left">'elem3'</td>
+</tr>
+<tr>
+<td align="left">jList.listLast('cat,dog','~')</td>
+<td align="left">'cat,dog'</td>
+</tr>
+<tr>
+<td align="left">jList.listLast('Cat-Dog--Mouse','-')</td>
+<td align="left">'Mouse'</td>
+</tr>
+</table><hr><p><a name="listlen"></a></p>
+
+<h2>listLen</h2>
+
+<p><strong>Description</strong><br>
+Determines the number of elements in a list.  </p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listLen(list [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+The number of elements in a list as an integer.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listLen</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listLen('elem1,elem2,elem3')</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">jList.listLen('cat,dog','~')</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">jList.listLen('Cat-Dog--Mouse','-')</td>
+<td align="left">4</td>
+</tr>
+</table><hr><p><a name="listprepend"></a></p>
+
+<h2>listPrepend</h2>
+
+<p><strong>Description</strong><br>
+Inserts an element at the beginning of a list.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listPrepend(list, value [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the <em>list</em>, with <em>value</em> inserted at the first position.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">An element to be inserted at the beginning of <em>list</em>.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listPrepend</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listPrepend('elem1,elem2,elem3','elem99')</td>
+<td align="left">'elem99,elem1,elem2,elem3'</td>
+</tr>
+<tr>
+<td align="left">jList.listPrepend('cat,dog','mouse','~')</td>
+<td align="left">'mouse~cat,dog'</td>
+</tr>
+<tr>
+<td align="left">jList.listPrepend('Cat-Dog--Mouse','Rabbit','-')</td>
+<td align="left">'Rabbit-Cat-Dog--Mouse'</td>
+</tr>
+<tr>
+<td align="left">jList.listPrepend('','Rabbit','-')</td>
+<td align="left">'Rabbit'</td>
+</tr>
+</table><hr><p><a name="listqualify"></a></p>
+
+<h2>listQualify</h2>
+
+<p><strong>Description</strong><br>
+Inserts a string at the beginning and end of all list elements.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listQualify(list, qualifier [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the <em>list</em>, with <em>qualifier</em> before and after each element.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">qualifier</td>
+<td align="left">A string or a variable that contains one. Character or string to insert before and after the <em>list</em> elements.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listQualify</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listQualify('elem1,elem2,elem3','~')</td>
+<td align="left">'~elem1~,~elem2~,~elem3~'</td>
+</tr>
+<tr>
+<td align="left">jList.listQualify('cat,dog','@','~')</td>
+<td align="left">'<a href="https://github.com/cat" class="user-mention">@cat</a>,dog@'</td>
+</tr>
+<tr>
+<td align="left">jList.listQualify('Cat-Dog--Mouse','$','-')</td>
+<td align="left">'$Cat$-$Dog$-$$-$Mouse$'</td>
+</tr>
+</table><hr><p><a name="listremoveduplicates"></a></p>
+
+<h2>listRemoveDuplicates</h2>
+
+<p><strong>Description</strong><br>
+Removes all duplicate elements from a list. Where an element matches one which appears earlier in the list it is removed. Matching is case-sensitive.</p>
+
+<p><strong>Availability</strong><br>
+v1.1  </p>
+
+<p><strong>Function syntax</strong><br>
+listRemoveDuplicates(list, [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the <em>list</em>, with duplicate elements removed.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listRemoveDuplicates</em> processing:  </p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicates('a,e,c,e,a,b,d')</td>
+<td align="left">'a,e,c,b,d'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicates('a,f,c,d,A,f,C,d')</td>
+<td align="left">'a,f,c,d,A,C'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicates('a~12~1~Z~C~A~A~a~12','~')</td>
+<td align="left">'a~12~1~Z~C'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicates('1.1.1.1.1.1','.')</td>
+<td align="left">'1'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicates('12,3,4,1,12,4,6')</td>
+<td align="left">'12,3,4,1,6'</td>
+</tr>
+</table><hr><p><a name="listremoveduplicatesnocase"></a></p>
+
+<h2>listRemoveDuplicatesNoCase</h2>
+
+<p><strong>Description</strong><br>
+Removes all duplicate elements from a list. Where an element matches one which appears earlier in the list it is removed. Matching is not case-sensitive.</p>
+
+<p><strong>Availability</strong><br>
+v1.1  </p>
+
+<p><strong>Function syntax</strong><br>
+listRemoveDuplicatesNoCase(list, [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of the <em>list</em>, with duplicate elements removed.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listRemoveDuplicatesNoCase</em> processing:  </p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicatesNoCase('a,e,c,e,a,b,d')</td>
+<td align="left">'a,e,c,b,d'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicatesNoCase('a,f,c,d,A,f,C,d')</td>
+<td align="left">'a,f,c,d'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicatesNoCase('a~12~1~Z~C','~')</td>
+<td align="left">'a~12~1~Z~C'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicatesNoCase('1.1.1.1.1.1','.')</td>
+<td align="left">'1'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicatesNoCase('12,3,4,1,12,4,6')</td>
+<td align="left">'12,3,4,1,6'</td>
+</tr>
+<tr>
+<td align="left">jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit')</td>
+<td align="left">'cat,dog,rabbit'</td>
+</tr>
+</table><hr><p><a name="listrest"></a></p>
+
+<h2>listRest</h2>
+
+<p><strong>Description</strong><br>
+Gets a list, without its first element.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listRest(list [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of <em>list</em>, without the first element. If <em>list</em> has one element, returns an empty list.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listRest</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listRest('elem1,elem2,elem3')</td>
+<td align="left">'elem2,elem3'</td>
+</tr>
+<tr>
+<td align="left">jList.listRest('cat,dog','~')</td>
+<td align="left">''</td>
+</tr>
+<tr>
+<td align="left">jList.listRest('Cat-Dog--Mouse','-')</td>
+<td align="left">'Dog--Mouse'</td>
+</tr>
+</table><hr><p><a name="listreverse"></a></p>
+
+<h2>listReverse</h2>
+
+<p><strong>Description</strong><br>
+Reverses the order of elements in a list.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listReverse(list [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of <em>list</em>, with the order of the elements reversed.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listReverse</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listReverse('elem1,elem2,elem3')</td>
+<td align="left">'elem3,elem2,elem1'</td>
+</tr>
+<tr>
+<td align="left">jList.listReverse('cat,dog','~')</td>
+<td align="left">'cat,dog'</td>
+</tr>
+<tr>
+<td align="left">jList.listReverse('Cat-Dog--Mouse','-')</td>
+<td align="left">'Mouse--Dog-Cat'</td>
+</tr>
+</table><hr><p><a name="listsetat"></a></p>
+
+<h2>listSetAt</h2>
+
+<p><strong>Description</strong><br>
+Replaces the contents of a list element.</p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listSetAt(list, position, value [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of <em>list</em>, with a new <em>value</em> assigned to the element at a specified <em>position</em>.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">position</td>
+<td align="left">A positive integer or a variable that contains one. Position at which to set a value. The first list position is 1.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">An element to be injected into <em>list</em>.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listSetAt</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listSetAt('elem1,elem2,elem3',1,'elem99')</td>
+<td align="left">'elem99,elem1,elem2,elem3'</td>
+</tr>
+<tr>
+<td align="left">jList.listSetAt('cat,dog',2,'hamster','~')</td>
+<td align="left">'cat,dog,hamster'</td>
+</tr>
+<tr>
+<td align="left">jList.listSetAt('Cat-Dog--Mouse',3,'Hamster','-')</td>
+<td align="left">'Cat-Dog-Hamster-Mouse'</td>
+</tr>
+</table><hr><p><a name="listsort"></a></p>
+
+<h2>listSort</h2>
+
+<p><strong>Description</strong><br>
+Sorts list elements according to a sort type and sort order.  </p>
+
+<p><strong>Availability</strong><br>
+v1.0  </p>
+
+<p><strong>Function syntax</strong><br>
+ListSort(list, sort_type [, sort_order, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+A copy of a <em>list</em>, sorted.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">sort_type</td>
+<td align="left">numeric: sorts numbers</td>
+</tr>
+<tr>
+<td align="left"> </td>
+<td align="left">alpha:   sorts text alphabetically. Case sensistive.</td>
+</tr>
+<tr>
+<td align="left">sort_order</td>
+<td align="left">asc - ascending sort order. This is the default.</td>
+</tr>
+<tr>
+<td align="left"> </td>
+<td align="left">desc - descending sort order.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listSort</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listSort('a,e,c,b,d')</td>
+<td align="left">'a,b,c,d,e'</td>
+</tr>
+<tr>
+<td align="left">jList.listSort('a,f,c,d,A,C')</td>
+<td align="left">'A,C,a,c,d,f'</td>
+</tr>
+<tr>
+<td align="left">jList.listSort('a~12~1~Z~C','alpha','asc','~')</td>
+<td align="left">'a~Z~C~12~1'</td>
+</tr>
+<tr>
+<td align="left">jList.listSort('12,3,4,1,55,5,6','alpha','asc')</td>
+<td align="left">'1,12,3,4,5,55,6'</td>
+</tr>
+<tr>
+<td align="left">jList.listSort('12,3,4,1,55,5,6','numeric','asc')</td>
+<td align="left">'1,3,4,5,6,12,55'</td>
+</tr>
+</table><hr><p><a name="listvaluecount"></a></p>
+
+<h2>listValueCount</h2>
+
+<p><strong>Description</strong><br>
+Counts instances of a specified value in a list. The search is case-sensitive.    </p>
+
+<p><strong>Availability</strong><br>
+v1.3  </p>
+
+<p><strong>Function syntax</strong><br>
+listValueCount(list, value [, delimiter ])  </p>
+
+<p><strong>Returns</strong><br>
+The number of instances of <em>value</em> in the list.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Item for which to search. Can be a string or number, or a variable that contains one. The search is case-sensitive.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listValueCount</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('a,e,a,c,a,b,a,d', 'a')</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('a,e,a,c,a,b,a,d', 'A')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('a,e,A,c,a,b,A,d', 'A')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('a;e;A;c;a;b;A;d', 'A')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('a;e;A;c;a;b;A;d', 'A', ';')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('John,Mark,Steve,Alan,John,john', 'john')</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('1,2,3,1,2,3', 3)</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCount('1,2,3,1,2,3', '3')</td>
+<td align="left">2</td>
+</tr>
+</table><hr><p><a name="listvaluecountnocase"></a></p>
+
+<h2>listValueCountNoCase</h2>
+
+<p><strong>Description</strong><br>
+Counts instances of a specified value in a list. The search is not case-sensitive.    </p>
+
+<p><strong>Availability</strong><br>
+v1.3  </p>
+
+<p><strong>Function syntax</strong><br>
+listValueCountNoCase(list, value [, delimiter ])  </p>
+
+<p><strong>Returns</strong><br>
+The number of instances of <em>value</em> in the list.</p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">Item for which to search. Can be a string or number, or a variable that contains one. The search is not case-sensitive.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong></p>
+
+<p>The following table shows examples of <em>listValueCountNoCase</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('a,e,a,c,a,b,a,d', 'a')</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('a,e,a,c,a,b,a,d', 'A')</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('a,e,A,c,a,b,A,d', 'A')</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('a;e;A;c;a;b;A;d', 'A')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('a;e;A;c;a;b;A;d', 'A', ';')</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('John,Mark,Steve,Alan,John,john', 'john')</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('1,2,3,1,2,3', 3)</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listValueCountNoCase('1,2,3,1,2,3', '3')</td>
+<td align="left">2</td>
+</tr>
+</table><hr><h1>jsFiddle</h1>
+
+<p>In addition to the examples included in the file <em>jlist-test.htm</em>, all functions are available in <em>jsFiddle</em> for ad-hoc testing:  </p>
+
+<p><a href="http://jsfiddle.net/user/davidwaterston/fiddles">Full list of <em>fiddles</em></a>  </p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/KDNUf">listAppend</a><br><a href="http://jsfiddle.net/davidwaterston/uvvHF">listChangeDelims</a><br><a href="http://jsfiddle.net/davidwaterston/j6pEP">listDeleteAt</a><br><a href="http://jsfiddle.net/davidwaterston/LAfBn">listFind</a><br><a href="http://jsfiddle.net/davidwaterston/TXt2T">listFindNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/FEQWc">listFirst</a><br><a href="http://jsfiddle.net/davidwaterston/7khW6">listGetAt</a><br><a href="http://jsfiddle.net/davidwaterston/9D26p">listInsertAt</a><br><a href="http://jsfiddle.net/davidwaterston/BbLD8">listLast</a><br><a href="http://jsfiddle.net/davidwaterston/Uz4P2">listLen</a><br><a href="http://jsfiddle.net/davidwaterston/n8AXz">listPrepend</a><br><a href="http://jsfiddle.net/davidwaterston/ArLh9">listQualify</a><br><a href="http://jsfiddle.net/davidwaterston/qHvHg">listRemoveDuplicates</a><br><a href="http://jsfiddle.net/davidwaterston/8NpEY">listRemoveDuplicatesNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/Q6Hh4">listRest</a><br><a href="http://jsfiddle.net/davidwaterston/vsmXu">listReverse</a><br><a href="http://jsfiddle.net/davidwaterston/CTN2w">listSetAt</a><br><a href="http://jsfiddle.net/davidwaterston/ff2zy">listSort</a><br><a href="http://jsfiddle.net/davidwaterston/WPyED">listValueCount</a><br><a href="http://jsfiddle.net/davidwaterston/4gVnX">listValueCountNoCase</a>  </p>
+
+<h1>Version History</h1>
+
+<table>
+<tr>
+<th align="left">Version</th>
+<th align="left">Release Date</th>
+<th align="left">Details</th>
+</tr>
+<tr>
+<td align="left">1.3.0</td>
+<td align="left">16th June, 2012</td>
+<td align="left">Added three new functions - <em><a href="#listchangedelims">listChangeDelims</a></em>, <em><a href="#listvaluecount">listValueCount</a></em> and <em><a href="#listvaluecountnocase">listValueCountNoCase</a></em>.</td>
+</tr>
+<tr>
+<td align="left">1.2.0</td>
+<td align="left">21st May, 2012</td>
+<td align="left">Minor changes to <em><a href="#listremoveduplicates">listRemoveDuplicates</a></em> and <em><a href="#listremoveduplicatesnocase">listRemoveDuplicatesNoCase</a></em> to improve performance with larger lists (100,000+ elements).</td>
+</tr>
+<tr>
+<td align="left">1.1.0</td>
+<td align="left">18th May, 2012</td>
+<td align="left">Added two new functions - <em><a href="#listremoveduplicates">listRemoveDuplicates</a></em> and <em><a href="#listremoveduplicatesnocase">listRemoveDuplicatesNoCase</a></em>.</td>
+</tr>
+<tr>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">Updated sample code and documentation.</td>
+</tr>
+<tr>
+<td align="left"> </td>
+<td align="left"> </td>
+<td align="left">Added this version history.</td>
+</tr>
+<tr>
+<td align="left">1.0.0</td>
+<td align="left">15th May, 2012</td>
+<td align="left">Initial release.</td>
+</tr>
+</table>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">jList maintained by <a href="https://github.com/davidwaterston">davidwaterston</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
