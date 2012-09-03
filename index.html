@@ -33,7 +33,7 @@
       <section id="main_content" class="inner">
         <h1><strong>jList</strong></h1>
 
-<p>v1.3.0</p>
+<p>v1.4.0</p>
 
 <h2>What does it do?</h2>
 
@@ -44,18 +44,29 @@ Once you start to use jList you will quickly realise that there are many situati
 
 <h2>What's included?</h2>
 
-<p>There are 4 files included with this package:   </p>
+<p>There are 11 files included with this package. The first, and most important, four are:   </p>
 
 <ul>
 <li><p><strong>readme.md</strong><br>
 This file.</p></li>
-<li><p><strong>jlist-test.htm</strong><br>
-A rough and ready test page showing all of the functions in action.</p></li>
+<li><p><strong>jlist-examples.htm</strong><br>
+Examples of each of the functions in action.</p></li>
 <li><p><strong>jlist.js</strong><br>
 The Javascript source code of the library.</p></li>
 <li><p><strong>jlist-min.js</strong><br>
 The Javascript source code minified using UglifyJS.  </p></li>
-</ul><p>For release <a href="http://semver.org">1.3.0</a> there are 20 functions included. They are, in alphabetical order:</p>
+</ul><p>The remaining seven files are part of a comprehensive <em>Jasmine</em> test suite that allows modifications to the library to be quickly and easily regression tested. They are:</p>
+
+<ul>
+<li><p><strong>test.htm</strong><br>
+Open this file in a browser to run the <em>Jasmine</em> test suite against the regular version of the library, jlist.js.</p></li>
+<li><p><strong>test minimised version.htm</strong><br>
+Open this file in a browser to run the <em>Jasmine</em> test suite against the minified version of the library, jlist-min.js.</p></li>
+<li><p><strong>jlist-spec.js</strong><br>
+The test suite specifications - these are the actual tests that are run by opening either of the preceding two files.</p></li>
+<li><p><strong>jasmine-html.js</strong>, <strong>jasmine.css</strong>, <strong>jasmine,js</strong> and <strong>MIT.LICENSE</strong><br>
+These are the files required by <em>Jasmine</em>. They were not written by me and are subject to a separate licence.</p></li>
+</ul><p>For release <a href="http://semver.org">1.4.0</a> there are 20 functions included. They are, in alphabetical order:</p>
 
 <ul>
 <li>
@@ -188,12 +199,13 @@ More information can be found at <a href="http://www.opensource.org/licenses/mit
 <li>
 <em>jList</em> is minified using <a href="http://marijnhaverbeke.nl/uglifyjs">UglifyJS</a>.</li>
 <li>Version numbers follow the <a href="http://semver.org">Semantic Versioning</a> standard.</li>
-<li>The unminified version of the source validates clean in both <a href="http://jslint.com">jsLint</a> and <a href="http://www.jshint.com">jsHint</a>.</li>
+<li>The unminified version of the source validates clean in <a href="http://jslint.com">jsLint (Edition 2012-08-23)</a>.</li>
 <li>Written by <a href="http://dvolvr.davidwaterston.com">David Waterston</a>
 </li>
 <li>Github repository: <a href="http://davidwaterston.github.com/jList">http://davidwaterston.github.com/jList</a>
 </li>
 <li>Developed using <a href="http://www.sublimetext.com/2">Sublime Text 2</a>, <a href="http://www.shpakovski.com/codebox">CodeBox</a> and <a href="http://incident57.com/codekit/">CodeKit</a>.</li>
+<li>Tested using <a href="http://pivotal.github.com/jasmine">Jasmine 1.2.0</a>.</li>
 <li>Documentation written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> using <a href="http://bywordapp.com/">Byword</a>.</li>
 <li>Pushed to <a href="http://davidwaterston.github.com/jlist">GitHub</a> using <a href="http://www.git-tower.com">Tower</a>. </li>
 <li>Made in Scotland.</li>
@@ -1439,6 +1451,11 @@ The number of instances of <em>value</em> in the list.</p>
 <th align="left">Details</th>
 </tr>
 <tr>
+<td align="left">1.4.0</td>
+<td align="left">3rd September, 2012</td>
+<td align="left">Added extra parameter checking to each function, replaced 'typeof undefined' checks with '=== undefined' to ensure compatibility with jsLint Edition 2012-08-23. Added the <em>Jasmine</em> test suite with 250 tests.</td>
+</tr>
+<tr>
 <td align="left">1.3.0</td>
 <td align="left">16th June, 2012</td>
 <td align="left">Added three new functions - <em><a href="#listchangedelims">listChangeDelims</a></em>, <em><a href="#listvaluecount">listValueCount</a></em> and <em><a href="#listvaluecountnocase">listValueCountNoCase</a></em>.</td>
@@ -1480,7 +1497,17 @@ The number of instances of <em>value</em> in the list.</p>
       </footer>
     </div>
 
-    
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-34525149-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
 
   </body>
 </html>
