@@ -1,5 +1,5 @@
 # **jList** 
-v1.3.0
+v1.4.0
 
 ##What does it do?
 *jList* is a collection of functions that bring *ColdFusion*-style list handling to Javascript.  
@@ -8,13 +8,13 @@ For instance, the string "carrots,peas,lettuce,tomato" could be described as a "
 Once you start to use jList you will quickly realise that there are many situations where treating a string as a list is a simpler and more intuitive way to manipulate data than the built-in alternatives offered by Javascript. 
 	
 ##What's included?
-There are 4 files included with this package:   
+There are 11 files included with this package. The first, and most important,  four are:   
 
 - **readme.md**  
 This file.
 
-- **jlist-test.htm**      
-A rough and ready test page showing all of the functions in action.
+- **jlist-examples.htm**      
+Examples of each of the functions in action.
 
 - **jlist.js**    
 The Javascript source code of the library.
@@ -22,7 +22,24 @@ The Javascript source code of the library.
 - **jlist-min.js**    
 The Javascript source code minified using UglifyJS.  
 
-For release [1.3.0](http://semver.org) there are 20 functions included. They are, in alphabetical order:
+The remaining seven files are part of a comprehensive *Jasmine* test suite that allows modifications to the library to be quickly and easily regression tested. They are:
+
+- **test.htm**  
+Open this file in a browser to run the *Jasmine* test suite against the regular version of the library, jlist.js.
+
+- **test minimised version.htm**      
+Open this file in a browser to run the *Jasmine* test suite against the minified version of the library, jlist-min.js.
+
+- **jlist-spec.js**  
+The test suite specifications - these are the actual tests that are run by opening either of the preceding two files.
+
+- **jasmine-html.js**, **jasmine.css**, **jasmine,js** and **MIT.LICENSE**  
+These are the files required by *Jasmine*. They were not written by me and are subject to a separate licence.
+
+  
+    
+
+For release [1.4.0](http://semver.org) there are 20 functions included. They are, in alphabetical order:
 
 - **[listAppend][]**  
 Concatenates an element to a list.  
@@ -122,10 +139,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ##More
 - *jList* is minified using [UglifyJS](http://marijnhaverbeke.nl/uglifyjs).
 - Version numbers follow the [Semantic Versioning](http://semver.org) standard.
-- The unminified version of the source validates clean in both [jsLint](http://jslint.com) and [jsHint](http://www.jshint.com).
+- The unminified version of the source validates clean in [jsLint (Edition 2012-08-23)](http://jslint.com).
 - Written by [David Waterston] (http://dvolvr.davidwaterston.com)
 - Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
+- Tested using [Jasmine 1.2.0](http://pivotal.github.com/jasmine)
 - Documentation written in [Markdown](http://daringfireball.net/projects/markdown/) using [Byword](http://bywordapp.com/).
 - Pushed to [GitHub](http://davidwaterston.github.com/jlist) using [Tower](http://www.git-tower.com). 
 - Made in Scotland.
@@ -876,6 +894,7 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
+| 1.4.0 | 3rd September, 2012 | Added extra parameter checking to each function, replaced 'typeof undefined' checks with '=== undefined' to ensure compatibility with jsLint Edition 2012-08-23. Added the *Jasmine* test suite with 250 tests. |
 | 1.3.0 | 16th June, 2012 | Added three new functions - *[listChangeDelims][]*, *[listValueCount][]* and *[listValueCountNoCase][]*. |
 | 1.2.0 | 21st May, 2012 | Minor changes to *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]* to improve performance with larger lists (100,000+ elements). |
 | 1.1.0 | 18th May, 2012 | Added two new functions - *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]*.|
