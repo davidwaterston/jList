@@ -8,7 +8,7 @@ For instance, the string "carrots,peas,lettuce,tomato" could be described as a "
 Once you start to use jList you will quickly realise that there are many situations where treating a string as a list is a simpler and more intuitive way to manipulate data than the built-in alternatives offered by Javascript. 
 	
 ##What's included?
-There are 11 files included with this package. The first, and most important,  four are:   
+There are 12 files included with this package. The first, and most important,  four are:   
 
 - **readme.md**  
 This file.
@@ -22,7 +22,7 @@ The Javascript source code of the library.
 - **jlist-min.js**    
 The Javascript source code minified using UglifyJS.  
 
-The remaining seven files are part of a comprehensive *Jasmine* test suite that allows modifications to the library to be quickly and easily regression tested. They are:
+The next seven files are part of a comprehensive *Jasmine* test suite that allows modifications to the library to be quickly and easily regression tested. They are:
 
 - **test.htm**  
 Open this file in a browser to run the *Jasmine* test suite against the regular version of the library, jlist.js.
@@ -36,6 +36,10 @@ The test suite specifications - these are the actual tests that are run by openi
 - **jasmine-html.js**, **jasmine.css**, **jasmine,js** and **MIT.LICENSE**  
 These are the files required by *Jasmine*. They were not written by me and are subject to a separate licence.
 
+Finally, there is:
+
+- **codekit-config.json**  
+A configuration file for the project for users of [CodeKit](http://incident57.com/codekit/) on the Mac. If you don't use CodeKit (and you're probably wasting a lot of development time if you don't) then you can safely ignore this file. Otherwise,  when adding the project to CodeKit it will pick up these settings automatically.
   
     
 
@@ -143,7 +147,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - Written by [David Waterston] (http://dvolvr.davidwaterston.com)
 - Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
-- Tested using [Jasmine 1.2.0](http://pivotal.github.com/jasmine)
+- Tested using [Jasmine 1.2.0](http://pivotal.github.com/jasmine).
 - Documentation written in [Markdown](http://daringfireball.net/projects/markdown/) using [Byword](http://bywordapp.com/).
 - Pushed to [GitHub](http://davidwaterston.github.com/jlist) using [Tower](http://www.git-tower.com). 
 - Made in Scotland.
