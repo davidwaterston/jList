@@ -1,7 +1,7 @@
 /*
     Title: jlist.js
-    Version: 1.4.0 (Semantic versioning: http://semver.org)
-    Last update: 1st September, 2012
+    Version: 1.4.1 (Semantic versioning: http://semver.org)
+    Last update: 8th September, 2012
     Written by: David Waterston (david@davidwaterston.com)
     Github repository and documentation: http://davidwaterston.github.com/jlist
 
@@ -12,8 +12,8 @@
     For a detailed explanation of each of the functions refer to the documentation in the file jlist-info.md that is included in the
     package in the github repository.
 
-    JSLint & JSHint Quality Checking:
-    This library passes all JSLint (Edition 2012-08-23) tests: http://www.javascriptlint.com.
+    JSLint Quality Checking:
+    This library passes all JSLint (Edition 2012-08-23) tests: http://www.jslint.com.
 
     Licence:
     Copyright (c) 2012 David Waterston. Made in Scotland.
@@ -80,7 +80,7 @@ var jList = (function () {
                 return arr.indexOf(value) + 1;
             }
 
-            for (i = 0; i < list.length; i += 1) {
+            for (i = 0; i < arr.length; i += 1) {
                 if (arr[i] === value) {
                     return i + 1;
                 }

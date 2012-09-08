@@ -1,5 +1,5 @@
 # **jList** 
-v1.4.0
+v1.4.1
 
 ##What does it do?
 *jList* is a collection of functions that bring *ColdFusion*-style list handling to Javascript.  
@@ -43,7 +43,7 @@ A configuration file for the project for users of [CodeKit](http://incident57.co
   
     
 
-For release [1.4.0](http://semver.org) there are 20 functions included. They are, in alphabetical order:
+For release [1.4.1](http://semver.org) there are 20 functions included. They are, in alphabetical order:
 
 - **[listAppend][]**  
 Concatenates an element to a list.  
@@ -898,6 +898,7 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
+| 1.4.1 | 8th September, 2012 | Bug fix to listFind (and indirectly listFindNoCase) to resolve problem with older (pre-9) versions of Internet Explorer. |
 | 1.4.0 | 3rd September, 2012 | Added extra parameter checking to each function, replaced 'typeof undefined' checks with '=== undefined' to ensure compatibility with jsLint Edition 2012-08-23. Added the *Jasmine* test suite with 250 tests. |
 | 1.3.0 | 16th June, 2012 | Added three new functions - *[listChangeDelims][]*, *[listValueCount][]* and *[listValueCountNoCase][]*. |
 | 1.2.0 | 21st May, 2012 | Minor changes to *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]* to improve performance with larger lists (100,000+ elements). |
