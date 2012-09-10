@@ -9,7 +9,7 @@
 
         var response = '';
 
-        document.write('<br><h1>jList</h1> v1.4.0');
+        document.write('<br><h1>jList</h1> v1.5.0');
         document.write('<br>');
 
         document.write('<br><br><h1>listAppend</h1>');
@@ -37,6 +37,42 @@
 
         response = jList.listChangeDelims('a,e,c,b,d','-',',');
         document.write("jList.listChangeDelims('a,e,c,b,d','-',',') returns '" + response + "'<br>");
+
+
+        document.write('<br><br><h1>listContains</h1>');
+
+        response = jList.listContains('cat,dog,mouse,rabbit,dog', 'og');
+        document.write("jList.listContains('cat,dog,mouse,rabbit,dog', 'og') returns '" + response + "'" + '<br>');
+
+        response = jList.listContains('cat.dog.mouse.rabbit.dog', 'og', '.');
+        document.write("jList.listContains('cat.dog.mouse.rabbit.dog', 'og', '.') returns '" + response + "'" + '<br>');
+
+        response = jList.listContains('cat,dog,mouse,rabbit,dog', 'OG');
+        document.write("jList.listContains('cat,dog,mouse,rabbit,dog', 'OG') returns '" + response + "'" + '<br>');
+
+        response = jList.listContains('cat.dog.mouse.rabbit.dog', 'Rab', '.');
+        document.write("jList.listContains('cat.dog.mouse.rabbit.dog', 'Rab', '.') returns '" + response + "'" + '<br>');
+
+        response = jList.listContains('cat,dog,mouse,rabbit,dog', 'tr');
+        document.write("jList.listContains('cat,dog,mouse,rabbit,dog', 'tr') returns '" + response + "'" + '<br>');
+
+
+        document.write('<br><br><h1>listContainsNoCase</h1>');
+
+        response = jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'og');
+        document.write("jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'og') returns '" + response + "'" + '<br>');
+
+        response = jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'og', '.');
+        document.write("jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'og', '.') returns '" + response + "'" + '<br>');
+
+        response = jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'OG');
+        document.write("jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'OG') returns '" + response + "'" + '<br>');
+
+        response = jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'Rab', '.');
+        document.write("jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'Rab', '.') returns '" + response + "'" + '<br>');
+
+        response = jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'tr');
+        document.write("jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'tr') returns '" + response + "'" + '<br>');
 
 
         document.write('<br><br><h1>listDeleteAt</h1>');

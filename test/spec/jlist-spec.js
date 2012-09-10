@@ -1,4 +1,4 @@
-describe( 'jList library v1.4.1', function () {  
+describe( 'jList library v1.5.0', function () {  
 
   describe('Public interfaces', function () {
 
@@ -8,6 +8,8 @@ describe( 'jList library v1.4.1', function () {
 
     var functionList = [
         'listAppend',
+        'listContains',
+        'listContainsNoCase',
         'listChangeDelims',
         'listDeleteAt',
         'listFind',
@@ -98,7 +100,96 @@ describe( 'jList library v1.4.1', function () {
   });  
 
 
-    describe( 'listChangeDelims: Changes a list delimiter.', function () {  
+    describe( 'listContains: Determines the index of the first list element that contains a specified substring. The search is case-sensitive.', function () {  
+
+        it ('01. Throws an error when no parameters are passed in', function () {  
+            expect( function(){ jList.listContains(); } ).toThrow('Missing parameter: list and substring must be provided');  
+        }); 
+
+        it ('02. Throws an error when only 1 parameter is passed in', function () {  
+            expect( function(){ jList.listContains('cat,dog'); } ).toThrow('Missing parameter: list and substring must be provided');  
+        }); 
+
+        it ('03. Finds a matching element in a list that uses the default delimiter', function () {  
+            expect( jList.listContains('cat,dog,mouse','do') ).toEqual(2);  
+        }); 
+
+        it ('04. Finds a matching element in a list that uses a custom delimiter', function () {  
+            expect( jList.listContains('cat!dog!mouse','se','!') ).toEqual(3);  
+        }); 
+
+        it ('05. Finds a matching element in a list that uses the default delimiter. Match at pos 1 because of delimiter mismatch (default delimiter)', function () {  
+            expect( jList.listContains('cat!dog!mouse','mo') ).toEqual(1);  
+        }); 
+
+        it ('06. Finds a matching element in a list that uses the default delimiter. Match at pos 1 because of delimiter mismatch (custom delimiter)', function () {  
+            expect( jList.listContains('cat,dog,mouse','mous','-') ).toEqual(1);  
+        }); 
+
+        it ('07. Fails to find a matching element in a list that uses the default delimiter because it is not present', function () {  
+            expect( jList.listContains('cat,dog,mouse','dot') ).toEqual(0);  
+        }); 
+
+        it ('08. Fails to find a matching element in a list that uses a custom delimiter because it is not present', function () {  
+            expect( jList.listContains('cat!dog!mouse','ate','!') ).toEqual(0);  
+        }); 
+
+        it ('09. Fails to find a matching element in a list that uses the default delimiter because of case mismatch', function () {  
+            expect( jList.listContains('cat,dog,mouse','Og') ).toEqual(0);  
+        }); 
+
+        it ('10. Fails to find a matching element in a list that uses a custom delimiter because of case mismatch', function () {  
+            expect( jList.listContains('cat!dog!mouse','SE','!') ).toEqual(0);  
+        }); 
+
+    });  
+
+
+    describe( 'listContainsNoCase: Determines the index of the first list element that contains a specified substring. The search is not case-sensitive.', function () {  
+
+        it ('01. Throws an error when no parameters are passed in', function () {  
+            expect( function(){ jList.listContainsNoCase(); } ).toThrow('Missing parameter: list and substring must be provided');  
+        }); 
+
+        it ('02. Throws an error when only 1 parameter is passed in', function () {  
+            expect( function(){ jList.listContainsNoCase('cat,dog'); } ).toThrow('Missing parameter: list and substring must be provided');  
+        }); 
+
+        it ('03. Finds a matching element in a list that uses the default delimiter', function () {  
+            expect( jList.listContainsNoCase('cat,dog,mouse','do') ).toEqual(2);  
+        }); 
+
+        it ('04. Finds a matching element in a list that uses a custom delimiter', function () {  
+            expect( jList.listContainsNoCase('cat!dog!mouse','se','!') ).toEqual(3);  
+        }); 
+
+        it ('05. Finds a matching element in a list that uses the default delimiter. Match at pos 1 because of delimiter mismatch (default delimiter)', function () {  
+            expect( jList.listContainsNoCase('cat!dog!mouse','mo') ).toEqual(1);  
+        }); 
+
+        it ('06. Finds a matching element in a list that uses the default delimiter. Match at pos 1 because of delimiter mismatch (custom delimiter)', function () {  
+            expect( jList.listContainsNoCase('cat!dog!mouse','mous','-') ).toEqual(1);  
+        }); 
+
+        it ('07. Fails to find a matching element in a list that uses the default delimiter because it is not present', function () {  
+            expect( jList.listContainsNoCase('cat,dog,mouse','dot') ).toEqual(0);  
+        }); 
+
+        it ('08. Fails to find a matching element in a list that uses a custom delimiter because it is not present', function () {  
+            expect( jList.listContainsNoCase('cat!dog!mouse','ate','!') ).toEqual(0);  
+        }); 
+
+        it ('09. Finds a matching element in a list that uses the default delimiter despite a case mismatch', function () {  
+            expect( jList.listContainsNoCase('cat,dog,mouse','Og') ).toEqual(2);  
+        }); 
+
+        it ('10. Finds a matching element in a list that uses a custom delimiter despite a case mismatch', function () {  
+            expect( jList.listContainsNoCase('cat!dog!mouse','SE','!') ).toEqual(3);  
+        }); 
+
+    });  
+
+describe( 'listChangeDelims: Changes a list delimiter.', function () {  
 
         it ('01. Throws an error when no parameters are passed in', function () {  
             expect( function(){ jList.listChangeDelims(); } ).toThrow('Missing parameter: list and new_delimiter must be provided');  

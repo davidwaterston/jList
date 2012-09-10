@@ -1,18 +1,18 @@
 /*
     Title: jlist.js
-    Version: 1.4.1 (Semantic versioning: http://semver.org)
-    Last update: 8th September, 2012
+    Version: 1.5.0 (Semantic versioning: http://semver.org)
+    Last update: 10th September, 2012
     Written by: David Waterston (david@davidwaterston.com)
     Github repository and documentation: http://davidwaterston.github.com/jlist
 
     Description:
-    A small, lightweight file that adds list handling functions to Javascript.
+    A small, lightweight library that adds list handling functions to Javascript.
 
     Quick start:
     For a detailed explanation of each of the functions refer to the documentation in the file jlist-info.md that is included in the
     package in the github repository.
 
-    JSLint Quality Checking:
+    JSLint quality checking:
     This library passes all JSLint (Edition 2012-08-23) tests: http://www.jslint.com.
 
     Licence:
@@ -54,16 +54,72 @@ var jList = (function () {
 
     return {
 
-        listLen : function (list, delimiter) {
-            if (list === undefined) {
-                throw {name: "Error", message: "Missing parameter: list must be provided"};
+        listAppend : function (list, value, delimiter) {
+            if (list === undefined || value === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and value must be provided"};
             }
             delimiter = (delimiter === undefined) ? "," : delimiter;
 
-            if (list === "") {
-                return 0;
+            return (list !== "" ? (list + delimiter) : "") + value;
+        },
+
+
+        listContains : function (list, substring, delimiter) {
+            if (list === undefined || substring === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and substring must be provided"};
             }
-            return list.split(delimiter).length;
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var i,
+                arr = list.split(delimiter);
+
+            for (i = 0; i < arr.length; i += 1) {
+                if (arr[i].indexOf(substring) !== -1) {
+                    return i + 1;
+                }
+            }
+
+            return 0;
+        },
+
+
+        listContainsNoCase : function (list, substring, delimiter) {
+            if (list === undefined || substring === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and substring must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            list = list.toUpperCase();
+            substring = String(substring).toUpperCase();
+
+            return this.listContains(list, substring, delimiter);
+        },
+
+
+        listChangeDelims : function (list, new_delimiter, delimiter) {
+            if (list === undefined || new_delimiter === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and new_delimiter must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+            var re = new RegExp(quoteString(delimiter), "g");
+
+            return list.replace(re, new_delimiter);
+        },
+
+
+        listDeleteAt : function (list, position, delimiter) {
+            if (list === undefined || position === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and position must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr = list.split(delimiter);
+
+            if (position >= 1 && position <= arr.length) {
+                arr.splice(position - 1, 1);
+                return arr.join(delimiter);
+            }
+            return list;
         },
 
 
@@ -103,6 +159,16 @@ var jList = (function () {
         },
 
 
+        listFirst : function (list, delimiter) {
+            if (list === undefined) {
+                throw {name: "Error", message: "Missing parameter: list must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            return this.listGetAt(list, 1, delimiter);
+        },
+
+
         listGetAt : function (list, position, delimiter) {
             if (list === undefined || position === undefined) {
                 throw {name: "Error", message: "Missing parameter: list and position must be provided"};
@@ -114,95 +180,6 @@ var jList = (function () {
                 return arr[position - 1];
             }
             return "";
-        },
-
-
-        listFirst : function (list, delimiter) {
-            if (list === undefined) {
-                throw {name: "Error", message: "Missing parameter: list must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            return this.listGetAt(list, 1, delimiter);
-        },
-
-
-        listLast : function (list, delimiter) {
-            if (list === undefined) {
-                throw {name: "Error", message: "Missing parameter: list must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            return this.listGetAt(list, this.listLen(list, delimiter), delimiter);
-        },
-
-
-        listRest : function (list, delimiter) {
-            if (list === undefined) {
-                throw {name: "Error", message: "Missing parameter: list must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            var arr = list.split(delimiter);
-
-            arr.splice(0, 1);
-            return arr.join(delimiter);
-        },
-
-
-        listSetAt : function (list, position, value, delimiter) {
-            if (list === undefined || position === undefined || value === undefined) {
-                throw {name: "Error", message: "Missing parameter: list, position and value must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            if (list === '') {
-                return '';
-            }
-
-            var arr = list.split(delimiter);
-
-            if (position >= 1 && position <= arr.length) {
-                arr[position - 1] = value;
-                return arr.join(delimiter);
-            }
-            return list;
-        },
-
-
-        listDeleteAt : function (list, position, delimiter) {
-            if (list === undefined || position === undefined) {
-                throw {name: "Error", message: "Missing parameter: list and position must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            var arr = list.split(delimiter);
-
-            if (position >= 1 && position <= arr.length) {
-                arr.splice(position - 1, 1);
-                return arr.join(delimiter);
-            }
-            return list;
-        },
-
-
-        listPrepend : function (list, value, delimiter) {
-            if (list === undefined || value === undefined) {
-                throw {name: "Error", message: "Missing parameter: list and value must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            return value + (list !== "" ? (delimiter + list) : "");
-        },
-
-
-        listAppend : function (list, value, delimiter) {
-            if (list === undefined || value === undefined) {
-                throw {name: "Error", message: "Missing parameter: list and value must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            return (list !== "" ? (list + delimiter) : "") + value;
         },
 
 
@@ -229,33 +206,36 @@ var jList = (function () {
         },
 
 
-        listSort : function (list, sort_type, sort_order, delimiter) {
+        listLast : function (list, delimiter) {
             if (list === undefined) {
                 throw {name: "Error", message: "Missing parameter: list must be provided"};
             }
-            sort_type = (sort_type === undefined) ? "alpha" : sort_type.toLowerCase();
-            sort_order = (sort_order === undefined) ? "asc" : sort_order.toLowerCase();
             delimiter = (delimiter === undefined) ? "," : delimiter;
 
-            sort_type = sort_type.toLowerCase();
-            sort_order = sort_order.toLowerCase();
+            return this.listGetAt(list, this.listLen(list, delimiter), delimiter);
+        },
 
-            var arr = list.split(delimiter);
 
-            if (sort_type === "alpha") {
-                arr.sort();
-                if (sort_order === "desc") {
-                    arr.reverse();
-                }
-            } else {
-                if (sort_order === "asc") {
-                    arr.sort(numberCompareAsc);
-                } else {
-                    arr.sort(numberCompareDesc);
-                }
+        listLen : function (list, delimiter) {
+            if (list === undefined) {
+                throw {name: "Error", message: "Missing parameter: list must be provided"};
             }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
 
-            return arr.join(delimiter);
+            if (list === "") {
+                return 0;
+            }
+            return list.split(delimiter).length;
+        },
+
+
+        listPrepend : function (list, value, delimiter) {
+            if (list === undefined || value === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and value must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            return value + (list !== "" ? (delimiter + list) : "");
         },
 
 
@@ -278,19 +258,6 @@ var jList = (function () {
                 i -= 1;
             }
 
-            return arr.join(delimiter);
-        },
-
-
-        listReverse : function (list, delimiter) {
-            if (list === undefined) {
-                throw {name: "Error", message: "Missing parameter: list must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-
-            var arr = list.split(delimiter);
-
-            arr.reverse();
             return arr.join(delimiter);
         },
 
@@ -346,14 +313,79 @@ var jList = (function () {
         },
 
 
-        listChangeDelims : function (list, new_delimiter, delimiter) {
-            if (list === undefined || new_delimiter === undefined) {
-                throw {name: "Error", message: "Missing parameter: list and new_delimiter must be provided"};
+        listRest : function (list, delimiter) {
+            if (list === undefined) {
+                throw {name: "Error", message: "Missing parameter: list must be provided"};
             }
             delimiter = (delimiter === undefined) ? "," : delimiter;
-            var re = new RegExp(quoteString(delimiter), "g");
 
-            return list.replace(re, new_delimiter);
+            var arr = list.split(delimiter);
+
+            arr.splice(0, 1);
+            return arr.join(delimiter);
+        },
+
+
+        listReverse : function (list, delimiter) {
+            if (list === undefined) {
+                throw {name: "Error", message: "Missing parameter: list must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr = list.split(delimiter);
+
+            arr.reverse();
+            return arr.join(delimiter);
+        },
+
+
+        listSetAt : function (list, position, value, delimiter) {
+            if (list === undefined || position === undefined || value === undefined) {
+                throw {name: "Error", message: "Missing parameter: list, position and value must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            if (list === '') {
+                return '';
+            }
+
+            var arr = list.split(delimiter);
+
+            if (position >= 1 && position <= arr.length) {
+                arr[position - 1] = value;
+                return arr.join(delimiter);
+            }
+            return list;
+        },
+
+
+        listSort : function (list, sort_type, sort_order, delimiter) {
+            if (list === undefined) {
+                throw {name: "Error", message: "Missing parameter: list must be provided"};
+            }
+            sort_type = (sort_type === undefined) ? "alpha" : sort_type.toLowerCase();
+            sort_order = (sort_order === undefined) ? "asc" : sort_order.toLowerCase();
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            sort_type = sort_type.toLowerCase();
+            sort_order = sort_order.toLowerCase();
+
+            var arr = list.split(delimiter);
+
+            if (sort_type === "alpha") {
+                arr.sort();
+                if (sort_order === "desc") {
+                    arr.reverse();
+                }
+            } else {
+                if (sort_order === "asc") {
+                    arr.sort(numberCompareAsc);
+                } else {
+                    arr.sort(numberCompareDesc);
+                }
+            }
+
+            return arr.join(delimiter);
         },
 
 

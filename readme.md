@@ -1,5 +1,5 @@
 # **jList** 
-v1.4.1
+v1.5.0
 
 ##What does it do?
 *jList* is a collection of functions that bring *ColdFusion*-style list handling to Javascript.  
@@ -43,47 +43,53 @@ A configuration file for the project for users of [CodeKit](http://incident57.co
   
     
 
-For release [1.4.1](http://semver.org) there are 20 functions included. They are, in alphabetical order:
+For this release there are 22 functions included. They are, in alphabetical order:
 
-- **[listAppend][]**  
+- **[listAppend](#listAppend)**  
 Concatenates an element to a list.  
-- **[listChangeDelims][]**   
+- **[listChangeDelims](#listChangeDelims)**   
 Changes a list delimiter.
-- **[listDeleteAt][]**  
+- **[listContains](#listContains)**  
+Determines the index of the first list element that contains a specified substring.  
+The search is case-sensitive.
+- **[listContainsNoCase](#listContainsNoCase)**  
+Determines the index of the first list element that contains a specified substring.  
+The search is not case-sensitive.
+- **[listDeleteAt](#listDeleteAt)**  
 Deletes an element from a list.  
-- **[listFind][]**  
+- **[listFind](#listFind)**  
 Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.  
-- **[listFindNoCase][]**  
+- **[listFindNoCase](#listFindNoCase)**  
 Determines the index of the first list element in which a specified value occurs. The search is case-insensitive.
-- **[listFirst][]**  
+- **[listFirst](#listFirst)**  
 Gets the first element of a list.
-- **[listGetAt][]**  
+- **[listGetAt](#listGetAt)**  
 Gets a list element at a specified position.
-- **[listInsertAt][]**  
+- **[listInsertAt](#listInsertAt)**  
 Inserts an element into a list.
-- **[listLast][]**  
+- **[listLast](#listLast)**  
 Gets the last element of a list.
-- **[listLen][]**  
+- **[listLen](#listLen)**  
 Determines the number of elements in a list.
-- **[listPrepend][]**  
+- **[listPrepend](#listPrepend)**  
 Inserts an element at the beginning of a list.
-- **[listQualify][]**  
+- **[listQualify](#listQualify)**  
 Inserts a string at the beginning and end of list elements.
-- **[listRemoveDuplicates][]**  
+- **[listRemoveDuplicates](#listRemoveDuplicates)**  
 Removes duplicate elements from a list. Matching is case-sensitive.
-- **[listRemoveDuplicatesNoCase][]**  
+- **[listRemoveDuplicatesNoCase](#listRemoveDuplicatesNoCase)**  
 Removes duplicate elements from a list. Matching is not case-sensitive.
-- **[listRest][]**  
+- **[listRest](#listRest)**  
 Gets a list, without its first element.
-- **[listReverse][]**  
+- **[listReverse](#listReverse)**  
 Reverses the order of elements in a list.
-- **[listSetAt][]**  
+- **[listSetAt](#listSetAt)**  
 Replaces the contents of a list element.
-- **[listSort][]**  
+- **[listSort](#listSort)**  
 Sorts list elements according to a sort type and sort order.
-- **[listValueCount][]**   
+- **[listValueCount](#listValueCount)**   
 Counts the instances of a specified value in a list. The search is case-sensitive.    
-- **[listValueCountNoCase][]**    
+- **[listValueCountNoCase](#listValueCountNoCase)**    
 Counts the instances of a specified value in a list. The search is not case-sensitive.   
 
 More detailed documentation for each of these functions can be found later in this document.  
@@ -94,7 +100,7 @@ jList requires only that you include the *jlist.js* or *jlist-min.js* file in yo
 	<script src="jlist-min.js"></script>
 	
 Alternatively you may use a script loader such as LABjs or RequireJS or concatenate the file with one or more other Javascript files to improve loading times.
-It's recommended that you use the minified version (*jlist-min.js*) in production to reduce the loading time. The original commented, pre-minification source is also included and you may find this more useful when debugging, making your own changes or just for learning.  
+It's recommended that you use the minified version (*jlist-min.js*) in production to reduce the loading time. The original, commented, pre-minification source is also included and you may find this more useful when debugging, making your own changes or just for learning.  
 Once the script is loaded then invoking the function you want is simply a matter of prefixing the function with "jList.". The following example, which uses the listAppend and listSort functions, shows how:
 
 	<script src="jlist-min.js"></script>
@@ -146,6 +152,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - The unminified version of the source validates clean in [jsLint (Edition 2012-08-23)](http://jslint.com).
 - Written by [David Waterston] (http://dvolvr.davidwaterston.com)
 - Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
+- Planning and task management in [Trello](https://trello.com/board/jlist/504b80ff3a6c80626f306215)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
 - Tested using [Jasmine 1.2.0](http://pivotal.github.com/jasmine).
 - Documentation written in [Markdown](http://daringfireball.net/projects/markdown/) using [Byword](http://bywordapp.com/).
@@ -156,6 +163,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #Usage details
 
+<a id="listAppend"></a>
 ##listAppend  
 
 **Description**  
@@ -189,8 +197,13 @@ The following table shows examples of *listAppend* processing:
 | jList.listAppend('','elem1,elem2') | elem1,elem2 |      
 | jList.listAppend('cat-dog-mouse','hamster','-') | cat-dog-mouse-hamster |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/KDNUf](http://jsfiddle.net/davidwaterston/KDNUf)
+
 ---
 
+<a id="listChangeDelims"></a>
 ##listChangeDelims  
 
 **Description**  
@@ -224,10 +237,95 @@ The following table shows examples of *listChangeDelims* processing:
 | jList.listChangeDelims('a,e,c,b,d','-','!') | a,e,c,b,d |  
 | jList.listChangeDelims('a,e,c,b,d','-',',') | a-e-c-b-d |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/uvvHF](http://jsfiddle.net/davidwaterston/uvvHF)
 
 ---
 
+<a id="listContains"></a>
+##listContains  
 
+**Description**  
+Determines the index of the first list element that contains a specified substring. The search is case-sensitive.
+
+**Availability**    
+v1.5.0  
+
+**Function syntax**  
+listContains(list, substring [, delimiter ])
+
+**Returns**  
+Index of the first list element that contains *substring*. If not found, returns zero.  
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |   
+| substring | A string or a variable that contains one. Item for which to search. |  
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**  
+ 
+The following table shows examples of *listContains* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listContains('cat,dog,mouse,rabbit,dog', 'og') | 2 |    
+| jList.listContains('cat.dog.mouse.rabbit.dog', 'og', '.') | 2 |      
+| jList.listContains('cat,dog,mouse,rabbit,dog', 'OG') | 0 |  
+| jList.listContains('cat.dog.mouse.rabbit.dog', 'Rab', '.') | 0 |  
+| jList.listContains('cat,dog,mouse,rabbit,dog', 'tr') | 0 |  
+
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/mjJ2n](http://jsfiddle.net/davidwaterston/mjJ2n)  
+  
+---
+
+<a id="listContainsNoCase"></a>
+##listContainsNoCase  
+
+**Description**  
+Determines the index of the first list element that contains a specified substring. The search is not case-sensitive.
+
+**Availability**    
+v1.5.0  
+
+**Function syntax**  
+listContainsNoCase(list, substring [, delimiter ])
+
+**Returns**  
+Index of the first list element that contains *substring*. If not found, returns zero.  
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |   
+| substring | A string or a variable that contains one. Item for which to search. |  
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**  
+ 
+The following table shows examples of *listContainsNoCase* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'og') | 2 |    
+| jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'og', '.') | 2 |      
+| jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'OG') | 2 |  
+| jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'Rab', '.') | 4 |  
+| jList.listContains('cat,dog,mouse,rabbit,dog', 'tr') | 0 | 
+
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/ku4rP](http://jsfiddle.net/davidwaterston/ku4rP)  
+
+---
+
+<a id="listDeleteAt"></a>
 ##listDeleteAt  
 
 **Description**  
@@ -261,8 +359,13 @@ The following table shows examples of *listDeleteAt* processing:
 | jList.listDeleteAt('elem1,elem2',4) | elem1,elem2 |      
 | jList.listDeleteAt('cat-dog-mouse',3,'-') | cat-dog |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/j6pEP](http://jsfiddle.net/davidwaterston/j6pEP)  
+
 ---
 
+<a id="listFind"></a>
 ##listFind  
 
 **Description**  
@@ -297,8 +400,13 @@ The following table shows examples of *listFind* processing:
 | jList.listFind('cat-dog--mouse','dog','-') | 2 |  
 | jList.listFind('5-4-3-2-1',4,'-') | 2 |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/LAfBn](http://jsfiddle.net/davidwaterston/LAfBn)
+
 ---
 
+<a id="listFindNoCase"></a>
 ##listFindNoCase   
 
 **Description**  
@@ -333,8 +441,13 @@ The following table shows examples of *listFindNoCase* processing:
 | jList.listFindNoCase('Cat-Dog--Mouse','dog','-') | 2 |  
 | jList.listFindNoCase('5-4-3-2-1',4,'-') | 2 |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/TXt2T](http://jsfiddle.net/davidwaterston/TXt2T)
+
 ---
 
+<a id="listFirst"></a>
 ##listFirst   
 
 **Description**  
@@ -368,8 +481,13 @@ The following table shows examples of *listFirst* processing:
 | jList.listFirst('Cat-Dog--Mouse','-') | 'Cat' |  
 | jList.listFirst('5-4-3-2-1','-') | 5 |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/FEQWc](http://jsfiddle.net/davidwaterston/FEQWc) 
+
 ---
 
+<a id="listGetAt"></a>
 ##listGetAt   
 
 **Description**  
@@ -403,8 +521,13 @@ The following table shows examples of *listGetAt* processing:
 | jList.listGetAt('Cat-Dog--Mouse',3,'-') | '' |  
 | jList.listGetAt('5-4-3-2-1',5,'-') | 1 |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/7khW6](http://jsfiddle.net/davidwaterston/7khW6)  
+
 ---
 
+<a id="listInsertAt"></a>
 ##listInsertAt    
 
 **Description**  
@@ -439,8 +562,13 @@ The following table shows examples of *listInsertAt* processing:
 | jList.listInsertAt('Cat-Dog--Mouse',3,'Elephant','-') | 'Cat-Dog-Elephant-Mouse' |    
 | jList.listInsertAt('5-4-3-2-1',5,'999','-') | '5-4-3-2-999-1' |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/9D26p](http://jsfiddle.net/davidwaterston/9D26p)  
+
 ---
 
+<a id="listLast"></a>
 ##listLast   
 
 **Description**  
@@ -472,8 +600,13 @@ The following table shows examples of *listLast* processing:
 | jList.listLast('cat,dog','~') | 'cat,dog' |  
 | jList.listLast('Cat-Dog--Mouse','-') | 'Mouse' |     
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/BbLD8](http://jsfiddle.net/davidwaterston/BbLD8)  
+
 ---
 
+<a id="listLen"></a>
 ##listLen   
 
 **Description**  
@@ -505,8 +638,13 @@ The following table shows examples of *listLen* processing:
 | jList.listLen('cat,dog','~') | 1 |  
 | jList.listLen('Cat-Dog--Mouse','-') | 4 |     
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/Uz4P2](http://jsfiddle.net/davidwaterston/Uz4P2) 
+
 ---
 
+<a id="listPrepend"></a>
 ##listPrepend   
 
 **Description**  
@@ -540,8 +678,13 @@ The following table shows examples of *listPrepend* processing:
 | jList.listPrepend('Cat-Dog--Mouse','Rabbit','-') | 'Rabbit-Cat-Dog--Mouse' |   
 | jList.listPrepend('','Rabbit','-') | 'Rabbit' |       
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/n8AXz](http://jsfiddle.net/davidwaterston/n8AXz)  
+
 ---
 
+<a id="listQualify"></a>
 ##listQualify   
 
 **Description**  
@@ -574,8 +717,13 @@ The following table shows examples of *listQualify* processing:
 | jList.listQualify('cat,dog','@','~') | '@cat,dog@' |  
 | jList.listQualify('Cat-Dog--Mouse','$','-') | '$Cat$-$Dog$-$$-$Mouse$' |   
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/ArLh9](http://jsfiddle.net/davidwaterston/ArLh9)  
+
 ---
 
+<a id="listRemoveDuplicates"></a>
 ##listRemoveDuplicates   
 
 **Description**  
@@ -609,8 +757,13 @@ The following table shows examples of *listRemoveDuplicates* processing:
 | jList.listRemoveDuplicates('1.1.1.1.1.1','.') | '1' |   
 | jList.listRemoveDuplicates('12,3,4,1,12,4,6') | '12,3,4,1,6' |   
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/qHvHg](http://jsfiddle.net/davidwaterston/qHvHg) 
+
 ---
 
+<a id="listRemoveDuplicatesNoCase"></a>
 ##listRemoveDuplicatesNoCase   
 
 **Description**  
@@ -645,8 +798,13 @@ The following table shows examples of *listRemoveDuplicatesNoCase* processing:
 | jList.listRemoveDuplicatesNoCase('12,3,4,1,12,4,6') | '12,3,4,1,6' |   
 | jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit') | 'cat,dog,rabbit' |   
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/8NpEY](http://jsfiddle.net/davidwaterston/8NpEY)
+
 ---
 
+<a id="listRest"></a>
 ##listRest   
 
 **Description**  
@@ -678,8 +836,13 @@ The following table shows examples of *listRest* processing:
 | jList.listRest('cat,dog','~') | '' |  
 | jList.listRest('Cat-Dog--Mouse','-') | 'Dog--Mouse' |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/Q6Hh4](http://jsfiddle.net/davidwaterston/Q6Hh4)  
+
 ---
 
+<a id="listReverse"></a>
 ##listReverse   
 
 **Description**  
@@ -711,8 +874,13 @@ The following table shows examples of *listReverse* processing:
 | jList.listReverse('cat,dog','~') | 'cat,dog' |  
 | jList.listReverse('Cat-Dog--Mouse','-') | 'Mouse--Dog-Cat' |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/vsmXu](http://jsfiddle.net/davidwaterston/vsmXu)  
+
 ---
 
+<a id="listSetAt"></a>
 ##listSetAt   
 
 **Description**  
@@ -746,8 +914,13 @@ The following table shows examples of *listSetAt* processing:
 | jList.listSetAt('cat,dog',2,'hamster','~') | 'cat,dog,hamster' |  
 | jList.listSetAt('Cat-Dog--Mouse',3,'Hamster','-') | 'Cat-Dog-Hamster-Mouse' |  
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/CTN2w](http://jsfiddle.net/davidwaterston/CTN2w) 
+
 ---
 
+<a id="listSort"></a>
 ##listSort   
 
 **Description**  
@@ -785,9 +958,14 @@ The following table shows examples of *listSort* processing:
 | jList.listSort('12,3,4,1,55,5,6','alpha','asc') | '1,12,3,4,5,55,6' |   
 | jList.listSort('12,3,4,1,55,5,6','numeric','asc') | '1,3,4,5,6,12,55' |   
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/ff2zy](http://jsfiddle.net/davidwaterston/ff2zy)
+
 ---
 
 
+<a id="listValueCount"></a>
 ##listValueCount   
 
 **Description**  
@@ -825,9 +1003,13 @@ The following table shows examples of *listValueCount* processing:
 | jList.listValueCount('1,2,3,1,2,3', 3) | 2 |   
 | jList.listValueCount('1,2,3,1,2,3', '3') | 2 |    
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/WPyED](http://jsfiddle.net/davidwaterston/WPyED)  
+
 ---
 
-
+<a id="listValueCountNoCase"></a>
 ##listValueCountNoCase   
 
 **Description**  
@@ -865,6 +1047,10 @@ The following table shows examples of *listValueCountNoCase* processing:
 | jList.listValueCountNoCase('1,2,3,1,2,3', 3) | 2 |   
 | jList.listValueCountNoCase('1,2,3,1,2,3', '3') | 2 |    
 
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/4gVnX](http://jsfiddle.net/davidwaterston/4gVnX)
+
 ---
 
 
@@ -875,6 +1061,8 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
   
 [listAppend](http://jsfiddle.net/davidwaterston/KDNUf)  
 [listChangeDelims](http://jsfiddle.net/davidwaterston/uvvHF)  
+[listContains](http://jsfiddle.net/davidwaterston/mjJ2n)  
+[listContainsNoCase](http://jsfiddle.net/davidwaterston/ku4rP)  
 [listDeleteAt](http://jsfiddle.net/davidwaterston/j6pEP)  
 [listFind](http://jsfiddle.net/davidwaterston/LAfBn)  
 [listFindNoCase](http://jsfiddle.net/davidwaterston/TXt2T)  
@@ -898,14 +1086,20 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
-| 1.4.1 | 8th September, 2012 | Bug fix to listFind (and indirectly listFindNoCase) to resolve problem with older (pre-9) versions of Internet Explorer. |
+| 1.5.0 | 10th September, 2012 | Added two new functions - *[listContains](#listContains)*  and *[listContainsNoCase](#listContainsNoCase)*. |
+| 1.4.1 | 8th September, 2012 | Bug fix to *[listFind](#listFind)* (and indirectly *[listFindNoCase](#listFindNoCase)* to resolve a problem with older (pre-9) versions of Internet Explorer. |
 | 1.4.0 | 3rd September, 2012 | Added extra parameter checking to each function, replaced 'typeof undefined' checks with '=== undefined' to ensure compatibility with jsLint Edition 2012-08-23. Added the *Jasmine* test suite with 250 tests. |
-| 1.3.0 | 16th June, 2012 | Added three new functions - *[listChangeDelims][]*, *[listValueCount][]* and *[listValueCountNoCase][]*. |
-| 1.2.0 | 21st May, 2012 | Minor changes to *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]* to improve performance with larger lists (100,000+ elements). |
-| 1.1.0 | 18th May, 2012 | Added two new functions - *[listRemoveDuplicates][]* and *[listRemoveDuplicatesNoCase][]*.|
+| 1.3.0 | 16th June, 2012 | Added three new functions - *[listChangeDelims](#listChangeDelims)*, *[listValueCount](#listValueCount)* and *[listValueCountNoCase](#listValueCountNoCase)*. |
+| 1.2.0 | 21st May, 2012 | Minor changes to *[listRemoveDuplicates](#listRemoveDuplicates)* and *[listRemoveDuplicatesNoCase](#listRemoveDuplicatesNoCase)* to improve performance with larger lists (100,000+ elements). |
+| 1.1.0 | 18th May, 2012 | Added two new functions - *[listRemoveDuplicates](#listRemoveDuplicates)* and *[listRemoveDuplicatesNoCase](#listRemoveDuplicatesNoCase)*.|
 | &nbsp; | &nbsp; | Updated sample code and documentation. |  
 | &nbsp; | &nbsp; | Added this version history. |     
 | 1.0.0 | 15th May, 2012 | Initial release. |  
+
+#Future Plans
+
+Current and planned work for jList is public and detailed in [Trello](https://trello.com/board/jlist/504b80ff3a6c80626f306215).
+
 
 
       
