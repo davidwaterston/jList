@@ -163,7 +163,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #Usage details
 
-<a id="listAppend"></a>
+<a name="listAppend"></a>
 ##listAppend  
 
 **Description**  
@@ -203,7 +203,7 @@ The following table shows examples of *listAppend* processing:
 
 ---
 
-<a id="listChangeDelims"></a>
+<a name="listChangeDelims"></a>
 ##listChangeDelims  
 
 **Description**  
@@ -243,7 +243,7 @@ The following table shows examples of *listChangeDelims* processing:
 
 ---
 
-<a id="listContains"></a>
+<a name="listContains"></a>
 ##listContains  
 
 **Description**  
@@ -284,7 +284,7 @@ The following table shows examples of *listContains* processing:
   
 ---
 
-<a id="listContainsNoCase"></a>
+<a name="listContainsNoCase"></a>
 ##listContainsNoCase  
 
 **Description**  
@@ -325,7 +325,7 @@ The following table shows examples of *listContainsNoCase* processing:
 
 ---
 
-<a id="listDeleteAt"></a>
+<a name="listDeleteAt"></a>
 ##listDeleteAt  
 
 **Description**  
@@ -365,7 +365,7 @@ The following table shows examples of *listDeleteAt* processing:
 
 ---
 
-<a id="listFind"></a>
+<a name="listFind"></a>
 ##listFind  
 
 **Description**  
@@ -406,7 +406,7 @@ The following table shows examples of *listFind* processing:
 
 ---
 
-<a id="listFindNoCase"></a>
+<a name="listFindNoCase"></a>
 ##listFindNoCase   
 
 **Description**  
@@ -447,7 +447,7 @@ The following table shows examples of *listFindNoCase* processing:
 
 ---
 
-<a id="listFirst"></a>
+<a name="listFirst"></a>
 ##listFirst   
 
 **Description**  
@@ -487,7 +487,7 @@ The following table shows examples of *listFirst* processing:
 
 ---
 
-<a id="listGetAt"></a>
+<a name="listGetAt"></a>
 ##listGetAt   
 
 **Description**  
@@ -527,7 +527,7 @@ The following table shows examples of *listGetAt* processing:
 
 ---
 
-<a id="listInsertAt"></a>
+<a name="listInsertAt"></a>
 ##listInsertAt    
 
 **Description**  
@@ -568,7 +568,7 @@ The following table shows examples of *listInsertAt* processing:
 
 ---
 
-<a id="listLast"></a>
+<a name="listLast"></a>
 ##listLast   
 
 **Description**  
@@ -606,7 +606,7 @@ The following table shows examples of *listLast* processing:
 
 ---
 
-<a id="listLen"></a>
+<a name="listLen"></a>
 ##listLen   
 
 **Description**  
@@ -644,7 +644,7 @@ The following table shows examples of *listLen* processing:
 
 ---
 
-<a id="listPrepend"></a>
+<a name="listPrepend"></a>
 ##listPrepend   
 
 **Description**  
@@ -684,7 +684,7 @@ The following table shows examples of *listPrepend* processing:
 
 ---
 
-<a id="listQualify"></a>
+<a name="listQualify"></a>
 ##listQualify   
 
 **Description**  
@@ -723,7 +723,7 @@ The following table shows examples of *listQualify* processing:
 
 ---
 
-<a id="listRemoveDuplicates"></a>
+<a name="listRemoveDuplicates"></a>
 ##listRemoveDuplicates   
 
 **Description**  
@@ -763,7 +763,7 @@ The following table shows examples of *listRemoveDuplicates* processing:
 
 ---
 
-<a id="listRemoveDuplicatesNoCase"></a>
+<a name="listRemoveDuplicatesNoCase"></a>
 ##listRemoveDuplicatesNoCase   
 
 **Description**  
@@ -804,7 +804,7 @@ The following table shows examples of *listRemoveDuplicatesNoCase* processing:
 
 ---
 
-<a id="listRest"></a>
+<a name="listRest"></a>
 ##listRest   
 
 **Description**  
@@ -842,7 +842,7 @@ The following table shows examples of *listRest* processing:
 
 ---
 
-<a id="listReverse"></a>
+<a name="listReverse"></a>
 ##listReverse   
 
 **Description**  
@@ -880,7 +880,7 @@ The following table shows examples of *listReverse* processing:
 
 ---
 
-<a id="listSetAt"></a>
+<a name="listSetAt"></a>
 ##listSetAt   
 
 **Description**  
@@ -920,7 +920,7 @@ The following table shows examples of *listSetAt* processing:
 
 ---
 
-<a id="listSort"></a>
+<a name="listSort"></a>
 ##listSort   
 
 **Description**  
@@ -965,7 +965,7 @@ The following table shows examples of *listSort* processing:
 ---
 
 
-<a id="listValueCount"></a>
+<a name="listValueCount"></a>
 ##listValueCount   
 
 **Description**  
@@ -1009,7 +1009,7 @@ The following table shows examples of *listValueCount* processing:
 
 ---
 
-<a id="listValueCountNoCase"></a>
+<a name="listValueCountNoCase"></a>
 ##listValueCountNoCase   
 
 **Description**  
