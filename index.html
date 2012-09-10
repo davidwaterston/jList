@@ -33,7 +33,7 @@
       <section id="main_content" class="inner">
         <h1><strong>jList</strong></h1>
 
-<p>v1.4.1</p>
+<p>v1.5.0</p>
 
 <h2>What does it do?</h2>
 
@@ -44,7 +44,7 @@ Once you start to use jList you will quickly realise that there are many situati
 
 <h2>What's included?</h2>
 
-<p>There are 11 files included with this package. The first, and most important, four are:   </p>
+<p>There are 12 files included with this package. The first, and most important,  four are:   </p>
 
 <ul>
 <li><p><strong>readme.md</strong><br>
@@ -55,7 +55,7 @@ Examples of each of the functions in action.</p></li>
 The Javascript source code of the library.</p></li>
 <li><p><strong>jlist-min.js</strong><br>
 The Javascript source code minified using UglifyJS.  </p></li>
-</ul><p>The remaining seven files are part of a comprehensive <em>Jasmine</em> test suite that allows modifications to the library to be quickly and easily regression tested. They are:</p>
+</ul><p>The next seven files are part of a comprehensive <em>Jasmine</em> test suite that allows modifications to the library to be quickly and easily regression tested. They are:</p>
 
 <ul>
 <li><p><strong>test.htm</strong><br>
@@ -66,72 +66,86 @@ Open this file in a browser to run the <em>Jasmine</em> test suite against the m
 The test suite specifications - these are the actual tests that are run by opening either of the preceding two files.</p></li>
 <li><p><strong>jasmine-html.js</strong>, <strong>jasmine.css</strong>, <strong>jasmine,js</strong> and <strong>MIT.LICENSE</strong><br>
 These are the files required by <em>Jasmine</em>. They were not written by me and are subject to a separate licence.</p></li>
-</ul><p>For release <a href="http://semver.org">1.4.1</a> there are 20 functions included. They are, in alphabetical order:</p>
+</ul><p>Finally, there is:</p>
 
 <ul>
 <li>
-<a href="#listappend"><strong>listAppend</strong></a><br>
+<strong>codekit-config.json</strong><br>
+A configuration file for the project for users of <a href="http://incident57.com/codekit/">CodeKit</a> on the Mac. If you don't use CodeKit (and you're probably wasting a lot of development time if you don't) then you can safely ignore this file. Otherwise,  when adding the project to CodeKit it will pick up these settings automatically.</li>
+</ul><p>For this release there are 22 functions included. They are, in alphabetical order:</p>
+
+<ul>
+<li>
+<strong><a href="#listAppend">listAppend</a></strong><br>
 Concatenates an element to a list.<br>
 </li>
 <li>
-<a href="#listchangedelims"><strong>listChangeDelims</strong></a><br>
+<strong><a href="#listChangeDelims">listChangeDelims</a></strong><br>
 Changes a list delimiter.</li>
 <li>
-<a href="#listdeleteat"><strong>listDeleteAt</strong></a><br>
+<strong><a href="#listContains">listContains</a></strong><br>
+Determines the index of the first list element that contains a specified substring.<br>
+The search is case-sensitive.</li>
+<li>
+<strong><a href="#listContainsNoCase">listContainsNoCase</a></strong><br>
+Determines the index of the first list element that contains a specified substring.<br>
+The search is not case-sensitive.</li>
+<li>
+<strong><a href="#listDeleteAt">listDeleteAt</a></strong><br>
 Deletes an element from a list.<br>
 </li>
 <li>
-<a href="#listfind"><strong>listFind</strong></a><br>
+<strong><a href="#listFind">listFind</a></strong><br>
 Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.<br>
 </li>
 <li>
-<a href="#listfindnocase"><strong>listFindNoCase</strong></a><br>
+<strong><a href="#listFindNoCase">listFindNoCase</a></strong><br>
 Determines the index of the first list element in which a specified value occurs. The search is case-insensitive.</li>
 <li>
-<a href="#listfirst"><strong>listFirst</strong></a><br>
+<strong><a href="#listFirst">listFirst</a></strong><br>
 Gets the first element of a list.</li>
 <li>
-<a href="#listgetat"><strong>listGetAt</strong></a><br>
+<strong><a href="#listGetAt">listGetAt</a></strong><br>
 Gets a list element at a specified position.</li>
 <li>
-<a href="#listinsertat"><strong>listInsertAt</strong></a><br>
+<strong><a href="#listInsertAt">listInsertAt</a></strong><br>
 Inserts an element into a list.</li>
 <li>
-<a href="#listlast"><strong>listLast</strong></a><br>
+<strong><a href="#listLast">listLast</a></strong><br>
 Gets the last element of a list.</li>
 <li>
-<a href="#listlen"><strong>listLen</strong></a><br>
+<strong><a href="#listLen">listLen</a></strong><br>
 Determines the number of elements in a list.</li>
 <li>
-<a href="#listprepend"><strong>listPrepend</strong></a><br>
+<strong><a href="#listPrepend">listPrepend</a></strong><br>
 Inserts an element at the beginning of a list.</li>
 <li>
-<a href="#listqualify"><strong>listQualify</strong></a><br>
+<strong><a href="#listQualify">listQualify</a></strong><br>
 Inserts a string at the beginning and end of list elements.</li>
 <li>
-<a href="#listremoveduplicates"><strong>listRemoveDuplicates</strong></a><br>
+<strong><a href="#listRemoveDuplicates">listRemoveDuplicates</a></strong><br>
 Removes duplicate elements from a list. Matching is case-sensitive.</li>
 <li>
-<a href="#listremoveduplicatesnocase"><strong>listRemoveDuplicatesNoCase</strong></a><br>
+<strong><a href="#listRemoveDuplicatesNoCase">listRemoveDuplicatesNoCase</a></strong><br>
 Removes duplicate elements from a list. Matching is not case-sensitive.</li>
 <li>
-<a href="#listrest"><strong>listRest</strong></a><br>
+<strong><a href="#listRest">listRest</a></strong><br>
 Gets a list, without its first element.</li>
 <li>
-<a href="#listreverse"><strong>listReverse</strong></a><br>
+<strong><a href="#listReverse">listReverse</a></strong><br>
 Reverses the order of elements in a list.</li>
 <li>
-<a href="#listsetat"><strong>listSetAt</strong></a><br>
+<strong><a href="#listSetAt">listSetAt</a></strong><br>
 Replaces the contents of a list element.</li>
 <li>
-<a href="#listsort"><strong>listSort</strong></a><br>
+<strong><a href="#listSort">listSort</a></strong><br>
 Sorts list elements according to a sort type and sort order.</li>
 <li>
-<a href="#listvaluecount"><strong>listValueCount</strong></a><br>
+<strong><a href="#listValueCount">listValueCount</a></strong><br>
 Counts the instances of a specified value in a list. The search is case-sensitive.<br>
 </li>
 <li>
-<a href="#listvaluecountnocase"><strong>listValueCountNoCase</strong></a><br>
+<strong><a href="#listValueCountNoCase">listValueCountNoCase</a></strong><br>
 Counts the instances of a specified value in a list. The search is not case-sensitive.<br>
 </li>
 </ul><p>More detailed documentation for each of these functions can be found later in this document.  </p>
@@ -144,7 +158,7 @@ Counts the instances of a specified value in a list. The search is not case-sens
 </code></pre>
 
 <p>Alternatively you may use a script loader such as LABjs or RequireJS or concatenate the file with one or more other Javascript files to improve loading times.
-It's recommended that you use the minified version (<em>jlist-min.js</em>) in production to reduce the loading time. The original commented, pre-minification source is also included and you may find this more useful when debugging, making your own changes or just for learning.<br>
+It's recommended that you use the minified version (<em>jlist-min.js</em>) in production to reduce the loading time. The original, commented, pre-minification source is also included and you may find this more useful when debugging, making your own changes or just for learning.<br>
 Once the script is loaded then invoking the function you want is simply a matter of prefixing the function with "jList.". The following example, which uses the listAppend and listSort functions, shows how:</p>
 
 <pre><code>&lt;script src="jlist-min.js"&gt;&lt;/script&gt;
@@ -204,6 +218,8 @@ More information can be found at <a href="http://www.opensource.org/licenses/mit
 </li>
 <li>Github repository: <a href="http://davidwaterston.github.com/jList">http://davidwaterston.github.com/jList</a>
 </li>
+<li>Planning and task management in <a href="https://trello.com/board/jlist/504b80ff3a6c80626f306215">Trello</a>
+</li>
 <li>Developed using <a href="http://www.sublimetext.com/2">Sublime Text 2</a>, <a href="http://www.shpakovski.com/codebox">CodeBox</a> and <a href="http://incident57.com/codekit/">CodeKit</a>.</li>
 <li>Tested using <a href="http://pivotal.github.com/jasmine">Jasmine 1.2.0</a>.</li>
 <li>Documentation written in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> using <a href="http://bywordapp.com/">Byword</a>.</li>
@@ -211,7 +227,7 @@ More information can be found at <a href="http://www.opensource.org/licenses/mit
 <li>Made in Scotland.</li>
 </ul><hr><h1>Usage details</h1>
 
-<p><a name="listappend"></a></p>
+<p><a></a></p>
 
 <h2>listAppend</h2>
 
@@ -269,7 +285,11 @@ The following table shows examples of <em>listAppend</em> processing:</p>
 <td align="left">jList.listAppend('cat-dog-mouse','hamster','-')</td>
 <td align="left">cat-dog-mouse-hamster</td>
 </tr>
-</table><hr><p><a name="listchangedelims"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/KDNUf">http://jsfiddle.net/davidwaterston/KDNUf</a></p>
+
+<hr><p><a></a></p>
 
 <h2>listChangeDelims</h2>
 
@@ -329,7 +349,147 @@ A copy of the list, with the <em>delimiter</em> character replaced by <em>new_de
 <td align="left">jList.listChangeDelims('a,e,c,b,d','-',',')</td>
 <td align="left">a-e-c-b-d</td>
 </tr>
-</table><hr><p><a name="listdeleteat"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/uvvHF">http://jsfiddle.net/davidwaterston/uvvHF</a></p>
+
+<hr><p><a></a></p>
+
+<h2>listContains</h2>
+
+<p><strong>Description</strong><br>
+Determines the index of the first list element that contains a specified substring. The search is case-sensitive.</p>
+
+<p><strong>Availability</strong><br>
+v1.5.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listContains(list, substring [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+Index of the first list element that contains <em>substring</em>. If not found, returns zero.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">substring</td>
+<td align="left">A string or a variable that contains one. Item for which to search.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong>  </p>
+
+<p>The following table shows examples of <em>listContains</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listContains('cat,dog,mouse,rabbit,dog', 'og')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listContains('cat.dog.mouse.rabbit.dog', 'og', '.')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listContains('cat,dog,mouse,rabbit,dog', 'OG')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listContains('cat.dog.mouse.rabbit.dog', 'Rab', '.')</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">jList.listContains('cat,dog,mouse,rabbit,dog', 'tr')</td>
+<td align="left">0</td>
+</tr>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/mjJ2n">http://jsfiddle.net/davidwaterston/mjJ2n</a>  </p>
+
+<hr><p><a></a></p>
+
+<h2>listContainsNoCase</h2>
+
+<p><strong>Description</strong><br>
+Determines the index of the first list element that contains a specified substring. The search is not case-sensitive.</p>
+
+<p><strong>Availability</strong><br>
+v1.5.0  </p>
+
+<p><strong>Function syntax</strong><br>
+listContainsNoCase(list, substring [, delimiter ])</p>
+
+<p><strong>Returns</strong><br>
+Index of the first list element that contains <em>substring</em>. If not found, returns zero.  </p>
+
+<p><strong>Parameters</strong>   </p>
+
+<table>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+<tr>
+<td align="left">list</td>
+<td align="left">A list or a variable that contains one.</td>
+</tr>
+<tr>
+<td align="left">substring</td>
+<td align="left">A string or a variable that contains one. Item for which to search.</td>
+</tr>
+<tr>
+<td align="left">delimiter</td>
+<td align="left">A string or a variable that contains one. The character that separates list elements. The default value is comma.</td>
+</tr>
+</table><p><strong>Usage</strong>  </p>
+
+<p>The following table shows examples of <em>listContainsNoCase</em> processing:</p>
+
+<table>
+<tr>
+<th align="left">Statement</th>
+<th align="left">Output</th>
+</tr>
+<tr>
+<td align="left">jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'og')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'og', '.')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'OG')</td>
+<td align="left">2</td>
+</tr>
+<tr>
+<td align="left">jList.listContainsNoCase('cat.dog.mouse.rabbit.dog', 'Rab', '.')</td>
+<td align="left">4</td>
+</tr>
+<tr>
+<td align="left">jList.listContains('cat,dog,mouse,rabbit,dog', 'tr')</td>
+<td align="left">0</td>
+</tr>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/ku4rP">http://jsfiddle.net/davidwaterston/ku4rP</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listDeleteAt</h2>
 
@@ -386,7 +546,11 @@ The following table shows examples of <em>listDeleteAt</em> processing:</p>
 <td align="left">jList.listDeleteAt('cat-dog-mouse',3,'-')</td>
 <td align="left">cat-dog</td>
 </tr>
-</table><hr><p><a name="listfind"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/j6pEP">http://jsfiddle.net/davidwaterston/j6pEP</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listFind</h2>
 
@@ -450,7 +614,11 @@ The index of the first list element that contains <em>value</em>, with matching 
 <td align="left">jList.listFind('5-4-3-2-1',4,'-')</td>
 <td align="left">2</td>
 </tr>
-</table><hr><p><a name="listfindnocase"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/LAfBn">http://jsfiddle.net/davidwaterston/LAfBn</a></p>
+
+<hr><p><a></a></p>
 
 <h2>listFindNoCase</h2>
 
@@ -514,7 +682,11 @@ The index of the first list element that contains <em>value</em>, with matching 
 <td align="left">jList.listFindNoCase('5-4-3-2-1',4,'-')</td>
 <td align="left">2</td>
 </tr>
-</table><hr><p><a name="listfirst"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/TXt2T">http://jsfiddle.net/davidwaterston/TXt2T</a></p>
+
+<hr><p><a></a></p>
 
 <h2>listFirst</h2>
 
@@ -574,7 +746,11 @@ The first element of a list. If the list is empty, returns an empty string.  </p
 <td align="left">jList.listFirst('5-4-3-2-1','-')</td>
 <td align="left">5</td>
 </tr>
-</table><hr><p><a name="listgetat"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/FEQWc">http://jsfiddle.net/davidwaterston/FEQWc</a> </p>
+
+<hr><p><a></a></p>
 
 <h2>listGetAt</h2>
 
@@ -634,7 +810,11 @@ Value of the list element at position <em>position</em>. </p>
 <td align="left">jList.listGetAt('5-4-3-2-1',5,'-')</td>
 <td align="left">1</td>
 </tr>
-</table><hr><p><a name="listinsertat"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/7khW6">http://jsfiddle.net/davidwaterston/7khW6</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listInsertAt</h2>
 
@@ -698,7 +878,11 @@ A copy of the <em>list</em>, with <em>value</em> inserted at the specified <em>p
 <td align="left">jList.listInsertAt('5-4-3-2-1',5,'999','-')</td>
 <td align="left">'5-4-3-2-999-1'</td>
 </tr>
-</table><hr><p><a name="listlast"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/9D26p">http://jsfiddle.net/davidwaterston/9D26p</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listLast</h2>
 
@@ -750,7 +934,11 @@ The last element of the <em>list</em>.</p>
 <td align="left">jList.listLast('Cat-Dog--Mouse','-')</td>
 <td align="left">'Mouse'</td>
 </tr>
-</table><hr><p><a name="listlen"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/BbLD8">http://jsfiddle.net/davidwaterston/BbLD8</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listLen</h2>
 
@@ -802,7 +990,11 @@ The number of elements in a list as an integer.</p>
 <td align="left">jList.listLen('Cat-Dog--Mouse','-')</td>
 <td align="left">4</td>
 </tr>
-</table><hr><p><a name="listprepend"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/Uz4P2">http://jsfiddle.net/davidwaterston/Uz4P2</a> </p>
+
+<hr><p><a></a></p>
 
 <h2>listPrepend</h2>
 
@@ -862,7 +1054,11 @@ A copy of the <em>list</em>, with <em>value</em> inserted at the first position.
 <td align="left">jList.listPrepend('','Rabbit','-')</td>
 <td align="left">'Rabbit'</td>
 </tr>
-</table><hr><p><a name="listqualify"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/n8AXz">http://jsfiddle.net/davidwaterston/n8AXz</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listQualify</h2>
 
@@ -918,7 +1114,11 @@ A copy of the <em>list</em>, with <em>qualifier</em> before and after each eleme
 <td align="left">jList.listQualify('Cat-Dog--Mouse','$','-')</td>
 <td align="left">'$Cat$-$Dog$-$$-$Mouse$'</td>
 </tr>
-</table><hr><p><a name="listremoveduplicates"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/ArLh9">http://jsfiddle.net/davidwaterston/ArLh9</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listRemoveDuplicates</h2>
 
@@ -978,7 +1178,11 @@ A copy of the <em>list</em>, with duplicate elements removed.</p>
 <td align="left">jList.listRemoveDuplicates('12,3,4,1,12,4,6')</td>
 <td align="left">'12,3,4,1,6'</td>
 </tr>
-</table><hr><p><a name="listremoveduplicatesnocase"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/qHvHg">http://jsfiddle.net/davidwaterston/qHvHg</a> </p>
+
+<hr><p><a></a></p>
 
 <h2>listRemoveDuplicatesNoCase</h2>
 
@@ -1042,7 +1246,11 @@ A copy of the <em>list</em>, with duplicate elements removed.</p>
 <td align="left">jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit')</td>
 <td align="left">'cat,dog,rabbit'</td>
 </tr>
-</table><hr><p><a name="listrest"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/8NpEY">http://jsfiddle.net/davidwaterston/8NpEY</a></p>
+
+<hr><p><a></a></p>
 
 <h2>listRest</h2>
 
@@ -1094,7 +1302,11 @@ A copy of <em>list</em>, without the first element. If <em>list</em> has one ele
 <td align="left">jList.listRest('Cat-Dog--Mouse','-')</td>
 <td align="left">'Dog--Mouse'</td>
 </tr>
-</table><hr><p><a name="listreverse"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/Q6Hh4">http://jsfiddle.net/davidwaterston/Q6Hh4</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listReverse</h2>
 
@@ -1146,7 +1358,11 @@ A copy of <em>list</em>, with the order of the elements reversed.  </p>
 <td align="left">jList.listReverse('Cat-Dog--Mouse','-')</td>
 <td align="left">'Mouse--Dog-Cat'</td>
 </tr>
-</table><hr><p><a name="listsetat"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/vsmXu">http://jsfiddle.net/davidwaterston/vsmXu</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listSetAt</h2>
 
@@ -1206,7 +1422,11 @@ A copy of <em>list</em>, with a new <em>value</em> assigned to the element at a 
 <td align="left">jList.listSetAt('Cat-Dog--Mouse',3,'Hamster','-')</td>
 <td align="left">'Cat-Dog-Hamster-Mouse'</td>
 </tr>
-</table><hr><p><a name="listsort"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/CTN2w">http://jsfiddle.net/davidwaterston/CTN2w</a> </p>
+
+<hr><p><a></a></p>
 
 <h2>listSort</h2>
 
@@ -1282,7 +1502,11 @@ A copy of a <em>list</em>, sorted.</p>
 <td align="left">jList.listSort('12,3,4,1,55,5,6','numeric','asc')</td>
 <td align="left">'1,3,4,5,6,12,55'</td>
 </tr>
-</table><hr><p><a name="listvaluecount"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/ff2zy">http://jsfiddle.net/davidwaterston/ff2zy</a></p>
+
+<hr><p><a></a></p>
 
 <h2>listValueCount</h2>
 
@@ -1358,7 +1582,11 @@ The number of instances of <em>value</em> in the list.</p>
 <td align="left">jList.listValueCount('1,2,3,1,2,3', '3')</td>
 <td align="left">2</td>
 </tr>
-</table><hr><p><a name="listvaluecountnocase"></a></p>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/WPyED">http://jsfiddle.net/davidwaterston/WPyED</a>  </p>
+
+<hr><p><a></a></p>
 
 <h2>listValueCountNoCase</h2>
 
@@ -1434,13 +1662,17 @@ The number of instances of <em>value</em> in the list.</p>
 <td align="left">jList.listValueCountNoCase('1,2,3,1,2,3', '3')</td>
 <td align="left">2</td>
 </tr>
-</table><hr><h1>jsFiddle</h1>
+</table><p><strong>jsFiddle</strong></p>
+
+<p><a href="http://jsfiddle.net/davidwaterston/4gVnX">http://jsfiddle.net/davidwaterston/4gVnX</a></p>
+
+<hr><h1>jsFiddle</h1>
 
 <p>In addition to the examples included in the file <em>jlist-test.htm</em>, all functions are available in <em>jsFiddle</em> for ad-hoc testing:  </p>
 
 <p><a href="http://jsfiddle.net/user/davidwaterston/fiddles">Full list of <em>fiddles</em></a>  </p>
 
-<p><a href="http://jsfiddle.net/davidwaterston/KDNUf">listAppend</a><br><a href="http://jsfiddle.net/davidwaterston/uvvHF">listChangeDelims</a><br><a href="http://jsfiddle.net/davidwaterston/j6pEP">listDeleteAt</a><br><a href="http://jsfiddle.net/davidwaterston/LAfBn">listFind</a><br><a href="http://jsfiddle.net/davidwaterston/TXt2T">listFindNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/FEQWc">listFirst</a><br><a href="http://jsfiddle.net/davidwaterston/7khW6">listGetAt</a><br><a href="http://jsfiddle.net/davidwaterston/9D26p">listInsertAt</a><br><a href="http://jsfiddle.net/davidwaterston/BbLD8">listLast</a><br><a href="http://jsfiddle.net/davidwaterston/Uz4P2">listLen</a><br><a href="http://jsfiddle.net/davidwaterston/n8AXz">listPrepend</a><br><a href="http://jsfiddle.net/davidwaterston/ArLh9">listQualify</a><br><a href="http://jsfiddle.net/davidwaterston/qHvHg">listRemoveDuplicates</a><br><a href="http://jsfiddle.net/davidwaterston/8NpEY">listRemoveDuplicatesNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/Q6Hh4">listRest</a><br><a href="http://jsfiddle.net/davidwaterston/vsmXu">listReverse</a><br><a href="http://jsfiddle.net/davidwaterston/CTN2w">listSetAt</a><br><a href="http://jsfiddle.net/davidwaterston/ff2zy">listSort</a><br><a href="http://jsfiddle.net/davidwaterston/WPyED">listValueCount</a><br><a href="http://jsfiddle.net/davidwaterston/4gVnX">listValueCountNoCase</a>  </p>
+<p><a href="http://jsfiddle.net/davidwaterston/KDNUf">listAppend</a><br><a href="http://jsfiddle.net/davidwaterston/uvvHF">listChangeDelims</a><br><a href="http://jsfiddle.net/davidwaterston/mjJ2n">listContains</a><br><a href="http://jsfiddle.net/davidwaterston/ku4rP">listContainsNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/j6pEP">listDeleteAt</a><br><a href="http://jsfiddle.net/davidwaterston/LAfBn">listFind</a><br><a href="http://jsfiddle.net/davidwaterston/TXt2T">listFindNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/FEQWc">listFirst</a><br><a href="http://jsfiddle.net/davidwaterston/7khW6">listGetAt</a><br><a href="http://jsfiddle.net/davidwaterston/9D26p">listInsertAt</a><br><a href="http://jsfiddle.net/davidwaterston/BbLD8">listLast</a><br><a href="http://jsfiddle.net/davidwaterston/Uz4P2">listLen</a><br><a href="http://jsfiddle.net/davidwaterston/n8AXz">listPrepend</a><br><a href="http://jsfiddle.net/davidwaterston/ArLh9">listQualify</a><br><a href="http://jsfiddle.net/davidwaterston/qHvHg">listRemoveDuplicates</a><br><a href="http://jsfiddle.net/davidwaterston/8NpEY">listRemoveDuplicatesNoCase</a><br><a href="http://jsfiddle.net/davidwaterston/Q6Hh4">listRest</a><br><a href="http://jsfiddle.net/davidwaterston/vsmXu">listReverse</a><br><a href="http://jsfiddle.net/davidwaterston/CTN2w">listSetAt</a><br><a href="http://jsfiddle.net/davidwaterston/ff2zy">listSort</a><br><a href="http://jsfiddle.net/davidwaterston/WPyED">listValueCount</a><br><a href="http://jsfiddle.net/davidwaterston/4gVnX">listValueCountNoCase</a>  </p>
 
 <h1>Version History</h1>
 
@@ -1451,9 +1683,14 @@ The number of instances of <em>value</em> in the list.</p>
 <th align="left">Details</th>
 </tr>
 <tr>
+<td align="left">1.5.0</td>
+<td align="left">10th September, 2012</td>
+<td align="left">Added two new functions - <em><a href="#listContains">listContains</a></em>  and <em><a href="#listContainsNoCase">listContainsNoCase</a></em>.</td>
+</tr>
+<tr>
 <td align="left">1.4.1</td>
 <td align="left">8th September, 2012</td>
-<td align="left">Bug fix to listFind (and indirectly listFindNoCase) to resolve problem with older (pre-9) versions of Internet Explorer.</td>
+<td align="left">Bug fix to <em><a href="#listFind">listFind</a></em> (and indirectly <em><a href="#listFindNoCase">listFindNoCase</a></em> to resolve a problem with older (pre-9) versions of Internet Explorer.</td>
 </tr>
 <tr>
 <td align="left">1.4.0</td>
@@ -1463,17 +1700,17 @@ The number of instances of <em>value</em> in the list.</p>
 <tr>
 <td align="left">1.3.0</td>
 <td align="left">16th June, 2012</td>
-<td align="left">Added three new functions - <em><a href="#listchangedelims">listChangeDelims</a></em>, <em><a href="#listvaluecount">listValueCount</a></em> and <em><a href="#listvaluecountnocase">listValueCountNoCase</a></em>.</td>
+<td align="left">Added three new functions - <em><a href="#listChangeDelims">listChangeDelims</a></em>, <em><a href="#listValueCount">listValueCount</a></em> and <em><a href="#listValueCountNoCase">listValueCountNoCase</a></em>.</td>
 </tr>
 <tr>
 <td align="left">1.2.0</td>
 <td align="left">21st May, 2012</td>
-<td align="left">Minor changes to <em><a href="#listremoveduplicates">listRemoveDuplicates</a></em> and <em><a href="#listremoveduplicatesnocase">listRemoveDuplicatesNoCase</a></em> to improve performance with larger lists (100,000+ elements).</td>
+<td align="left">Minor changes to <em><a href="#listRemoveDuplicates">listRemoveDuplicates</a></em> and <em><a href="#listRemoveDuplicatesNoCase">listRemoveDuplicatesNoCase</a></em> to improve performance with larger lists (100,000+ elements).</td>
 </tr>
 <tr>
 <td align="left">1.1.0</td>
 <td align="left">18th May, 2012</td>
-<td align="left">Added two new functions - <em><a href="#listremoveduplicates">listRemoveDuplicates</a></em> and <em><a href="#listremoveduplicatesnocase">listRemoveDuplicatesNoCase</a></em>.</td>
+<td align="left">Added two new functions - <em><a href="#listRemoveDuplicates">listRemoveDuplicates</a></em> and <em><a href="#listRemoveDuplicatesNoCase">listRemoveDuplicatesNoCase</a></em>.</td>
 </tr>
 <tr>
 <td align="left"> </td>
@@ -1490,7 +1727,9 @@ The number of instances of <em>value</em> in the list.</p>
 <td align="left">15th May, 2012</td>
 <td align="left">Initial release.</td>
 </tr>
-</table>
+</table><h1>Future Plans</h1>
+
+<p>Current and planned work for jList is public and detailed in <a href="https://trello.com/board/jlist/504b80ff3a6c80626f306215">Trello</a>.</p>
       </section>
     </div>
 
