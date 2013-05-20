@@ -1,9 +1,11 @@
 /*
     Title: jlist.js
-    Version: 1.5.0 (Semantic versioning: http://semver.org)
-    Last update: 10th September, 2012
+    Version: 1.6.0 (Semantic versioning: http://semver.org)
+    Last update: 31st May, 2013
     Written by: David Waterston (david@davidwaterston.com)
     Github repository and documentation: http://davidwaterston.github.com/jlist
+    Forked by: Chris Tsongas (chris.tsongas@bitmojo.com)
+    Github repository and documentation: http://github.com/tsongas/jlist
 
     Description:
     A small, lightweight library that adds list handling functions to Javascript.
@@ -64,6 +66,38 @@ var jList = (function () {
         },
 
 
+        listChangeDelims : function (list, new_delimiter, delimiter) {
+            if (list === undefined || new_delimiter === undefined) {
+                throw {name: "Error", message: "Missing parameter: list and new_delimiter must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+            var re = new RegExp(quoteString(delimiter), "g");
+
+            return list.replace(re, new_delimiter);
+        },
+
+
+        listConcatenate : function (list1, list2, delimiter) {
+            if (list1 === undefined || list2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list1 and list2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            if (list1 === "" && list2 === "") {
+                return "";
+            }
+            else if (list1 !== "" && list2 !== "") {
+                return list1 + delimiter + list2;
+            }
+            else if (list1 !== "") {
+                return list1;
+            }
+            else {
+                return list2;
+            }
+        },
+
+
         listContains : function (list, substring, delimiter) {
             if (list === undefined || substring === undefined) {
                 throw {name: "Error", message: "Missing parameter: list and substring must be provided"};
@@ -96,17 +130,6 @@ var jList = (function () {
         },
 
 
-        listChangeDelims : function (list, new_delimiter, delimiter) {
-            if (list === undefined || new_delimiter === undefined) {
-                throw {name: "Error", message: "Missing parameter: list and new_delimiter must be provided"};
-            }
-            delimiter = (delimiter === undefined) ? "," : delimiter;
-            var re = new RegExp(quoteString(delimiter), "g");
-
-            return list.replace(re, new_delimiter);
-        },
-
-
         listDeleteAt : function (list, position, delimiter) {
             if (list === undefined || position === undefined) {
                 throw {name: "Error", message: "Missing parameter: list and position must be provided"};
@@ -120,6 +143,40 @@ var jList = (function () {
                 return arr.join(delimiter);
             }
             return list;
+        },
+
+
+        listDifference : function (list1, list2, delimiter) {
+            if (list1 === undefined || list2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list1 and list2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr1 = list1.split(delimiter),
+                arr2 = list2.split(delimiter),
+                i,
+                id,
+                len1 = arr1.length,
+                len2 = arr2.length,
+                out = []
+
+            if (list1 !== "") {
+                for (i = 0; i < len1; i += 1) {
+                    id = arr1[i];
+                    if (!this.listFind(list2, id, delimiter)) {
+                        out.push(id);
+                    }
+                }
+            }
+            if (list2 !== "") {
+                for (i = 0; i < len2; i += 1) {
+                    id = arr2[i];
+                    if (!this.listFind(list1, id, delimiter)) {
+                        out.push(id);
+                    }
+                }
+            }
+            return this.listRemoveDuplicates(out.join(delimiter), delimiter);
         },
 
 
@@ -206,6 +263,28 @@ var jList = (function () {
         },
 
 
+        listIntersection : function (list1, list2, delimiter) {
+            if (list1 === undefined || list2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list1 and list2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr = list1.split(delimiter),
+                i,
+                id,
+                len = arr.length,
+                out = []
+
+            for (i = 0; i < len; i += 1) {
+                id = arr[i];
+                if (this.listFind(list2, id, delimiter)) {
+                    out.push(id);
+                }
+            }
+            return this.listRemoveDuplicates(out.join(delimiter), delimiter);
+        },
+
+
         listLast : function (list, delimiter) {
             if (list === undefined) {
                 throw {name: "Error", message: "Missing parameter: list must be provided"};
@@ -262,6 +341,50 @@ var jList = (function () {
         },
 
 
+        listRemove : function (list1, list2, delimiter) {
+            if (list1 === undefined || list2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list1 and list2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr1 = list1.split(delimiter),
+                i,
+                id,
+                len1 = arr1.length,
+                out = []
+
+            for (i = 0; i < len1; i += 1) {
+                id = arr1[i];
+                if (!this.listFind(list2, id, delimiter)) {
+                    out.push(id);
+                }
+            }
+            return out.join(delimiter);
+        },
+
+
+        listRemoveNoCase : function (list1, list2, delimiter) {
+            if (list1 === undefined || list2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list1 and list2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr1 = list1.split(delimiter),
+                i,
+                id,
+                len1 = arr1.length,
+                out = []
+
+            for (i = 0; i < len1; i += 1) {
+                id = arr1[i];
+                if (!this.listFindNoCase(list2, id, delimiter)) {
+                    out.push(id);
+                }
+            }
+            return out.join(delimiter);
+        },
+
+
         listRemoveDuplicates : function (list, delimiter) {
             if (list === undefined) {
                 throw {name: "Error", message: "Missing parameter: list must be provided"};
@@ -309,6 +432,56 @@ var jList = (function () {
                 }
             }
 
+            return out.join(delimiter);
+        },
+
+
+        listReplace : function (list, value1, value2, delimiter) {
+            if (list === undefined || value1 === undefined || value2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list, value1 and value2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr = list.split(delimiter),
+                i,
+                id,
+                len = arr.length,
+                out = []
+
+            for (i = 0; i < len; i += 1) {
+                id = arr[i];
+                if (id === value1) {
+                    out.push(value2);
+                }
+                else {
+                    out.push(id);
+                }
+            }
+            return out.join(delimiter);
+        },
+
+
+        listReplaceNoCase : function (list, value1, value2, delimiter) {
+            if (list === undefined || value1 === undefined || value2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list, value1 and value2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            var arr = list.split(delimiter),
+                i,
+                id,
+                len = arr.length,
+                out = []
+
+            for (i = 0; i < len; i += 1) {
+                id = arr[i];
+                if (id.toUpperCase() === value1.toUpperCase()) {
+                    out.push(value2);
+                }
+                else {
+                    out.push(id);
+                }
+            }
             return out.join(delimiter);
         },
 
@@ -386,6 +559,16 @@ var jList = (function () {
             }
 
             return arr.join(delimiter);
+        },
+
+
+        listUnion : function (list1, list2, delimiter) {
+            if (list1 === undefined || list2 === undefined) {
+                throw {name: "Error", message: "Missing parameter: list1 and list2 must be provided"};
+            }
+            delimiter = (delimiter === undefined) ? "," : delimiter;
+
+            return this.listRemoveDuplicates(this.listConcatenate(list1, list2, delimiter), delimiter)
         },
 
 

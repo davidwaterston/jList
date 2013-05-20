@@ -1,5 +1,5 @@
 # **jList** 
-v1.5.0
+v1.6.0
 
 ##What does it do?
 *jList* is a collection of functions that bring *ColdFusion*-style list handling to Javascript.  
@@ -43,12 +43,14 @@ A configuration file for the project for users of [CodeKit](http://incident57.co
   
     
 
-For this release there are 22 functions included. They are, in alphabetical order:
+For this release there are 30 functions included. They are, in alphabetical order:
 
 - **[listAppend](#listAppend)**  
 Concatenates an element to a list.  
 - **[listChangeDelims](#listChangeDelims)**   
 Changes a list delimiter.
+- **[listConcatenate](#listConcatenate)**   
+Adds one list to the end of another.
 - **[listContains](#listContains)**  
 Determines the index of the first list element that contains a specified substring.  
 The search is case-sensitive.
@@ -57,6 +59,8 @@ Determines the index of the first list element that contains a specified substri
 The search is not case-sensitive.
 - **[listDeleteAt](#listDeleteAt)**  
 Deletes an element from a list.  
+- **[listDifference](#listDifference)**  
+Gets the elements that are unique to two different lists.  
 - **[listFind](#listFind)**  
 Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.  
 - **[listFindNoCase](#listFindNoCase)**  
@@ -67,6 +71,8 @@ Gets the first element of a list.
 Gets a list element at a specified position.
 - **[listInsertAt](#listInsertAt)**  
 Inserts an element into a list.
+- **[listIntersection](#listIntersection)**  
+Gets the elements that are common to two different lists.
 - **[listLast](#listLast)**  
 Gets the last element of a list.
 - **[listLen](#listLen)**  
@@ -75,10 +81,18 @@ Determines the number of elements in a list.
 Inserts an element at the beginning of a list.
 - **[listQualify](#listQualify)**  
 Inserts a string at the beginning and end of list elements.
+- **[listRemove](#listRemove)**  
+Removes elements in one list from another list. Matching is case-sensitive.
+- **[listRemoveNoCase](#listRemoveNoCase)**  
+Removes elements in one list from another list. Matching is not case-sensitive.
 - **[listRemoveDuplicates](#listRemoveDuplicates)**  
 Removes duplicate elements from a list. Matching is case-sensitive.
 - **[listRemoveDuplicatesNoCase](#listRemoveDuplicatesNoCase)**  
 Removes duplicate elements from a list. Matching is not case-sensitive.
+- **[listReplace](#listReplace)**  
+Replaces instances of one element in a list with another element. Matching is case-sensitive.
+- **[listReplaceNoCase](#listReplaceNoCase)**  
+Replaces instances of one element in a list with another element. Matching is not case-sensitive.
 - **[listRest](#listRest)**  
 Gets a list, without its first element.
 - **[listReverse](#listReverse)**  
@@ -87,6 +101,8 @@ Reverses the order of elements in a list.
 Replaces the contents of a list element.
 - **[listSort](#listSort)**  
 Sorts list elements according to a sort type and sort order.
+- **[listUnion](#listUnion)**  
+Gets the elements that two lists have in common.
 - **[listValueCount](#listValueCount)**   
 Counts the instances of a specified value in a list. The search is case-sensitive.    
 - **[listValueCountNoCase](#listValueCountNoCase)**    
