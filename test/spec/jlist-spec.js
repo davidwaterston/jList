@@ -3,61 +3,69 @@ describe( 'jList library v1.5.0', function () {
   describe('Public interfaces', function () {
 
     it('01. Is defined as an object', function () {
-        expect( typeof jList ).toEqual('object');
+      expect( typeof jList ).toEqual('object');
     });
 
     var functionList = [
         'listAppend',
+        'listChangeDelims',
+        'listConcatenate',
         'listContains',
         'listContainsNoCase',
-        'listChangeDelims',
         'listDeleteAt',
+        // 'listDifference',
         'listFind',
         'listFindNoCase',
         'listFirst',
         'listGetAt',
         'listInsertAt',
+        // 'listIntersection',
         'listLast',
         'listLen',
         'listPrepend',
         'listQualify',
+        // 'listRemove',
+        // 'listRemoveNoCase',
         'listRemoveDuplicates',
         'listRemoveDuplicatesNoCase',
+        // 'listReplace',
+        // 'listReplaceNoCase',
         'listRest',
         'listReverse',
         'listSetAt',
         'listSort',
+        // 'listUnion',
         'listValueCount',
         'listValueCountNoCase'
     ];
 
     var functionName,
-          i,
-          len = functionList.length,
-          testNo = 1;
+        i,
+        len = functionList.length,
+        testNo = 1;
 
-     for ( i=0; i < len; i += 1 ) {
+    for ( i=0; i < len; i += 1 ) {
 
-        testNo++;
-        testNo = ('0' + testNo).slice (-2);
-        functionName = functionList[i];
+      testNo++;
+      testNo = ('0' + testNo).slice (-2);
+      functionName = functionList[i];
 
-        it(testNo + '. Has a public function named ' + functionName, function () {
-            expect( typeof( jList[functionName] ) ).toBe('function');
-        });   
+      it(testNo + '. Has a public function named ' + functionName, function () {
+        expect( typeof( jList[functionName] ) ).toBe('function');
+      });   
              
     } 
 
     it(testNo + '. Does not allow public access to the private function named numberCompareAsc', function () {
-        expect( jList.numberCompareAsc ).not.toBeDefined();
+      expect( jList.numberCompareAsc ).not.toBeDefined();
     });
 
     it(testNo + '. Does not allow public access to the private function named numberCompareDesc', function () {
-        expect( jList.numberCompareDesc ).not.toBeDefined();
+      expect( jList.numberCompareDesc ).not.toBeDefined();
     });
 
     it(testNo + '. Does not allow public access to the private function named quoteString', function () {
-        expect( jList.quoteString ).not.toBeDefined();
+      expect( jList.quoteString ).not.toBeDefined();
     });
 
   });
@@ -73,7 +81,7 @@ describe( 'jList library v1.5.0', function () {
         expect( function(){ jList.listAppend('cat,dog'); } ).toThrow('Missing parameter: list and value must be provided');  
     }); 
 
-    it ('03. Concatenates an element to an empty list that uses the default delimiter', function () {  
+    it ('03. Concatenates an element to an empty list using the default delimiter', function () {  
         expect( jList.listAppend('', 'rabbit') ).toEqual('rabbit');  
     }); 
 
@@ -95,6 +103,92 @@ describe( 'jList library v1.5.0', function () {
 
     it ('08. Concatenates an element to a list that uses a custom delimiter and is populated with multiple elements', function () {  
         expect( jList.listAppend('cat~dog', 'rabbit', '~') ).toEqual('cat~dog~rabbit');  
+    }); 
+
+    it ('09. Concatenates an empty element to a list using the default delimiter', function () {  
+        expect( jList.listAppend('rabbit', '') ).toEqual('rabbit,');  
+    }); 
+
+  });  
+
+
+    describe( 'listChangeDelims: Changes a list delimiter.', function () {  
+
+        it ('01. Throws an error when no parameters are passed in', function () {  
+            expect( function(){ jList.listChangeDelims(); } ).toThrow('Missing parameter: list and new_delimiter must be provided');  
+        });
+
+        it ('02. Throws an error when only 1 parameter is passed in', function () {  
+            expect( function(){ jList.listChangeDelims('cat,dog'); } ).toThrow('Missing parameter: list and new_delimiter must be provided');  
+        });
+
+        it ('03. Makes no change to a list which has only one element and the default delimiter', function () {  
+            expect( jList.listChangeDelims('cat', '=') ).toEqual('cat');  
+        });
+
+        it ('04. Makes no change to a list which has only one element and a custom delimiter', function () {  
+            expect( jList.listChangeDelims('cat','=','!') ).toEqual('cat');  
+        });
+
+        it ('05. Makes no changes when the specified delimiter is not used in the list', function () {  
+            expect( jList.listChangeDelims('cat,dog,mouse,rabbit,monkey','-','!') ).toEqual('cat,dog,mouse,rabbit,monkey');  
+        });
+
+        it ('06. Changes the list delimiter from the default value', function () {  
+            expect( jList.listChangeDelims('cat,dog,mouse,rabbit,monkey', '=') ).toEqual('cat=dog=mouse=rabbit=monkey');  
+        });
+
+        it ('07. Changes the list delimiter from a custom value', function () {  
+            expect( jList.listChangeDelims('cat=dog=mouse=rabbit=monkey','!','=') ).toEqual('cat!dog!mouse!rabbit!monkey');  
+        });
+
+    });
+
+
+  describe( 'listConcatenate: Adds one list to the end of another.', function () {  
+
+    it ('01. Throws an error when no parameters are passed in', function () {  
+        expect( function(){ jList.listConcatenate(); } ).toThrow('Missing parameter: list1 and list2 must be provided');  
+    }); 
+
+    it ('02. Throws an error when only 1 parameter is passed in', function () {  
+        expect( function(){ jList.listConcatenate('cat,dog'); } ).toThrow('Missing parameter: list1 and list2 must be provided');  
+    }); 
+
+    it ('03. Concatenates two empty lists', function () {  
+        expect( jList.listConcatenate('', '') ).toEqual('');  
+    }); 
+
+    it ('04. Concatenates a list with multiple elements that uses the default delimiter to an empty list', function () {  
+        expect( jList.listConcatenate('', 'cat,dog') ).toEqual('cat,dog');  
+    }); 
+
+    it ('05. Concatenates an empty list to a list with multiple elements that uses the default delimiter', function () {  
+        expect( jList.listConcatenate('cat,dog', '') ).toEqual('cat,dog');  
+    }); 
+
+    it ('06. Concatenates two lists that have a single element', function () {  
+        expect( jList.listConcatenate('cat', 'rabbit') ).toEqual('cat,rabbit');  
+    }); 
+
+    it ('07. Concatenates a list with one element to a list that uses the default delimiter and has multiple elements', function () {  
+        expect( jList.listConcatenate('cat,dog', 'rabbit' ) ).toEqual('cat,dog,rabbit');  
+    }); 
+
+    it ('08. Concatenates a list that uses the default delimiter and has multiple elements to a list with one element', function () {  
+        expect( jList.listConcatenate('cat', 'dog,rabbit' ) ).toEqual('cat,dog,rabbit');  
+    }); 
+
+    it ('09. Concatenates a list that uses a custom delimiter to an empty list', function () {  
+        expect( jList.listConcatenate('', 'cat~dog', '~') ).toEqual('cat~dog');  
+    }); 
+
+    it ('10. Concatenates two lists populated with a single element using a custom delimiter', function () {  
+        expect( jList.listConcatenate('cat', 'rabbit', '~') ).toEqual('cat~rabbit');  
+    }); 
+
+    it ('11. Concatenates a list with one element to a list populated with multiple elements that uses a custom delimiter', function () {  
+        expect( jList.listConcatenate('cat~dog', 'rabbit', '~') ).toEqual('cat~dog~rabbit');  
     }); 
 
   });  
@@ -185,38 +279,6 @@ describe( 'jList library v1.5.0', function () {
 
         it ('10. Finds a matching element in a list that uses a custom delimiter despite a case mismatch', function () {  
             expect( jList.listContainsNoCase('cat!dog!mouse','SE','!') ).toEqual(3);  
-        }); 
-
-    });  
-
-describe( 'listChangeDelims: Changes a list delimiter.', function () {  
-
-        it ('01. Throws an error when no parameters are passed in', function () {  
-            expect( function(){ jList.listChangeDelims(); } ).toThrow('Missing parameter: list and new_delimiter must be provided');  
-        }); 
-
-        it ('02. Throws an error when only 1 parameter is passed in', function () {  
-            expect( function(){ jList.listChangeDelims('cat,dog'); } ).toThrow('Missing parameter: list and new_delimiter must be provided');  
-        }); 
-
-        it ('03. Makes no change to a list which has only one element and the default delimiter', function () {  
-            expect( jList.listChangeDelims('cat', '=') ).toEqual('cat');  
-        }); 
-
-        it ('04. Makes no change to a list which has only one element and a custom delimiter', function () {  
-            expect( jList.listChangeDelims('cat','=','!') ).toEqual('cat');  
-        }); 
-
-        it ('05. Makes no changes when the specified delimiter is not used in the list', function () {  
-            expect( jList.listChangeDelims('cat,dog,mouse,rabbit,monkey','-','!') ).toEqual('cat,dog,mouse,rabbit,monkey');  
-        }); 
-
-        it ('06. Changes the list delimiter from the default value', function () {  
-            expect( jList.listChangeDelims('cat,dog,mouse,rabbit,monkey', '=') ).toEqual('cat=dog=mouse=rabbit=monkey');  
-        }); 
-
-        it ('07. Changes the list delimiter from a custom value', function () {  
-            expect( jList.listChangeDelims('cat=dog=mouse=rabbit=monkey','!','=') ).toEqual('cat!dog!mouse!rabbit!monkey');  
         }); 
 
     });  

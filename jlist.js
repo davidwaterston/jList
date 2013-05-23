@@ -83,18 +83,7 @@ var jList = (function () {
             }
             delimiter = (delimiter === undefined) ? "," : delimiter;
 
-            if (list1 === "" && list2 === "") {
-                return "";
-            }
-            else if (list1 !== "" && list2 !== "") {
-                return list1 + delimiter + list2;
-            }
-            else if (list1 !== "") {
-                return list1;
-            }
-            else {
-                return list2;
-            }
+            return list1 + (list1 !== "" && list2 !== "" ? delimiter : "") + list2;
         },
 
 

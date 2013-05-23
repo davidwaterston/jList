@@ -209,9 +209,10 @@ The following table shows examples of *listAppend* processing:
 
 | Statement | Output |  
 | :-- | :-- |
-| jList.listAppend('elem1,elem2', 'rabbit' ) | elem1,elem2,rabbit |    
-| jList.listAppend('','elem1,elem2') | elem1,elem2 |      
-| jList.listAppend('cat-dog-mouse','hamster','-') | cat-dog-mouse-hamster |  
+| jList.listAppend('elem1,elem2', 'rabbit' ) | elem1,elem2,rabbit |
+| jList.listAppend('elem1,elem2','') | elem1,elem2, |
+| jList.listAppend('','elem1,elem2') | elem1,elem2 |
+| jList.listAppend('cat-dog-mouse','hamster','-') | cat-dog-mouse-hamster |
 
 **jsFiddle**
 
@@ -256,6 +257,47 @@ The following table shows examples of *listChangeDelims* processing:
 **jsFiddle**
 
 [http://jsfiddle.net/davidwaterston/uvvHF](http://jsfiddle.net/davidwaterston/uvvHF)
+
+---
+
+<a name="listConcatenate"></a>
+##listConcatenate  
+
+**Description**  
+Adds one list to the end of another.  
+
+**Availability**  
+v1.6
+
+**Function syntax**  
+listConcatenate(list1, list2 [, delimiter ])
+
+**Returns**  
+A new list, with *list2* concatenated to *list1*.
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list1 | A list or a variable that contains one. |   
+| list2 | A list or a variable that contains one. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**
+
+If both *list1* and *list2* are not empty, jList inserts a delimiter character between *list1* and *list2*.  
+The following table shows examples of *listConcatenate* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listConcatenate('elem1,elem2', 'rabbit,dog' ) | elem1,elem2,rabbit,dog |
+| jList.listConcatenate('elem1,elem2','') | elem1,elem2 |
+| jList.listConcatenate('','elem1,elem2') | elem1,elem2 |
+| jList.listConcatenate('cat-dog-mouse','hamster','-') | cat-dog-mouse-hamster |
+
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/KDNUf](http://jsfiddle.net/davidwaterston/KDNUf)
 
 ---
 
