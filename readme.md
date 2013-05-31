@@ -60,7 +60,7 @@ The search is not case-sensitive.
 - **[listDeleteAt](#listDeleteAt)**  
 Deletes an element from a list.  
 - **[listDifference](#listDifference)**  
-Gets the elements that are unique to two different lists.  
+Gets the elements that are unique to each of two different lists.  
 - **[listFind](#listFind)**  
 Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.  
 - **[listFindNoCase](#listFindNoCase)**  
@@ -420,6 +420,46 @@ The following table shows examples of *listDeleteAt* processing:
 **jsFiddle**
 
 [http://jsfiddle.net/davidwaterston/j6pEP](http://jsfiddle.net/davidwaterston/j6pEP)  
+
+---
+
+<a name="listDifference"></a>
+##listConcatenate  
+
+**Description**  
+Gets the elements that are unique to each of two different lists.  
+
+**Availability**  
+v1.6
+
+**Function syntax**  
+listDifference(list1, list2 [, delimiter ])
+
+**Returns**  
+A new list containing elements that are either in *list1* but not *list2*, or in *list2* but not *list1*.
+
+**Parameters**   
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list1 | A list or a variable that contains one. |   
+| list2 | A list or a variable that contains one. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**
+
+The following table shows examples of *listDifference* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listDifference('elem1,elem2', 'elem2,elem3' ) | elem1,elem3 |
+| jList.listDifference('','elem1,elem2') | elem1,elem2 |
+| jList.listDifference('elem1,elem2','') | elem1,elem2 |
+| jList.listDifference('cat-dog-mouse','cat-rabbit-dog-rabbit-hamster','-') | mouse-rabbit-hamster |
+
+**jsFiddle**
+
+[http://jsfiddle.net/davidwaterston/KDNUf](http://jsfiddle.net/davidwaterston/KDNUf)
 
 ---
 

@@ -13,7 +13,7 @@ describe( 'jList library v1.5.0', function () {
         'listContains',
         'listContainsNoCase',
         'listDeleteAt',
-        // 'listDifference',
+        'listDifference',
         'listFind',
         'listFindNoCase',
         'listFirst',
@@ -335,6 +335,67 @@ describe( 'jList library v1.5.0', function () {
         }); 
 
     });  
+
+
+  describe( 'listDifference: Gets the elements that are unique to each of two different lists.', function () {  
+
+    it ('01. Throws an error when no parameters are passed in', function () {  
+        expect( function(){ jList.listDifference(); } ).toThrow('Missing parameter: list1 and list2 must be provided');  
+    }); 
+
+    it ('02. Throws an error when only 1 parameter is passed in', function () {  
+        expect( function(){ jList.listDifference('cat,dog'); } ).toThrow('Missing parameter: list1 and list2 must be provided');  
+    }); 
+
+    it ('03. Gets the difference between two empty lists', function () {  
+        expect( jList.listDifference('', '') ).toEqual('');  
+    }); 
+
+    it ('04. Gets the difference between a list with multiple elements that uses the default delimiter and an empty list', function () {  
+        expect( jList.listDifference('', 'cat,dog') ).toEqual('cat,dog');  
+    }); 
+
+    it ('05. Gets the difference between an empty list and a list with multiple elements that uses the default delimiter', function () {  
+        expect( jList.listDifference('cat,dog', '') ).toEqual('cat,dog');  
+    }); 
+
+    it ('06. Gets the difference between two lists that have a single common element', function () {  
+        expect( jList.listDifference('cat', 'cat') ).toEqual('');  
+    }); 
+
+    it ('07. Gets the difference between two lists that have a single unique element', function () {  
+        expect( jList.listDifference('cat', 'rabbit') ).toEqual('cat,rabbit');  
+    }); 
+
+    it ('08. Gets the difference between a list with one element and a list that uses the default delimiter and has multiple elements', function () {  
+        expect( jList.listDifference('cat,dog', 'rabbit' ) ).toEqual('cat,dog,rabbit');  
+    }); 
+
+    it ('09. Gets the difference between a list that uses the default delimiter and has multiple elements and a list with one element', function () {  
+        expect( jList.listDifference('cat', 'dog,rabbit' ) ).toEqual('cat,dog,rabbit');  
+    }); 
+
+    it ('10. Gets the difference between a list with one element and a list that uses the default delimiter and has multiple elements', function () {  
+        expect( jList.listDifference('cat,dog,rabbit', 'rabbit,squirrel' ) ).toEqual('cat,dog,squirrel');  
+    }); 
+
+    it ('11. Gets the difference between a list that uses the default delimiter and has multiple elements and a list with one element', function () {  
+        expect( jList.listDifference('cat,dog', 'dog,rabbit,squirrel' ) ).toEqual('cat,rabbit,squirrel');  
+    }); 
+
+    it ('12. Gets the difference between a list that uses a custom delimiter and an empty list', function () {  
+        expect( jList.listDifference('', 'cat~dog', '~') ).toEqual('cat~dog');  
+    }); 
+
+    it ('13. Gets the difference between two lists populated with a single element using a custom delimiter', function () {  
+        expect( jList.listDifference('cat', 'rabbit', '~') ).toEqual('cat~rabbit');  
+    }); 
+
+    it ('14. Gets the difference between a list with one element and a list populated with multiple elements that uses a custom delimiter', function () {  
+        expect( jList.listDifference('cat~dog', 'rabbit', '~') ).toEqual('cat~dog~rabbit');  
+    }); 
+
+  });  
 
 
     describe( 'listFind: Determines the index of the first list element in which a specified value occurs. The search is case-sensitive.', function () {  
