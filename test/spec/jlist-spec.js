@@ -34,7 +34,7 @@ describe( 'jList library v1.5.0', function () {
       'listReverse',
       'listSetAt',
       'listSort',
-      // 'listUnion',
+      'listUnion',
       'listValueCount',
       'listValueCountNoCase'
     ];
@@ -1110,31 +1110,31 @@ describe( 'jList library v1.5.0', function () {
       expect( jList.listReplace('', '', '') ).toEqual('');
     }); 
 
-    it ('04. Replaces an empty element in an empty list with a non-empty element', function () {  
+    it ('05. Replaces an empty element in an empty list with a non-empty element', function () {  
       expect( jList.listReplace('', '', 'cat') ).toEqual('cat');
     }); 
 
-    it ('04. Replaces a non-empty element in a single-element list with an empty element', function () {  
+    it ('06. Replaces a non-empty element in a single-element list with an empty element', function () {  
       expect( jList.listReplace('cat', 'cat', '') ).toEqual('');
     }); 
 
-    it ('05. Replaces a non-empty element in a single-element list with a different non-empty element', function () {  
+    it ('07. Replaces a non-empty element in a single-element list with a different non-empty element', function () {  
       expect( jList.listReplace('cat', 'cat', 'dog') ).toEqual('dog');
     }); 
 
-    it ('05. Replaces a non-empty element in a multiple-element list with a different non-empty element', function () {  
+    it ('08. Replaces a non-empty element in a multiple-element list with a different non-empty element', function () {  
       expect( jList.listReplace('cat,dog', 'cat', 'mouse') ).toEqual('mouse,dog');
     }); 
 
-    it ('05. Replaces non-empty elements in a multiple-element list with a different non-empty element', function () {  
+    it ('09. Replaces non-empty elements in a multiple-element list with a different non-empty element', function () {  
       expect( jList.listReplace('cat,dog,cat,mouse', 'cat', 'squirrel') ).toEqual('squirrel,dog,squirrel,mouse');
     }); 
 
-    it ('06. Replaces nothing in a list with one element', function () {  
+    it ('10. Replaces nothing in a list with one element', function () {  
       expect( jList.listReplace('cat', 'mouse', 'squirrel') ).toEqual('cat');
     }); 
 
-    it ('06. Replaces nothing in a list with multiple elements', function () {  
+    it ('11. Replaces nothing in a list with multiple elements', function () {  
       expect( jList.listReplace('cat,dog,flea', 'mouse', 'squirrel') ).toEqual('cat,dog,flea');
     }); 
 
@@ -1142,15 +1142,15 @@ describe( 'jList library v1.5.0', function () {
       expect( jList.listReplace('cat~dog', 'dog', 'flea', '~') ).toEqual('cat~flea');
     }); 
 
-    it ('12. Replaces nothing in a list with a custom delimiter', function () {  
+    it ('13. Replaces nothing in a list with a custom delimiter', function () {  
       expect( jList.listReplace('cat~dog', 'Dog', 'flea', '~') ).toEqual('cat~dog');
     }); 
 
-    it ('13. Replaces an empty element in a list with a non-empty element', function () {  
+    it ('14. Replaces an empty element in a list with a non-empty element', function () {  
       expect( jList.listReplace('cat~', '', 'dog', '~') ).toEqual('cat~dog');
     }); 
 
-    it ('13. Replaces a non-empty element in a list with an empty element', function () {  
+    it ('15. Replaces a non-empty element in a list with an empty element', function () {  
       expect( jList.listReplace('cat~dog', 'dog', '', '~') ).toEqual('cat~');
     }); 
 
@@ -1175,31 +1175,31 @@ describe( 'jList library v1.5.0', function () {
       expect( jList.listReplaceNoCase('', '', '') ).toEqual('');
     }); 
 
-    it ('04. Replaces an empty element in an empty list with a non-empty element', function () {  
+    it ('05. Replaces an empty element in an empty list with a non-empty element', function () {  
       expect( jList.listReplaceNoCase('', '', 'cat') ).toEqual('cat');
     }); 
 
-    it ('04. Replaces a non-empty element in a single-element list with an empty element', function () {  
+    it ('06. Replaces a non-empty element in a single-element list with an empty element', function () {  
       expect( jList.listReplaceNoCase('cat', 'cat', '') ).toEqual('');
     }); 
 
-    it ('05. Replaces a non-empty element in a single-element list with a different non-empty element', function () {  
+    it ('07. Replaces a non-empty element in a single-element list with a different non-empty element', function () {  
       expect( jList.listReplaceNoCase('cat', 'cat', 'dog') ).toEqual('dog');
     }); 
 
-    it ('05. Replaces a non-empty element in a multiple-element list with a different non-empty element', function () {  
+    it ('08. Replaces a non-empty element in a multiple-element list with a different non-empty element', function () {  
       expect( jList.listReplaceNoCase('cat,dog', 'cat', 'mouse') ).toEqual('mouse,dog');
     }); 
 
-    it ('05. Replaces non-empty elements in a multiple-element list with a different non-empty element', function () {  
+    it ('09. Replaces non-empty elements in a multiple-element list with a different non-empty element', function () {  
       expect( jList.listReplaceNoCase('cat,dog,cat,mouse', 'cat', 'squirrel') ).toEqual('squirrel,dog,squirrel,mouse');
     }); 
 
-    it ('06. Replaces nothing in a list with one element', function () {  
+    it ('10. Replaces nothing in a list with one element', function () {  
       expect( jList.listReplaceNoCase('cat', 'mouse', 'squirrel') ).toEqual('cat');
     }); 
 
-    it ('06. Replaces nothing in a list with multiple elements', function () {  
+    it ('11. Replaces nothing in a list with multiple elements', function () {  
       expect( jList.listReplaceNoCase('cat,dog,flea', 'mouse', 'squirrel') ).toEqual('cat,dog,flea');
     }); 
 
@@ -1211,7 +1211,7 @@ describe( 'jList library v1.5.0', function () {
       expect( jList.listReplaceNoCase('cat~', '', 'dog', '~') ).toEqual('cat~dog');
     }); 
 
-    it ('13. Replaces a non-empty element in a list with an empty element', function () {  
+    it ('14. Replaces a non-empty element in a list with an empty element', function () {  
       expect( jList.listReplaceNoCase('cat~dog', 'dog', '', '~') ).toEqual('cat~');
     }); 
 
@@ -1462,6 +1462,67 @@ describe( 'jList library v1.5.0', function () {
         }); 
 
     });
+
+
+  describe( 'listUnion: Combines the elements from two different lists.', function () {  
+
+    it ('01. Throws an error when no parameters are passed in', function () {  
+      expect( function(){ jList.listUnion(); } ).toThrow('Missing parameter: list1 and list2 must be provided');
+    }); 
+
+    it ('02. Throws an error when only 1 parameter is passed in', function () {  
+      expect( function(){ jList.listUnion('cat,dog'); } ).toThrow('Missing parameter: list1 and list2 must be provided');
+    }); 
+
+    it ('03. Gets the union of two empty lists', function () {  
+      expect( jList.listUnion('', '') ).toEqual('');
+    }); 
+
+    it ('04. Gets the union of a list with multiple elements that uses the default delimiter and an empty list', function () {  
+      expect( jList.listUnion('cat,dog', '') ).toEqual('cat,dog');
+    }); 
+
+    it ('05. Gets the union of an empty list and a list with multiple elements that uses the default delimiter', function () {  
+      expect( jList.listUnion('', 'cat,dog') ).toEqual('cat,dog');
+    }); 
+
+    it ('06. Gets the union of two lists that have a single common element', function () {  
+      expect( jList.listUnion('cat', 'cat') ).toEqual('cat');
+    }); 
+
+    it ('07. Gets the union of two lists that have a single unique element', function () {  
+      expect( jList.listUnion('cat', 'rabbit') ).toEqual('cat,rabbit');
+    }); 
+
+    it ('08. Gets the union of a list with one common element and a list that uses the default delimiter and has multiple elements', function () {  
+      expect( jList.listUnion('cat', 'cat,dog,rabbit' ) ).toEqual('cat,dog,rabbit');
+    }); 
+
+    it ('09. Gets the union of a list that uses the default delimiter and has multiple elements and a list with one common element', function () {  
+      expect( jList.listUnion('cat,dog,rabbit', 'rabbit' ) ).toEqual('cat,dog,rabbit');
+    }); 
+
+    it ('10. Gets the union of a list with two elements and a list that uses the default delimiter and has two common elements', function () {  
+      expect( jList.listUnion('cat,dog', 'cat,dog,rabbit,squirrel' ) ).toEqual('cat,dog,rabbit,squirrel');
+    }); 
+
+    it ('11. Gets the union of a list that uses the default delimiter and has two common elements and a list with two elements', function () {  
+      expect( jList.listUnion('cat,dog,rabbit,squirrel', 'rabbit,squirrel' ) ).toEqual('cat,dog,rabbit,squirrel');
+    }); 
+
+    it ('12. Gets the union of a list that uses a custom delimiter and an empty list', function () {  
+      expect( jList.listUnion('', 'cat~dog', '~') ).toEqual('cat~dog');
+    }); 
+
+    it ('13. Gets the union of two lists populated with a single element using a custom delimiter', function () {  
+      expect( jList.listUnion('cat', 'cat', '~') ).toEqual('cat');
+    }); 
+
+    it ('14. Gets the union of two lists with multiple repeating common elements that use a custom delimiter', function () {  
+      expect( jList.listUnion('cat~dog~rabbit~dog', 'rabbit~cat~dog~rabbit~rabbit', '~') ).toEqual('cat~dog~rabbit');
+    }); 
+
+  });
 
 
     describe( 'listValueCount: Counts the instances of a specified value in a list. The search is case-sensitive.', function () {  

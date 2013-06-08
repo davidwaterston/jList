@@ -101,7 +101,7 @@ Replaces the contents of a list element.
 - **[listSort](#listSort)**  
 Sorts list elements according to a sort type and sort order.
 - **[listUnion](#listUnion)**  
-Gets the elements that two lists have in common.
+Combines the elements from two different lists.
 - **[listValueCount](#listValueCount)**   
 Counts the instances of a specified value in a list. The search is case-sensitive.    
 - **[listValueCountNoCase](#listValueCountNoCase)**    
@@ -1262,6 +1262,45 @@ The following table shows examples of *listSort* processing:
 
 ---
 
+<a name="listUnion"></a>
+##listUnion  
+
+**Description**  
+Combines the elements from two different lists.  
+
+**Availability**  
+v1.6
+
+**Function syntax**  
+listUnion(list1, list2 [, delimiter ])
+
+**Returns**  
+A new list with duplicates removed containing all elements from both *list1* and *list2*.
+
+**Parameters**
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list1 | A list or a variable that contains one. |   
+| list2 | A list or a variable that contains one. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**
+
+The following table shows examples of *listUnion* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listUnion('elem1,elem2', 'elem2,elem3' ) | 'elem1,elem2,elem3' |
+| jList.listUnion('','elem1,elem2') | 'elem1,elem2' |
+| jList.listUnion('elem1,elem2','') | 'elem1,elem2' |
+| jList.listUnion('cat-dog-mouse','cat-rabbit','-') | 'cat-dog-mouse-rabbit' |
+
+**jsFiddle**
+
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)
+
+---
 
 <a name="listValueCount"></a>
 ##listValueCount   
