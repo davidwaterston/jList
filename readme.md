@@ -55,8 +55,7 @@ Adds one list to the end of another.
 Determines the index of the first list element that contains a specified substring.  
 The search is case-sensitive.
 - **[listContainsNoCase](#listContainsNoCase)**  
-Determines the index of the first list element that contains a specified substring.  
-The search is not case-sensitive.
+Determines the index of the first list element that contains a specified substring. The search is not case-sensitive.
 - **[listDeleteAt](#listDeleteAt)**  
 Deletes an element from a list.  
 - **[listDifference](#listDifference)**  
@@ -204,15 +203,15 @@ A copy of the list, with *value* appended.
 
 **Usage**
 
-jList inserts a delimiter character before *value*.  
+Inserts a delimiter character before *value* regardless of whether *value* is empty.
 The following table shows examples of *listAppend* processing:
 
 | Statement | Output |  
 | :-- | :-- |
-| jList.listAppend('elem1,elem2', 'rabbit' ) | elem1,elem2,rabbit |
-| jList.listAppend('elem1,elem2','') | elem1,elem2, |
-| jList.listAppend('','elem1,elem2') | elem1,elem2 |
-| jList.listAppend('cat-dog-mouse','hamster','-') | cat-dog-mouse-hamster |
+| jList.listAppend('elem1,elem2', 'rabbit' ) | 'elem1,elem2,rabbit' |
+| jList.listAppend('elem1,elem2','') | 'elem1,elem2,' |
+| jList.listAppend('','elem1,elem2') | 'elem1,elem2' |
+| jList.listAppend('cat-dog-mouse','hamster','-') | 'cat-dog-mouse-hamster' |
 
 **jsFiddle**
 
@@ -249,10 +248,10 @@ The following table shows examples of *listChangeDelims* processing:
 
 | Statement | Output |  
 | :-- | :-- |
-| jList.listChangeDelims('a,e,c,b,d', '=') | a=e=c=b=d |    
-| jList.listChangeDelims('a.e.c.b.d', ',', '.') | a,e,c,b,d |      
-| jList.listChangeDelims('a,e,c,b,d','-','!') | a,e,c,b,d |  
-| jList.listChangeDelims('a,e,c,b,d','-',',') | a-e-c-b-d |  
+| jList.listChangeDelims('a,e,c,b,d', '=') | 'a=e=c=b=d' |    
+| jList.listChangeDelims('a.e.c.b.d', ',', '.') | 'a,e,c,b,d' |      
+| jList.listChangeDelims('a,e,c,b,d','-','!') | 'a,e,c,b,d' |  
+| jList.listChangeDelims('a,e,c,b,d','-',',') | 'a-e-c-b-d' |  
 
 **jsFiddle**
 
@@ -285,15 +284,15 @@ A new list, with *list2* concatenated to *list1*.
 
 **Usage**
 
-If both *list1* and *list2* are not empty, jList inserts a delimiter character between *list1* and *list2*.  
+If both *list1* and *list2* are not empty, inserts a delimiter character between *list1* and *list2*.  
 The following table shows examples of *listConcatenate* processing:
 
 | Statement | Output |  
 | :-- | :-- |
-| jList.listConcatenate('elem1,elem2', 'rabbit,dog' ) | elem1,elem2,rabbit,dog |
-| jList.listConcatenate('elem1,elem2','') | elem1,elem2 |
-| jList.listConcatenate('','elem1,elem2') | elem1,elem2 |
-| jList.listConcatenate('cat-dog-mouse','hamster','-') | cat-dog-mouse-hamster |
+| jList.listConcatenate('elem1,elem2', 'rabbit,dog' ) | 'elem1,elem2,rabbit,dog' |
+| jList.listConcatenate('elem1,elem2','') | 'elem1,elem2' |
+| jList.listConcatenate('','elem1,elem2') | 'elem1,elem2' |
+| jList.listConcatenate('cat-dog-mouse','hamster','-') | 'cat-dog-mouse-hamster' |
 
 **jsFiddle**
 
@@ -408,14 +407,13 @@ A copy of the list, without the specified element.
 
 **Usage**
 
-jList inserts a delimiter character before *value*.  
 The following table shows examples of *listDeleteAt* processing:
 
 | Statement | Output |  
 | :-- | :-- |
-| jList.listDeleteAt('elem1,elem2,elem3',2) | elem1,elem3 |    
-| jList.listDeleteAt('elem1,elem2',4) | elem1,elem2 |      
-| jList.listDeleteAt('cat-dog-mouse',3,'-') | cat-dog |  
+| jList.listDeleteAt('elem1,elem2,elem3',2) | 'elem1,elem3' |    
+| jList.listDeleteAt('elem1,elem2',4) | 'elem1,elem2' |      
+| jList.listDeleteAt('cat-dog-mouse',3,'-') | 'cat-dog' |  
 
 **jsFiddle**
 
@@ -452,14 +450,14 @@ The following table shows examples of *listDifference* processing:
 
 | Statement | Output |  
 | :-- | :-- |
-| jList.listDifference('elem1,elem2', 'elem2,elem3' ) | elem1,elem3 |
-| jList.listDifference('','elem1,elem2') | elem1,elem2 |
-| jList.listDifference('elem1,elem2','') | elem1,elem2 |
-| jList.listDifference('cat-dog-mouse','cat-rabbit-dog-rabbit-hamster','-') | mouse-rabbit-hamster |
+| jList.listDifference('elem1,elem2', 'elem2,elem3' ) | 'elem1,elem3' |
+| jList.listDifference('','elem1,elem2') | 'elem1,elem2' |
+| jList.listDifference('elem1,elem2','') | 'elem1,elem2' |
+| jList.listDifference('cat-dog-mouse','cat-rabbit-dog-rabbit-hamster','-') | 'mouse-rabbit-hamster' |
 
 **jsFiddle**
 
-[http://jsfiddle.net/davidwaterston/KDNUf](http://jsfiddle.net/davidwaterston/KDNUf)
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)
 
 ---
 
@@ -577,7 +575,7 @@ The following table shows examples of *listFirst* processing:
 | jList.listFirst('elem1,elem2,elem3') | 'elem1' |  
 | jList.listFirst('cat,dog','~') | 'cat,dog' |      
 | jList.listFirst('Cat-Dog--Mouse','-') | 'Cat' |  
-| jList.listFirst('5-4-3-2-1','-') | 5 |  
+| jList.listFirst('5-4-3-2-1','-') | '5' |  
 
 **jsFiddle**
 
@@ -615,9 +613,9 @@ The following table shows examples of *listGetAt* processing:
 | Statement | Output |  
 | :-- | :-- |
 | jList.listGetAt('elem1,elem2,elem3',1) | 'elem1' |  
-| jList.listGetAt('cat,dog',1,'~') | 'cat,dog' |      
+| jList.listGetAt('cat,dog',1,'~') | cat,dog |      
 | jList.listGetAt('Cat-Dog--Mouse',3,'-') | '' |  
-| jList.listGetAt('5-4-3-2-1',5,'-') | 1 |  
+| jList.listGetAt('5-4-3-2-1',5,'-') | '1' |  
 
 **jsFiddle**
 
@@ -663,6 +661,46 @@ The following table shows examples of *listInsertAt* processing:
 **jsFiddle**
 
 [http://jsfiddle.net/davidwaterston/9D26p](http://jsfiddle.net/davidwaterston/9D26p)  
+
+---
+
+<a name="listIntersection"></a>
+##listIntersection  
+
+**Description**  
+Gets the elements that are common to each of two different lists.  
+
+**Availability**  
+v1.6
+
+**Function syntax**  
+listIntersection(list1, list2 [, delimiter ])
+
+**Returns**  
+A new list only containing elements that are in both *list1* and *list2*.
+
+**Parameters**
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list1 | A list or a variable that contains one. |   
+| list2 | A list or a variable that contains one. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |  
+
+**Usage**
+
+The following table shows examples of *listIntersection* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listIntersection('elem1,elem2', 'elem2,elem3' ) | 'elem2' |
+| jList.listIntersection('','elem1,elem2') | '' |
+| jList.listIntersection('elem1,elem2','') | '' |
+| jList.listIntersection('cat-dog-mouse','cat-rabbit-dog-rabbit-hamster','-') | 'cat-dog' |
+
+**jsFiddle**
+
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)
 
 ---
 
@@ -821,6 +859,86 @@ The following table shows examples of *listQualify* processing:
 
 ---
 
+<a name="listRemove"></a>
+##listRemove  
+
+**Description**
+Removes elements in one list from another list. Matching is case-sensitive.
+
+**Availability**
+v1.6
+
+**Function syntax**
+listRemove(list1, list2 [, delimiter ])
+
+**Returns**
+A new list, with the elements in *list2* removed from *list1*.
+
+**Parameters**
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list1 | A list or a variable that contains one. |   
+| list2 | A list or a variable that contains one. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |   
+
+**Usage**
+
+The following table shows examples of *listRemove* processing: 
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listRemove('elem1,elem2,elem3','elem2') | 'elem1,elem3' |    
+| jList.listRemove('elem1,elem2','elem2,elem3') | 'elem1' |
+| jList.listRemove('cat-dog-mouse','mouse-dog-cat','-') | '' | 
+| jList.listRemove('cat-dog-Mouse','mouse-dog-cat','-') | 'Mouse' | 
+
+**jsFiddle**
+
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+
+---
+
+<a name="listRemoveNoCase"></a>
+##listRemoveNoCase  
+
+**Description**
+Removes elements in one list from another list. Matching is not case-sensitive.
+
+**Availability**
+v1.6
+
+**Function syntax**
+listRemoveNoCase(list1, list2 [, delimiter ])
+
+**Returns**
+A new list, with the elements in *list2* removed from *list1*.
+
+**Parameters**
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list1 | A list or a variable that contains one. |   
+| list2 | A list or a variable that contains one. |   
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |   
+
+**Usage**
+
+The following table shows examples of *listRemoveNoCase* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listRemoveNoCase('elem1,elem2,elem3','elem2') | 'elem1,elem3' |    
+| jList.listRemoveNoCase('elem1,elem2','elem2,elem3') | 'elem1' |
+| jList.listRemoveNoCase('cat-dog-mouse','mouse-dog-cat','-') | '' | 
+| jList.listRemoveNoCase('cat-dog-Mouse','mouse-dog-cat','-') | '' | 
+
+**jsFiddle**
+
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+
+---
+
 <a name="listRemoveDuplicates"></a>
 ##listRemoveDuplicates   
 
@@ -899,6 +1017,88 @@ The following table shows examples of *listRemoveDuplicatesNoCase* processing:
 **jsFiddle**
 
 [http://jsfiddle.net/davidwaterston/8NpEY](http://jsfiddle.net/davidwaterston/8NpEY)
+
+---
+
+<a name="listReplace"></a>
+##listReplace  
+
+**Description**
+Replaces any occurances of an element in a list with a different element. Matching is case-sensitive.
+
+**Availability**
+v1.6
+
+**Function syntax**
+listReplace(list, value1, value2 [, delimiter ])
+
+**Returns**
+A new list, with any occurrances of *value1* replaced by *value2*.
+
+**Parameters**
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |   
+| value1 | Element in *list* to be replaced. |  
+| value2 | Element to replace *value1*. |  
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |   
+
+**Usage**
+
+The following table shows examples of *listReplace* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listReplace('elem1,elem2,elem3','elem2','elem4') | 'elem1,elem4,elem3' |    
+| jList.listReplace('elem1','elem1','elem2') | 'elem2' |
+| jList.listReplace('cat-dog-mouse','mouse','flea','-') | 'cat-dog-flea' | 
+| jList.listReplace('cat-dog-mouse','Mouse','flea','-') | 'cat-dog-mouse' | 
+
+**jsFiddle**
+
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+
+---
+
+<a name="listReplaceNoCase"></a>
+##listReplaceNoCase
+
+**Description**
+Replaces any occurances of an element in a list with a different element. Matching is not case-sensitive.
+
+**Availability**
+v1.6
+
+**Function syntax**
+listReplaceNoCase(list, value1, value2 [, delimiter ])
+
+**Returns**
+A new list, with any occurrances of *value1* replaced by *value2*.
+
+**Parameters**
+
+| Parameter | Description |  
+| :--------- | :---------- |  
+| list | A list or a variable that contains one. |   
+| value1 | Element in *list* to be replaced. |  
+| value2 | Element to replace *value1*. |  
+| delimiter | A string or a variable that contains one. The character that separates list elements. The default value is comma. |   
+
+**Usage**
+
+The following table shows examples of *listReplaceNoCase* processing:
+
+| Statement | Output |  
+| :-- | :-- |
+| jList.listReplaceNoCase('elem1,elem2,elem3','elem2','elem4') | 'elem1,elem4,elem3' |    
+| jList.listReplaceNoCase('elem1','elem1','elem2') | 'elem2' |
+| jList.listReplaceNoCase('cat-dog-mouse','mouse','flea','-') | 'cat-dog-flea' | 
+| jList.listReplaceNoCase('cat-dog-mouse','Mouse','flea','-') | 'cat-dog-flea' | 
+
+**jsFiddle**
+
+[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
 
 ---
 
@@ -1155,28 +1355,36 @@ The following table shows examples of *listValueCountNoCase* processing:
 #jsFiddle
 In addition to the examples included in the file *jlist-test.htm*, all functions are available in *jsFiddle* for ad-hoc testing:  
   
-[Full list of *fiddles*](http://jsfiddle.net/user/davidwaterston/fiddles)  
-  
-[listAppend](http://jsfiddle.net/davidwaterston/KDNUf)  
+*[List of *fiddles* by Chris Tsongas](http://gist.github.com/)  
+[List of *fiddles* by David Waterston](http://jsfiddle.net/user/davidwaterston/fiddles)  
+
+[listAppend](http://jsfiddle.net/davidwaterston/KDNUf)
 [listChangeDelims](http://jsfiddle.net/davidwaterston/uvvHF)  
 [listContains](http://jsfiddle.net/davidwaterston/mjJ2n)  
 [listContainsNoCase](http://jsfiddle.net/davidwaterston/ku4rP)  
 [listDeleteAt](http://jsfiddle.net/davidwaterston/j6pEP)  
+*[listDifference](http://jsfiddle.net/christsongas/)  
 [listFind](http://jsfiddle.net/davidwaterston/LAfBn)  
 [listFindNoCase](http://jsfiddle.net/davidwaterston/TXt2T)  
 [listFirst](http://jsfiddle.net/davidwaterston/FEQWc)  
 [listGetAt](http://jsfiddle.net/davidwaterston/7khW6)  
 [listInsertAt](http://jsfiddle.net/davidwaterston/9D26p)  
+*[listIntersection](http://jsfiddle.net/christsongas/)  
 [listLast](http://jsfiddle.net/davidwaterston/BbLD8)  
 [listLen](http://jsfiddle.net/davidwaterston/Uz4P2)  
 [listPrepend](http://jsfiddle.net/davidwaterston/n8AXz)  
 [listQualify](http://jsfiddle.net/davidwaterston/ArLh9)  
+*[listRemove](http://jsfiddle.net/christsongas/)  
+*[listRemoveNoCase](http://jsfiddle.net/christsongas/)  
 [listRemoveDuplicates](http://jsfiddle.net/davidwaterston/qHvHg)  
 [listRemoveDuplicatesNoCase](http://jsfiddle.net/davidwaterston/8NpEY)  
+*[listReplace](http://jsfiddle.net/christsongas/)  
+*[listReplaceNoCase](http://jsfiddle.net/christsongas/)
 [listRest](http://jsfiddle.net/davidwaterston/Q6Hh4)  
 [listReverse](http://jsfiddle.net/davidwaterston/vsmXu)  
 [listSetAt](http://jsfiddle.net/davidwaterston/CTN2w)  
 [listSort](http://jsfiddle.net/davidwaterston/ff2zy)  
+*[listUnion](http://jsfiddle.net/christsongas/)  
 [listValueCount](http://jsfiddle.net/davidwaterston/WPyED)  
 [listValueCountNoCase](http://jsfiddle.net/davidwaterston/4gVnX)  
 
@@ -1184,7 +1392,8 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
-| 1.5.0 | 10th September, 2012 | Added two new functions - *[listContains](#listContains)*  and *[listContainsNoCase](#listContainsNoCase)*. |
+| 1.6.0 | 10th June, 2013 | Added seven new functions - *[listDifference](#listDifference)*, *[listIntersection](#listIntersection)*, *[listRemove](#listRemove)*, *[listRemoveNoCase](#listRemoveNoCase)*, *[listReplace](#listReplace)*, *[listReplaceNoCase](#listReplaceNoCase)* and *[listUnion](#listUnion)*. |
+| 1.5.0 | 10th September, 2012 | Added two new functions - *[listContains](#listContains)* and *[listContainsNoCase](#listContainsNoCase)*. |
 | 1.4.1 | 8th September, 2012 | Bug fix to *[listFind](#listFind)* (and indirectly *[listFindNoCase](#listFindNoCase)* to resolve a problem with older (pre-9) versions of Internet Explorer. |
 | 1.4.0 | 3rd September, 2012 | Added extra parameter checking to each function, replaced 'typeof undefined' checks with '=== undefined' to ensure compatibility with jsLint Edition 2012-08-23. Added the *Jasmine* test suite with 250 tests. |
 | 1.3.0 | 16th June, 2012 | Added three new functions - *[listChangeDelims](#listChangeDelims)*, *[listValueCount](#listValueCount)* and *[listValueCountNoCase](#listValueCountNoCase)*. |
