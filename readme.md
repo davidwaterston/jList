@@ -8,7 +8,7 @@ For instance, the string "carrots,peas,lettuce,tomato" could be described as a "
 Once you start to use jList you will quickly realise that there are many situations where treating a string as a list is a simpler and more intuitive way to manipulate data than the built-in alternatives offered by Javascript. 
 	
 ##What's included?
-There are 12 files included with this package. The first, and most important,  four are:   
+There are 12 files included with this package. The first, and most important, four are:   
 
 - **readme.md**  
 This file.
@@ -165,7 +165,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - *jList* is minified using [UglifyJS](http://marijnhaverbeke.nl/uglifyjs).
 - Version numbers follow the [Semantic Versioning](http://semver.org) standard.
 - The unminified version of the source validates clean in [jsLint (Edition 2012-08-23)](http://jslint.com).
-- Written by [David Waterston] (http://dvolvr.davidwaterston.com)
+- Written by [David Waterston] (http://dvolvr.davidwaterston.com) and [Chris Tsongas] (http://www.bitmojo.com)
 - Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
 - Planning and task management in [Trello](https://trello.com/board/jlist/504b80ff3a6c80626f306215)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).

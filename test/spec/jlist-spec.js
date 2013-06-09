@@ -1,4 +1,4 @@
-describe( 'jList library v1.5.0', function () {  
+describe( 'jList library v1.6.0', function () {  
 
   describe('Public interfaces', function () {
 
