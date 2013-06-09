@@ -1433,7 +1433,7 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 
 | Version | Release Date | Details |   
 | :-- | :-- | :-- |    
-| 1.6.0 | 10th June, 2013 | Added eight new functions - *[listConcatenate](listConcatenate)*, *[listDifference](#listDifference)*, *[listIntersection](#listIntersection)*, *[listRemove](#listRemove)*, *[listRemoveNoCase](#listRemoveNoCase)*, *[listReplace](#listReplace)*, *[listReplaceNoCase](#listReplaceNoCase)* and *[listUnion](#listUnion)*. |
+| 1.6.0 | 10th June, 2013 | Added eight new functions - *[listConcatenate](#listConcatenate)*, *[listDifference](#listDifference)*, *[listIntersection](#listIntersection)*, *[listRemove](#listRemove)*, *[listRemoveNoCase](#listRemoveNoCase)*, *[listReplace](#listReplace)*, *[listReplaceNoCase](#listReplaceNoCase)* and *[listUnion](#listUnion)*. |
 | 1.5.0 | 10th September, 2012 | Added two new functions - *[listContains](#listContains)* and *[listContainsNoCase](#listContainsNoCase)*. |
 | 1.4.1 | 8th September, 2012 | Bug fix to *[listFind](#listFind)* (and indirectly *[listFindNoCase](#listFindNoCase)* to resolve a problem with older (pre-9) versions of Internet Explorer. |
 | 1.4.0 | 3rd September, 2012 | Added extra parameter checking to each function, replaced 'typeof undefined' checks with '=== undefined' to ensure compatibility with jsLint Edition 2012-08-23. Added the *Jasmine* test suite with 250 tests. |
