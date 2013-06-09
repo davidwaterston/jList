@@ -12,6 +12,7 @@
         document.write('<br><h1>jList</h1> v1.5.0');
         document.write('<br>');
 
+
         document.write('<br><br><h1>listAppend</h1>');
 
         response = jList.listAppend('elem1,elem2', 'rabbit');
@@ -22,6 +23,7 @@
 
         response = jList.listAppend('cat-dog-mouse','hamster','-');
         document.write("jList.listAppend('cat-dog-mouse','hamster','-') returns '" + response + "'" + '<br>');
+
 
 
         document.write('<br><br><h1>listChangeDelims</h1>');
@@ -37,6 +39,23 @@
 
         response = jList.listChangeDelims('a,e,c,b,d','-',',');
         document.write("jList.listChangeDelims('a,e,c,b,d','-',',') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listConcatenate</h1>');
+
+        response = jList.listConcatenate('elem1,elem2', 'cat,dog');
+        document.write("jList.listConcatenate('elem1,elem2', 'cat,dog' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listConcatenate('','elem1,elem2');
+        document.write("jList.listConcatenate('','elem1,elem2') returns '" + response + "'" + '<br>');
+
+        response = jList.listConcatenate('elem1,elem2', '');
+        document.write("jList.listConcatenate('elem1,elem2', '' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listConcatenate('cat-dog-mouse','hamster','-');
+        document.write("jList.listConcatenate('cat-dog-mouse','hamster','-') returns '" + response + "'" + '<br>');
+
 
 
         document.write('<br><br><h1>listContains</h1>');
@@ -57,6 +76,7 @@
         document.write("jList.listContains('cat,dog,mouse,rabbit,dog', 'tr') returns '" + response + "'" + '<br>');
 
 
+
         document.write('<br><br><h1>listContainsNoCase</h1>');
 
         response = jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'og');
@@ -75,6 +95,7 @@
         document.write("jList.listContainsNoCase('cat,dog,mouse,rabbit,dog', 'tr') returns '" + response + "'" + '<br>');
 
 
+
         document.write('<br><br><h1>listDeleteAt</h1>');
 
         response = jList.listDeleteAt('elem1,elem2,elem3',2);
@@ -85,6 +106,23 @@
 
         response = jList.listDeleteAt('cat-dog-mouse',3,'-');
         document.write("jList.listDeleteAt('cat-dog-mouse',3,'-') returns '" + response + "'" + '<br>');
+
+
+
+        document.write('<br><br><h1>listDifference</h1>');
+
+        response = jList.listDifference('elem1,elem2', 'elem2,elem3');
+        document.write("jList.listDifference('elem1,elem2', 'elem2,elem3' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listDifference('','elem1,elem2');
+        document.write("jList.listDifference('','elem1,elem2') returns '" + response + "'" + '<br>');
+
+        response = jList.listDifference('elem1,elem2', '');
+        document.write("jList.listDifference('elem1,elem2', '' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listDifference('cat-dog-mouse','cat-rabbit-dog-rabbit-hamster','-');
+        document.write("jList.listDifference('cat-dog-mouse','cat-rabbit-dog-rabbit-hamster','-') returns '" + response + "'" + '<br>');
+
 
 
         document.write('<br><br><h1>listFind</h1>');
@@ -103,6 +141,7 @@
 
         response = jList.listFind('5-4-3-2-1',4,'-');
         document.write("jList.listFind('5-4-3-2-1',4,'-') returns " + response + '<br>');
+
 
 
         document.write('<br><br><h1>listFindNoCase</h1>');
@@ -126,6 +165,7 @@
         document.write("jList.listFindNoCase('5-4-3-2-1',4,'-') returns " + response + '<br>');
 
 
+
         document.write('<br><br><h1>listFirst</h1>');
 
         response = jList.listFirst('elem1,elem2,elem3');
@@ -142,6 +182,7 @@
 
         response = jList.listFirst('');
         document.write("jList.listFirst('') returns '" + response + "'<br>");
+
 
 
         document.write('<br><br><h1>listGetAt</h1>');
@@ -182,6 +223,22 @@
 
         response = jList.listInsertAt('',1,'abcdef');
         document.write("jList.listInsertAt('','abcdef',1) returns '" + response + "'<br>");  
+
+
+
+        document.write('<br><br><h1>listIntersection</h1>');
+
+        response = jList.listIntersection('elem1,elem2', 'elem2,elem3');
+        document.write("jList.listIntersection('elem1,elem2', 'elem2,elem3' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listIntersection('','elem1,elem2');
+        document.write("jList.listIntersection('','elem1,elem2') returns '" + response + "'" + '<br>');
+
+        response = jList.listIntersection('elem1,elem2', '');
+        document.write("jList.listIntersection('elem1,elem2', '' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listIntersection('cat-dog-mouse','cat-rabbit-dog-hamster','-');
+        document.write("jList.listIntersection('cat-dog-mouse','cat-rabbit-dog-hamster','-') returns '" + response + "'" + '<br>');
 
 
 
@@ -249,6 +306,44 @@
 
 
 
+        document.write('<br><br><h1>listRemove</h1>');
+
+        response = jList.listRemove('a,e,c,e,a,b,d','a');
+        document.write("jList.listRemove('a,e,c,e,a,b,d','a') returns '" + response + "'<br>");
+
+        response = jList.listRemove('a,f,c,d,A,f,C,d','a,f,c,d');
+        document.write("jList.listRemove('a,f,c,d,A,f,C,d','a,f,c,d') returns '" + response + "'<br>");
+
+        response = jList.listRemove('a~12~1~Z~C~12','1','~');
+        document.write("jList.listRemove('a~12~1~Z~C~12','1','~') returns '" + response + "'<br>");
+
+        response = jList.listRemove('1.1.1.1.1.1','1','.');
+        document.write("jList.listRemove('1.1.1.1.1.1','1','.') returns '" + response + "'<br>");
+
+        response = jList.listRemove('12,3,4,1,12,4,6','4,1');
+        document.write("jList.listRemove('12,3,4,1,12,4,6','4,1') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listRemoveNoCase</h1>');
+
+        response = jList.listRemoveNoCase('a,e,c,e,a,b,d','a');
+        document.write("jList.listRemoveNoCase('a,e,c,e,a,b,d','a') returns '" + response + "'<br>");
+
+        response = jList.listRemoveNoCase('a,f,c,d,A,f,C,d','a,f,c,d');
+        document.write("jList.listRemoveNoCase('a,f,c,d,A,f,C,d','a,f,c,d') returns '" + response + "'<br>");
+
+        response = jList.listRemoveNoCase('a~12~1~Z~C~12','1','~');
+        document.write("jList.listRemoveNoCase('a~12~1~Z~C~12','1','~') returns '" + response + "'<br>");
+
+        response = jList.listRemoveNoCase('1.1.1.1.1.1','1','.');
+        document.write("jList.listRemoveNoCase('1.1.1.1.1.1','1','.') returns '" + response + "'<br>");
+
+        response = jList.listRemoveNoCase('12,3,4,1,12,4,6','4,1');
+        document.write("jList.listRemoveNoCase('12,3,4,1,12,4,6','4,1') returns '" + response + "'<br>");
+
+
+
         document.write('<br><br><h1>listRemoveDuplicates</h1>');
 
         response = jList.listRemoveDuplicates('a,e,c,e,a,b,d');
@@ -287,6 +382,45 @@
 
         response = jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit');
         document.write("jList.listRemoveDuplicatesNoCase('cat,dog,rabbit,DOG,Rabbit') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listReplace</h1>');
+
+        response = jList.listReplace('a,e,c,e,a,b,d','a','b');
+        document.write("jList.listReplace('a,e,c,e,a,b,d','a','b') returns '" + response + "'<br>");
+
+        response = jList.listReplace('a,f,c,d,A,f,C,d','a','b');
+        document.write("jList.listReplace('a,f,c,d,A,f,C,d','a','b') returns '" + response + "'<br>");
+
+        response = jList.listReplace('a~12~1~Z~C~12','1','5','~');
+        document.write("jList.listReplace('a~12~1~Z~C~12','1','5','~') returns '" + response + "'<br>");
+
+        response = jList.listReplace('1.1.1.1.1.1','1','2','.');
+        document.write("jList.listReplace('1.1.1.1.1.1','1','2','.') returns '" + response + "'<br>");
+
+        response = jList.listReplace('12,3,4,1,12,4,6','4','1');
+        document.write("jList.listReplace('12,3,4,1,12,4,6','4','1') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listReplaceNoCase</h1>');
+
+        response = jList.listReplaceNoCase('a,e,c,e,a,b,d','a','b');
+        document.write("jList.listReplaceNoCase('a,e,c,e,a,b,d','a','b') returns '" + response + "'<br>");
+
+        response = jList.listReplaceNoCase('a,f,c,d,A,f,C,d','a','b');
+        document.write("jList.listReplaceNoCase('a,f,c,d,A,f,C,d','a','b') returns '" + response + "'<br>");
+
+        response = jList.listReplaceNoCase('a~12~1~Z~C~12','1','5','~');
+        document.write("jList.listReplaceNoCase('a~12~1~Z~C~12','1','5','~') returns '" + response + "'<br>");
+
+        response = jList.listReplaceNoCase('1.1.1.1.1.1','1','2','.');
+        document.write("jList.listReplaceNoCase('1.1.1.1.1.1','1','2','.') returns '" + response + "'<br>");
+
+        response = jList.listReplaceNoCase('12,3,4,1,12,4,6','4','1');
+        document.write("jList.listReplaceNoCase('12,3,4,1,12,4,6','4','1') returns '" + response + "'<br>");
+
 
 
         document.write('<br><br><h1>listRest</h1>');
@@ -359,6 +493,25 @@
 
         response = jList.listSort('12,3,4,1,55,5,6','numeric','asc');
         document.write("jList.listSort('12,3,4,1,55,5,6','numeric','asc') returns '" + response + "'<br>");
+
+
+
+        document.write('<br><br><h1>listUnion</h1>');
+
+        response = jList.listUnion('elem1,elem2', 'elem2,elem3');
+        document.write("jList.listUnion('elem1,elem2', 'elem2,elem3' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listUnion('','elem1,elem2');
+        document.write("jList.listUnion('','elem1,elem2') returns '" + response + "'" + '<br>');
+
+        response = jList.listUnion('elem1,elem2', '');
+        document.write("jList.listUnion('elem1,elem2', '' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listUnion('elem1,elem1', '');
+        document.write("jList.listUnion('elem1,elem1', '' ) returns '" + response + "'" + '<br>');
+
+        response = jList.listUnion('cat-dog-mouse','hamster','-');
+        document.write("jList.listUnion('cat-dog-mouse','hamster','-') returns '" + response + "'" + '<br>');
 
 
 
