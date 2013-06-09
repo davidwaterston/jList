@@ -167,13 +167,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - The unminified version of the source validates clean in [jsLint (Edition 2013-06-08)](http://jslint.com).
 - Written by [David Waterston] (http://dvolvr.davidwaterston.com)
 - Forked by [Chris Tsongas] (http://www.bitmojo.com)
-- Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
+- Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList) and [https://github.com/tsongas/jList](https://github.com/tsongas/jList)
 - Planning and task management in [Trello](https://trello.com/board/jlist/504b80ff3a6c80626f306215)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
 - Tested using [Jasmine 1.2.0](http://pivotal.github.com/jasmine).
 - Documentation written in [Markdown](http://daringfireball.net/projects/markdown/) using [Byword](http://bywordapp.com/).
 - Pushed to [GitHub](http://davidwaterston.github.com/jlist) using [Tower](http://www.git-tower.com). 
-- Made in Scotland.
+- Made in Scotland and the United States of America.
 
 ---
 
@@ -1398,9 +1398,9 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 [List of *fiddles* by Chris Tsongas](https://gist.github.com/tsongas/5744476)  
 [List of *fiddles* by David Waterston](http://jsfiddle.net/user/davidwaterston/fiddles)  
 
-[listAppend](http://jsfiddle.net/davidwaterston/KDNUf)
+[listAppend](http://jsfiddle.net/davidwaterston/KDNUf)  
 [listChangeDelims](http://jsfiddle.net/davidwaterston/uvvHF)  
-[listConcatenate](http://jsfiddle.net/tsongas/2mWRJ/)
+[listConcatenate](http://jsfiddle.net/tsongas/2mWRJ/)  
 [listContains](http://jsfiddle.net/davidwaterston/mjJ2n)  
 [listContainsNoCase](http://jsfiddle.net/davidwaterston/ku4rP)  
 [listDeleteAt](http://jsfiddle.net/davidwaterston/j6pEP)  
@@ -1419,8 +1419,8 @@ In addition to the examples included in the file *jlist-test.htm*, all functions
 [listRemoveNoCase](http://jsfiddle.net/tsongas/bTerA/)  
 [listRemoveDuplicates](http://jsfiddle.net/davidwaterston/qHvHg)  
 [listRemoveDuplicatesNoCase](http://jsfiddle.net/davidwaterston/8NpEY)  
-[listReplace](http://jsfiddle.net/tsongas/6ZCDY/)
-[listReplaceNoCase](http://jsfiddle.net/tsongas/5LFzJ/)
+[listReplace](http://jsfiddle.net/tsongas/6ZCDY/)  
+[listReplaceNoCase](http://jsfiddle.net/tsongas/5LFzJ/)  
 [listRest](http://jsfiddle.net/davidwaterston/Q6Hh4)  
 [listReverse](http://jsfiddle.net/davidwaterston/vsmXu)  
 [listSetAt](http://jsfiddle.net/davidwaterston/CTN2w)  
