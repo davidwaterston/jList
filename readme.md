@@ -25,10 +25,10 @@ The Javascript source code minified using UglifyJS.
 The next seven files are part of a comprehensive *Jasmine* test suite that allows modifications to the library to be quickly and easily regression tested. They are:
 
 - **test.htm**  
-Open this file in a browser to run the *Jasmine* test suite against the regular version of the library, jlist.js.
+Open this file in a browser to run the *Jasmine* test suite against the regular version of the library, jlist.js. This file can also be run in a browser here [https://rawgithub.com/tsongas/jList/master/test/test.htm](https://rawgithub.com/tsongas/jList/master/test/test.htm).
 
 - **test minimised version.htm**      
-Open this file in a browser to run the *Jasmine* test suite against the minified version of the library, jlist-min.js.
+Open this file in a browser to run the *Jasmine* test suite against the minified version of the library, jlist-min.js. This file can also be run in a browser here [https://rawgithub.com/tsongas/jList/master/test/test%20minimised%20version.htm](https://rawgithub.com/tsongas/jList/master/test/test%20minimised%20version.htm).
 
 - **jlist-spec.js**  
 The test suite specifications - these are the actual tests that are run by opening either of the preceding two files.
