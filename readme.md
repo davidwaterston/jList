@@ -297,7 +297,7 @@ The following table shows examples of *listConcatenate* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/tsongas/nqEQW/](http://jsfiddle.net/tsongas/nqEQW/)
+[http://jsfiddle.net/tsongas/2mWRJ/](http://jsfiddle.net/tsongas/2mWRJ/)
 
 ---
 
@@ -423,7 +423,7 @@ The following table shows examples of *listDeleteAt* processing:
 ---
 
 <a name="listDifference"></a>
-##listConcatenate  
+##listDifference 
 
 **Description**  
 Gets the elements that are unique to each of two different lists.  
@@ -458,7 +458,7 @@ The following table shows examples of *listDifference* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)
+[http://jsfiddle.net/tsongas/QaHLj/](http://jsfiddle.net/tsongas/QaHLj/)
 
 ---
 
@@ -701,7 +701,7 @@ The following table shows examples of *listIntersection* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)
+[http://jsfiddle.net/tsongas/QBtZd/](http://jsfiddle.net/tsongas/QBtZd/)
 
 ---
 
@@ -896,7 +896,7 @@ The following table shows examples of *listRemove* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+[http://jsfiddle.net/tsongas/Y5Zgf/](http://jsfiddle.net/tsongas/Y5Zgf/)  
 
 ---
 
@@ -936,7 +936,7 @@ The following table shows examples of *listRemoveNoCase* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+[http://jsfiddle.net/tsongas/bTerA/](http://jsfiddle.net/tsongas/bTerA/)  
 
 ---
 
@@ -1058,7 +1058,7 @@ The following table shows examples of *listReplace* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+[http://jsfiddle.net/tsongas/6ZCDY/](http://jsfiddle.net/tsongas/6ZCDY/)  
 
 ---
 
@@ -1099,7 +1099,7 @@ The following table shows examples of *listReplaceNoCase* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)  
+[http://jsfiddle.net/tsongas/5LFzJ/](http://jsfiddle.net/tsongas/5LFzJ/)  
 
 ---
 
@@ -1299,7 +1299,7 @@ The following table shows examples of *listUnion* processing:
 
 **jsFiddle**
 
-[http://jsfiddle.net/christsongas/](http://jsfiddle.net/christsongas/)
+[http://jsfiddle.net/tsongas/z7NEP/](http://jsfiddle.net/tsongas/z7NEP/)
 
 ---
 
@@ -1395,37 +1395,37 @@ The following table shows examples of *listValueCountNoCase* processing:
 #jsFiddle
 In addition to the examples included in the file *jlist-test.htm*, all functions are available in *jsFiddle* for ad-hoc testing:  
   
-*[List of *fiddles* by Chris Tsongas](http://gist.github.com/)  
+[List of *fiddles* by Chris Tsongas](https://gist.github.com/tsongas/5744476)  
 [List of *fiddles* by David Waterston](http://jsfiddle.net/user/davidwaterston/fiddles)  
 
 [listAppend](http://jsfiddle.net/davidwaterston/KDNUf)
 [listChangeDelims](http://jsfiddle.net/davidwaterston/uvvHF)  
-[listConcatenate](http://jsfiddle.net/tsongas/nqEQW/)
+[listConcatenate](http://jsfiddle.net/tsongas/2mWRJ/)
 [listContains](http://jsfiddle.net/davidwaterston/mjJ2n)  
 [listContainsNoCase](http://jsfiddle.net/davidwaterston/ku4rP)  
 [listDeleteAt](http://jsfiddle.net/davidwaterston/j6pEP)  
-*[listDifference](http://jsfiddle.net/christsongas/)  
+[listDifference](http://jsfiddle.net/tsongas/QaHLj/)  
 [listFind](http://jsfiddle.net/davidwaterston/LAfBn)  
 [listFindNoCase](http://jsfiddle.net/davidwaterston/TXt2T)  
 [listFirst](http://jsfiddle.net/davidwaterston/FEQWc)  
 [listGetAt](http://jsfiddle.net/davidwaterston/7khW6)  
 [listInsertAt](http://jsfiddle.net/davidwaterston/9D26p)  
-*[listIntersection](http://jsfiddle.net/christsongas/)  
+[listIntersection](http://jsfiddle.net/tsongas/QBtZd/)  
 [listLast](http://jsfiddle.net/davidwaterston/BbLD8)  
 [listLen](http://jsfiddle.net/davidwaterston/Uz4P2)  
 [listPrepend](http://jsfiddle.net/davidwaterston/n8AXz)  
 [listQualify](http://jsfiddle.net/davidwaterston/ArLh9)  
-*[listRemove](http://jsfiddle.net/christsongas/)  
-*[listRemoveNoCase](http://jsfiddle.net/christsongas/)  
+[listRemove](http://jsfiddle.net/tsongas/Y5Zgf/)  
+[listRemoveNoCase](http://jsfiddle.net/tsongas/bTerA/)  
 [listRemoveDuplicates](http://jsfiddle.net/davidwaterston/qHvHg)  
 [listRemoveDuplicatesNoCase](http://jsfiddle.net/davidwaterston/8NpEY)  
-*[listReplace](http://jsfiddle.net/christsongas/)  
-*[listReplaceNoCase](http://jsfiddle.net/christsongas/)
+[listReplace](http://jsfiddle.net/tsongas/6ZCDY/)
+[listReplaceNoCase](http://jsfiddle.net/tsongas/5LFzJ/)
 [listRest](http://jsfiddle.net/davidwaterston/Q6Hh4)  
 [listReverse](http://jsfiddle.net/davidwaterston/vsmXu)  
 [listSetAt](http://jsfiddle.net/davidwaterston/CTN2w)  
 [listSort](http://jsfiddle.net/davidwaterston/ff2zy)  
-*[listUnion](http://jsfiddle.net/christsongas/)  
+[listUnion](http://jsfiddle.net/tsongas/z7NEP/)  
 [listValueCount](http://jsfiddle.net/davidwaterston/WPyED)  
 [listValueCountNoCase](http://jsfiddle.net/davidwaterston/4gVnX)  
 
