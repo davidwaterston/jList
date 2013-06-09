@@ -1,7 +1,7 @@
 /*
     Title: jlist.js
     Version: 1.6.0 (Semantic versioning: http://semver.org)
-    Last update: 31st May, 2013
+    Last update: 10th June, 2013
     Written by: David Waterston (david@davidwaterston.com)
     Github repository and documentation: http://davidwaterston.github.com/jlist
     Forked by: Chris Tsongas (chris.tsongas@bitmojo.com)
@@ -147,7 +147,7 @@ var jList = (function () {
                 id,
                 len1 = arr1.length,
                 len2 = arr2.length,
-                out = []
+                out = [];
 
             if (list1 !== "") {
                 for (i = 0; i < len1; i += 1) {
@@ -262,7 +262,7 @@ var jList = (function () {
                 i,
                 id,
                 len = arr.length,
-                out = []
+                out = [];
 
             for (i = 0; i < len; i += 1) {
                 id = arr[i];
@@ -340,7 +340,7 @@ var jList = (function () {
                 i,
                 id,
                 len1 = arr1.length,
-                out = []
+                out = [];
 
             for (i = 0; i < len1; i += 1) {
                 id = arr1[i];
@@ -362,7 +362,7 @@ var jList = (function () {
                 i,
                 id,
                 len1 = arr1.length,
-                out = []
+                out = [];
 
             for (i = 0; i < len1; i += 1) {
                 id = arr1[i];
@@ -435,14 +435,13 @@ var jList = (function () {
                 i,
                 id,
                 len = arr.length,
-                out = []
+                out = [];
 
             for (i = 0; i < len; i += 1) {
                 id = arr[i];
                 if (id === value1) {
                     out.push(value2);
-                }
-                else {
+                } else {
                     out.push(id);
                 }
             }
@@ -460,14 +459,13 @@ var jList = (function () {
                 i,
                 id,
                 len = arr.length,
-                out = []
+                out = [];
 
             for (i = 0; i < len; i += 1) {
                 id = arr[i];
                 if (id.toUpperCase() === value1.toUpperCase()) {
                     out.push(value2);
-                }
-                else {
+                } else {
                     out.push(id);
                 }
             }
@@ -557,7 +555,7 @@ var jList = (function () {
             }
             delimiter = (delimiter === undefined) ? "," : delimiter;
 
-            return this.listRemoveDuplicates(this.listConcatenate(list1, list2, delimiter), delimiter)
+            return this.listRemoveDuplicates(this.listConcatenate(list1, list2, delimiter), delimiter);
         },
 
 

@@ -164,8 +164,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ##More
 - *jList* is minified using [UglifyJS](http://marijnhaverbeke.nl/uglifyjs).
 - Version numbers follow the [Semantic Versioning](http://semver.org) standard.
-- The unminified version of the source validates clean in [jsLint (Edition 2012-08-23)](http://jslint.com).
-- Written by [David Waterston] (http://dvolvr.davidwaterston.com) and [Chris Tsongas] (http://www.bitmojo.com)
+- The unminified version of the source validates clean in [jsLint (Edition 2013-06-08)](http://jslint.com).
+- Written by [David Waterston] (http://dvolvr.davidwaterston.com)
+- Forked by [Chris Tsongas] (http://www.bitmojo.com)
 - Github repository: [http://davidwaterston.github.com/jList](http://davidwaterston.github.com/jList)
 - Planning and task management in [Trello](https://trello.com/board/jlist/504b80ff3a6c80626f306215)
 - Developed using [Sublime Text 2](http://www.sublimetext.com/2), [CodeBox](http://www.shpakovski.com/codebox) and [CodeKit](http://incident57.com/codekit/).
