@@ -150,7 +150,7 @@ jList has been tested in the latest versions of:
 
 
 ##Licence
-Copyright (c) 2012 David Waterston.
+Copyright (c) 2012-2014 David Waterston.
 
 You may use this library under the terms of the MIT License, detailed below.
 More information can be found at [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php).
